@@ -14,7 +14,7 @@
     <script src="javascripts/jquery-2.0.3.min.js" type="text/javascript"></script>
     <script src="javascripts/demo.js" type="text/javascript"></script>
     <script src="javascripts/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
-   <script src="javascripts/iscroll.js" type="text/javascript"></script>
+    <script src="javascripts/iscroll.js" type="text/javascript"></script>
     <script src="javascripts/jquery.mobile.iscrollview.js" type="text/javascript"></script>
     <script src="javascripts/jquery.zrssfeed.min.js" type="text/javascript"></script>
     <script src="./js/jquery.tmpl.min.js"></script>
@@ -22,304 +22,289 @@
     <script src="js/fastclick.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/utils.js" type="text/javascript"></script>
-      <script src="js/owl.carousel.js"></script>
+    <script src="js/owl.carousel.js"></script>
     <script src="phonegap.js"></script>
-</head> 
-<body>
+  </head>
+  <body>
     <div data-role="page" id="phonenums">
       
       <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slidefade" class="pageheader">
-          <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+        <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
           <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Phone Numbers</h1>
-      </div>
-      
-      <div data-iscroll="" data-role="content" class="ui-content"> 
-          <ul data-role="listview" class="widelist" id="phonenumlist" data-filter="true" data-autodividers="true">
-                
-             <!--
-                <li>
-                  <a href="#" onClick="window.open('http://angularjs.org','_blank','location=yes');return false;">Testing Blank</a>
-                </li>-->
-             <!-- <script>
-                var d = new Date();
-                var foo = getFriendlyDay(d.getDay());
-                alert(foo);
-              </script>-->
-             
-            </ul>
-         <br>
-               </div>
+        </div>
         
-           
-     
-    <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-              <div class="container dynNavbar" >
-                 
-                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                  <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-                    
-              </div>
-        </nav>
-    </footer>-->
-         </div>
+        <div data-iscroll="" data-role="content" class="ui-content">
+          <ul data-role="listview" class="widelist" id="phonenumlist" data-filter="true" data-autodividers="true">
+            
+            <!--
+            <li>
+              <a href="#" onClick="window.open('http://angularjs.org','_blank','location=yes');return false;">Testing Blank</a>
+            </li>-->
+            <!-- <script>
+            var d = new Date();
+            var foo = getFriendlyDay(d.getDay());
+            alert(foo);
+            </script>-->
+            
+          </ul>
+          <br>
+        </div>
+        
+        <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+          <nav data-role="navbar">
+            <div class="container dynNavbar" >
+              
+              <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+              <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+              <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+              <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+              <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+              <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+              
+            </div>
+          </nav>
+        </footer>-->
+      </div>
       <div data-role="page" id="dininghrs">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="turn" class="pageheader">
+        <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="turn" class="pageheader">
           <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Dining Hours</h1>
-      </div>
-      <div class="ui-content" data-role="content" role="main" >
-         <div data-role="collapsibleset" data-theme="a" data-content-theme="a">
-            <div data-role="collapsible" class="hrstext">
-               <h3>Commons</h3>
-               <p class="today">Today: (hrs via js)</p>
-               <p>Daily: 7:30am-4pm, 5-8pm</p>
-               <p>* Breakfast grill closes at 10am M-F</p>
-               <p>* Brunch served 11am-2pm Sat-Sun</p>
-            </div>
-            <div data-role="collapsible" class="hrstext">
-               <h3>McEwen</h3>
-               <p class="today">Today: (hrs via js)</p>
-               <p>M: 7:30am-2:30pm, 4:30-8pm</p>
-               <p>T: 7:30am-2:30pm, 4:30-8pm</p>
-               <p>W: 7:30am-2:30pm, 4:30-8pm</p>
-               <p>T: 7:30am-2:30pm, 4:30-8pm</p>
-               <p>F: 7:30am-2:30pm (CLOSED for dinner)</p>
-               <p>S: CLOSED</p>
-               <p>S: CLOSED</p>
-            </div>
-            <div data-role="collapsible" class="hrstext">
-               <h3>Diner</h3>
-               <p class="today">Today: (hours via js)</p>
-               <p>M: 9am-Midnight</p>
-               <p>T: 9am-11am</p>
-               <p>W: 9am-11am</p>
-               <p>T: 9am-Midnight, 12:30-4am (Diner B)</p>
-               <p>F: 9am-Midnight, 12:30-4am (Diner B)</p>
-               <p>S: 3pm-Midnight, 12:30-4am (Diner B)</p>
-               <p>S: 3pm-Midnight, 12:30-4am (Diner B)</p>
-            </div>
-            <div data-role="collapsible" class="hrstext">
-               <h3>The Pub</h3>
-               <p class="today">Today: (hours via js)</p>
-               <p>M: 11:30am-1pm (lunch)</p>
-               <p>T: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
-               <p>W: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
-               <p>T: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
-               <p>F: 11:30am-1pm (lunch), 4pm-2am (nite)</p>
-               <p>S: 8pm-2am (nite)</p>
-               <p>S: CLOSED</p>
-            </div>
-            <div data-role="collapsible" class="hrstext">
-               <h3>Opus I</h3>
-               <p class="today">Today: (hours via js)</p>
-               <p>M: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>T: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>W: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>T: 8:30am-4:30pm</p>
-               <p>M: 8:30am-3:30pm</p>
-               <p>S: CLOSED</p>
-               <p>S: 7:30pm-11:30pm</p>
-            </div>
-            <div data-role="collapsible" class="hrstext">
-               <h3>Opus II</h3>
-               <p class="today">Today: (hours via js)</p>
-               <p>M: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>T: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>W: 8:30am-4:30pm, 7:30pm-11:30pm</p>
-               <p>T: 8:30am-4:30pm</p>
-               <p>M: 8:30am-3:30pm</p>
-               <p>S: CLOSED</p>
-               <p>S: 7:30pm-11:30pm</p>
-            </div>
-         </div>
-         <!-- /content -->
-        </div>
-        <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-            <div class="container dynNavbar">
-                <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-
-            </div>
-        </nav>
-    </footer>-->
-      </div>
-    
-<div data-role="page" id="news">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-          <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>News</h1>
-      </div>
-      <div class="ui-content newsholder" data-iscroll="" data-role="content">
-            <div id="feed" class="rssFeed" ></div>
-        </div>
-      <!-- /content -->
-      
-        <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-            <div class="container owl-carousel dynNavbar">
-                <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-            </div>
-        </nav>
-    </footer>-->
-</div>
-
-
-<div data-role="page" id="diningmenu">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideleft" class="pageheader">
-          <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
-      </div>
-      <div class="ui-content diningmenuholder" data-iscroll="" data-role="content">
-            <div id="feed" class="rssFeed" ></div>
-        </div>
-      <!-- /content -->
-      
-        <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-            <div class="container owl-carousel dynNavbar">
-                <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-            </div>
-        </nav>
-    </footer>-->
-</div>
-
-         <!-- end of navigation bar -->
-
-      </div>
-    
-<div data-role="page" id="events">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-          <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
-      </div>
-      <div class="ui-content eventsholder" data-iscroll="" data-role="content">
-            <div id="feed" class="rssFeed" ></div>
-        </div>
-      <!-- /content -->
-      
-        <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-            <div class="container owl-carousel dynNavbar">
-                <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-            </div>
-        </nav>
-    </footer>-->
-</div>
-
-         <!-- end of navigation bar -->
-
-      </div>
-      <!-- /footer -->
-   </div>
-   <div data-role="page" id="map">
-      
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader" >
-          <a class="back-btn ui-link ui-btn" style="z-index: 10000" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Campus Map</h1>
-          <div id="mapNav" data-role="navbar">
-		        <ul style="margin-top: 35px; margin-bottom: -45px">
-		            <li><a href="#list" id="find" data-rel="dialog" data-transition="pop" ><i class="fa fa-search fa-lg"></i>&nbsp;Find</a></li>
-		            <li><a href="javascript:void(0);" id="compass"><i class="fa fa-compass fa-lg"></i>&nbsp;My Location</a></li>
-		        </ul>
-		    </div>
-		</div>
-      
-      <div data-iscroll="" data-role="content" class="ui-content"> 
-		<div id="mapContent" data-role="content">
-			<div id="map_canvas"></div>
+            <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Dining Hours</h1>
           </div>
-       </div>
-	
-	
- <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-              <div class="container owl-carousel dynNavbar">
-                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                    
-                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                    <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-                </div>
-        </nav>
-    </footer>-->
-      </div>
-   <div data-role="page" id="home">
-       <figure id="ham-home-img">
-        <img src="./images/ham_logo.png" width="180" >
-       </figure>
-       <div class="ui-grid-b">
-        <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-        <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-        <div class="ui-block-c ui-block-2x-height"><a class="ui-btn" href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-       </div>
-       <div class="ui-grid-b">
-        <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-        <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#diningmenu"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-           
-       </div>
-    
-	
- <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-        <nav data-role="navbar">
-              <div class="container owl-carousel dynNavbar">
-                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                    
-                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                    <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-                </div>
-        </nav>
-    </footer>-->
-      </div>
-
-     
-    <script id="listTmpl" type="text/x-jquery-tmpl">
-		<li><a href="#map" id="${id}">${name}</a></li>
-	</script>   
-       
-</div>
-       <div data-role="page" id="list" data-close-btn="right">
-
-                <div data-role="header" class="ui-bar-b">
-                    <h1>Locations</h1>		
-                </div>
-
-                <div data-role="content">	
-                    <ul id="listing" data-role="listview" data-filter="true"></ul>	
-                </div>
-
+          <div class="ui-content" data-role="content" role="main" >
+            <div data-role="collapsibleset" data-theme="a" data-content-theme="a">
+              <div data-role="collapsible" class="hrstext">
+                <h3>Commons</h3>
+                <p class="today">Today: (hrs via js)</p>
+                <p>Daily: 7:30am-4pm, 5-8pm</p>
+                <p>* Breakfast grill closes at 10am M-F</p>
+                <p>* Brunch served 11am-2pm Sat-Sun</p>
+              </div>
+              <div data-role="collapsible" class="hrstext">
+                <h3>McEwen</h3>
+                <p class="today">Today: (hrs via js)</p>
+                <p>M: 7:30am-2:30pm, 4:30-8pm</p>
+                <p>T: 7:30am-2:30pm, 4:30-8pm</p>
+                <p>W: 7:30am-2:30pm, 4:30-8pm</p>
+                <p>T: 7:30am-2:30pm, 4:30-8pm</p>
+                <p>F: 7:30am-2:30pm (CLOSED for dinner)</p>
+                <p>S: CLOSED</p>
+                <p>S: CLOSED</p>
+              </div>
+              <div data-role="collapsible" class="hrstext">
+                <h3>Diner</h3>
+                <p class="today">Today: (hours via js)</p>
+                <p>M: 9am-Midnight</p>
+                <p>T: 9am-11am</p>
+                <p>W: 9am-11am</p>
+                <p>T: 9am-Midnight, 12:30-4am (Diner B)</p>
+                <p>F: 9am-Midnight, 12:30-4am (Diner B)</p>
+                <p>S: 3pm-Midnight, 12:30-4am (Diner B)</p>
+                <p>S: 3pm-Midnight, 12:30-4am (Diner B)</p>
+              </div>
+              <div data-role="collapsible" class="hrstext">
+                <h3>The Pub</h3>
+                <p class="today">Today: (hours via js)</p>
+                <p>M: 11:30am-1pm (lunch)</p>
+                <p>T: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
+                <p>W: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
+                <p>T: 11:30am-1pm (lunch), 8pm-2am (nite)</p>
+                <p>F: 11:30am-1pm (lunch), 4pm-2am (nite)</p>
+                <p>S: 8pm-2am (nite)</p>
+                <p>S: CLOSED</p>
+              </div>
+              <div data-role="collapsible" class="hrstext">
+                <h3>Opus I</h3>
+                <p class="today">Today: (hours via js)</p>
+                <p>M: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>T: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>W: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>T: 8:30am-4:30pm</p>
+                <p>M: 8:30am-3:30pm</p>
+                <p>S: CLOSED</p>
+                <p>S: 7:30pm-11:30pm</p>
+              </div>
+              <div data-role="collapsible" class="hrstext">
+                <h3>Opus II</h3>
+                <p class="today">Today: (hours via js)</p>
+                <p>M: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>T: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>W: 8:30am-4:30pm, 7:30pm-11:30pm</p>
+                <p>T: 8:30am-4:30pm</p>
+                <p>M: 8:30am-3:30pm</p>
+                <p>S: CLOSED</p>
+                <p>S: 7:30pm-11:30pm</p>
+              </div>
             </div>
-<div id="lastStatic"></div>
-
-  </body>
-</html>
-
+            <!-- /content -->
+          </div>
+          <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+            <nav data-role="navbar">
+              <div class="container dynNavbar">
+                <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+              </div>
+            </nav>
+          </footer>-->
+        </div>
+        
+        <div data-role="page" id="news">
+          <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>News</h1>
+            </div>
+            <div class="ui-content newsholder" data-iscroll="" data-role="content">
+              <div id="feed" class="rssFeed" ></div>
+            </div>
+            <!-- /content -->
+            
+            <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+              <nav data-role="navbar">
+                <div class="container owl-carousel dynNavbar">
+                  <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                  <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                  <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                  <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                  <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                  <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                </div>
+              </nav>
+            </footer>-->
+          </div>
+          <div data-role="page" id="diningmenu">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideleft" class="pageheader">
+              <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
+              </div>
+              <div class="ui-content diningmenuholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+              </div>
+              <!-- /content -->
+              
+              <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+                <nav data-role="navbar">
+                  <div class="container owl-carousel dynNavbar">
+                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                    <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                  </div>
+                </nav>
+              </footer>-->
+            </div>
+            <!-- end of navigation bar -->
+          </div>
+          
+          <div data-role="page" id="events">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+              <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
+              </div>
+              <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+              </div>
+              <!-- /content -->
+              
+              <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+                <nav data-role="navbar">
+                  <div class="container owl-carousel dynNavbar">
+                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                    <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                  </div>
+                </nav>
+              </footer>-->
+            </div>
+            <!-- end of navigation bar -->
+          </div>
+          <!-- /footer -->
+        </div>
+        <div data-role="page" id="map">
+          
+          <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader" >
+            <a class="back-btn ui-link ui-btn" style="z-index: 10000" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Campus Map</h1>
+              <div id="mapNav" data-role="navbar">
+                <ul style="margin-top: 35px; margin-bottom: -45px">
+                  <li><a href="#list" id="find" data-rel="dialog" data-transition="pop" ><i class="fa fa-search fa-lg"></i>&nbsp;Find</a></li>
+                  <li><a href="javascript:void(0);" id="compass"><i class="fa fa-compass fa-lg"></i>&nbsp;My Location</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div data-iscroll="" data-role="content" class="ui-content">
+              <div id="mapContent" data-role="content">
+                <div id="map_canvas"></div>
+              </div>
+            </div>
+            
+            
+            <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+              <nav data-role="navbar">
+                <div class="container owl-carousel dynNavbar">
+                  <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                  <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                  <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                  
+                  <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                  <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                  <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                </div>
+              </nav>
+            </footer>-->
+          </div>
+          <div data-role="page" id="home">
+            <figure id="ham-home-img">
+              <img src="./images/ham_logo.png" width="180" >
+            </figure>
+            <div class="ui-grid-b">
+              <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+              <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+              <div class="ui-block-c ui-block-2x-height"><a class="ui-btn" href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+            </div>
+            <div class="ui-grid-b">
+              <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+              <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+              <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#diningmenu"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+              
+            </div>
+            
+            
+            <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
+              <nav data-role="navbar">
+                <div class="container owl-carousel dynNavbar">
+                  <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                  <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
+                  <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                  
+                  <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+                  <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                  <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                </div>
+              </nav>
+            </footer>-->
+          </div>
+          
+          <script id="listTmpl" type="text/x-jquery-tmpl">
+              <li><a href="#map" id="${id}">${name}</a></li>
+          </script>
+          
+        </div>
+        <div data-role="page" id="list" data-close-btn="right">
+          <div data-role="header" class="ui-bar-b">
+            <h1>Locations</h1>
+          </div>
+          <div data-role="content">
+          <ul id="listing" data-role="listview" data-filter="true"></ul>
+        </div>
+      </div>
+      <div id="lastStatic"></div>
+    </body>
+  </html>
