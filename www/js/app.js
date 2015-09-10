@@ -85,7 +85,14 @@ function getAudPref_success(tx, results) {
 
 }
 
+function navorderCmp(a, b){
+  var a = a.navorder;
+  var b = b.navorder; 
+  return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+}
+
 function getNavigationandPages(tx) {
+    console.log("running getnavandpages");
 
     var sql = "select audienceID from audPrefs";
     db.transaction(function(tx) {
@@ -109,20 +116,34 @@ function getNavigationandPages(tx) {
                             navIcon: "fa-birthday-cake",
                             navTitle: "Events",
                             navlink: "events",
-                            navorder: 1
+                            navorder: 0
                         });
+                        pagearray.sort(navorderCmp);
+                        // sorts the list by navorder
+                      
                         //console.log("pagearray = ", pagearray);
                         //rowid: 8, id:"", pagetitle: "Events", pagecontents:"<p>Events</p>", pageActive: 1, navlink: "events", navTitle: "Events", navIcon: "fa-birthday-cake"});
                         var navlen = pagearray.length;
 
-                        $('.dynNavbar').html('');
-                        var pagerNavTemplate = '<div><a href="#" class="navright ui-link ui-btn"><i class="fa fa-chevron-right fa-2x"></i></a></div>';
+                        //$('.dynNavbar').html('');
+                        //var pagerNavTemplate = '<div><a href="#" class="navright ui-link ui-btn"><i class="fa fa-chevron-right fa-2x"></i></a></div>';
+                        $('.dyn-nav').html('');
+                        var container;
                         for (var i = 0; i < navlen; i++) {
+                            if ((i % 3) === 0) {
+                              $('.dyn-nav').append('<div class="ui-grid-b"></div>');
+                              container = $('.dyn-nav > .ui-grid-b:last-child');
+                            }
                             var navigationrow = pagearray[i];
                             var navlink = navigationrow.navlink;
                             var navIcon = navigationrow.navIcon;
-                            var navTemplate = '<div><a href="#' + navlink + '" class="ui-link ui-btn"><i class="fa ' + navIcon + ' fa-2x"></i></a></div>';
-                            $('.dynNavbar').append(navTemplate);
+                            //var navTemplate = '<div><a href="#' + navlink + '" class="ui-link ui-btn"><i class="fa ' + navIcon + ' fa-2x"></i></a></div>';
+                            var blocks = ['a', 'b', 'c'];
+                            var navTemplate = '<div class="ui-block-' + blocks[i % 3] + ' ui-block-2x-height"><a class="ui-btn" href="#' + navlink + '"><i class="fa ' + navIcon + ' fa-2x"></i></a></div>';
+                            //$('.dynNavbar').append(navTemplate);
+                            container.append(navTemplate);
+                            console.log(navTemplate);
+                          
 
                             // if (i == 4){
                             //$('.dynNavbar').append(pagerNavTemplate);
@@ -131,6 +152,8 @@ function getNavigationandPages(tx) {
                             //$('.dynNavbar').append(navTemplate);
                             //  };
                         }
+                      
+                      
 
                         //attachScroller();
                         //console.log("attaching scroller");
