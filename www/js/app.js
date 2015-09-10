@@ -3,56 +3,69 @@ function rewriteClass() {
     $('#news .iscroll-content').attr("style", "");
     $('.newsholder').iscrollview('refresh');
 }
+function rewriteClassEvents() {
+    $("h4 a").addClass("external");
+    $('#events .iscroll-content').attr("style", "");
+    $('.eventsholder').iscrollview('refresh');
+}
+function rewriteClassDiningMenu() {
+    $("h4 a").addClass("external");
+    $('#events .iscroll-content').attr("style", "");
+    $('.diningmenuholder').iscrollview('refresh');
+}
+var db;
 function setupDB() {
     db = window.openDatabase("appContentsDB", "1.0", "HamiltonCollege", 200000);
 }
 
-function phoneChecks(tx){
-	       var sql = 
-            "CREATE TABLE IF NOT EXISTS phonenumbers ( "+
-            "id varchar(50) PRIMARY KEY, " +
-            "letter VARCHAR(255), " +
-            "name VARCHAR(255), " + 
-            "email VARCHAR(255), " + 
-            "phone VARCHAR(255), " + 
-            "url VARCHAR(255))";
-        db.transaction(function (tx) 
-                {
-                     tx.executeSql(sql);
-                  });
+function phoneChecks(tx) {
+    //console.log("phonechecks");
+    var sql = "CREATE TABLE IF NOT EXISTS phonenumbers (id varchar(50) PRIMARY KEY, letter varchar(255), name varchar(255), email varchar(255), phone varchar(255), url varchar(255))";
+    db.transaction(function (tx) {
+        tx.executeSql(sql);
+    });
 }
-function loadPhoneJson(tx){
-    setupDB();
-    $.getJSON( "https://hamilton.edu/appPages/ajax/getAppData.cfm", function( data ) { 
+function loadPhoneJson() {
+    var jsonCallback = function(data) {
         db.transaction(function (tx) {
             var len = data.length;
-              if (len > 0) {
-                  tx.executeSql('Delete from phonenumbers');  
-              }
+            if (len > 0) {
+                tx.executeSql('DELETE FROM phonenumbers');
+            }
             for(var i = 0; i < len; i++) {
-                var id=data[i].id;
-                var letter=data[i].letter;           
+                var id = data[i].id;
+                var letter =data[i].letter;           
                 var name=data[i].name;  
                 var email=data[i].email; 
                 var phone=data[i].phone; 
                 var url=data[i].url; 
-                tx.executeSql('INSERT INTO phonenumbers (id,letter, name, email, phone, url) VALUES (?,?,?,?,?,?)',[id,letter, name, email, phone, url]);
+                //console.log("data[i]", data[i].url);
+                tx.executeSql('INSERT INTO phonenumbers (id, letter, name, email, phone, url) VALUES (?,?,?,?,?,?)',
+                              [data[i].id, data[i].letter, data[i].name, data[i].email, data[i].phone, data[i].url]);
             }
+            getNumbers();
         });
-        getNumbers(tx);
-    });
+        
+    };
+    $.ajax({
+        url: "https://mercury.hamilton.edu:7075/appPages/ajax/getAppData.cfm",
+        cache: 'true',
+        dataType : 'json'
+    }).done(jsonCallback);
+
+    //$.getJSON( "https://mercury.hamilton.edu:7075/appPages/ajax/getAppData.cfm", 
 }
 function db_error(db, error) {
     alert("Database Error: " + error);
 }
-function phonedb_success(db) {
-    loadPhoneJson(db);
+function errorCBgetNumbers(err) {
+    alert("Error processing SQL: "+err.code);
 }
-function getNumbers(tx) {
-    var sql = "select * from phonenumbers order by letter"; 
-     db.transaction(function (tx) {
-	       tx.executeSql(sql, [], getNumbers_success);
-     });
+function getNumbers() {
+    var sql = "SELECT * FROM phonenumbers ORDER BY letter"; 
+    db.transaction(function (tx) {
+	    tx.executeSql(sql, [], getNumbers_success, errorCBgetNumbers);
+    });
 }
 function getAudPref(tx) {
     var sql = "select audienceID from audPrefs"; 
@@ -63,136 +76,103 @@ function getAudPref(tx) {
 function getAudPref_success(tx, results) {
           
 }
-function buildHours(dininghall,diningday,dininghallindex) {
-    var dininghall;
-    var diningday;
-    var sql = "select dh.diningstarttime, dh.diningendtime, d2h.diningday from appDiningHours dh Left Join appDiningDaystoHalls d2h on dh.id = d2h.dininghallid where dininghall ='"+dininghall+"' and diningday ='"+diningday+"' order by diningorder"; 
+function getNavigationandPages(tx) {
+    
+    var sql = "select audienceID from audPrefs"; 
     db.transaction(function (tx) {
         tx.executeSql(sql, [], function(tx,results) {
-                var len = results.rows.length;
-                var hourstext = "";
-            if (len==0){
-                var hourstext = "Closed";
-            }else{
-               for(var i = 0; i < len; i++) { 
-                    var diningrow = results.rows.item(i);  
-                    var diningEndTime = diningrow.diningEndTime;
-                    var diningStartTime = diningrow.diningStartTime;
-                    var hourstextraw =diningStartTime+" - "+diningEndTime+" " ;
-                    var hourstext = hourstext+hourstextraw;  
-                    };
-                };
-             $('.'+dininghallindex+'hrlist').append('<li>'+getDayString(diningday)+' : '+hourstext+'</li>');
-            });
-    });
-    $( "#hourslist" ).collapsibleset( "refresh" );
-};
-function getDiningHours(dininghall,tx) { 
-     db.transaction(function (tx) {
-          $( "#hourslist").empty();
-            var dininghalllist="Commons,McEwen,Diner,The Pub,Opus I,Opus II";
-           var dininghall = dininghalllist.split(',');
-            for(var i = 0; i < dininghall.length; i++)
-            {
-                var dininghallstr =dininghall[i];
-                $('#hourslist').append(' <div data-role="collapsible" class="hrstext"><h3>'+dininghallstr+'</h3><ul class="'+i+'hrlist"></ul></div>');
-                for(var x = 0; x < 7; x++) {
-                   buildHours(dininghallstr,x,i);
-                };
-            }
-     });
-        
-}
-function getDayString(dnumber) {
-    var dnumber;
-    var dstring;
-    var weekday=new Array(7);
-    weekday[0]="Su";
-    weekday[1]="M";
-    weekday[2]="T";
-    weekday[3]="W";
-    weekday[4]="Th";
-    weekday[5]="F";
-    weekday[6]="Sa";
-    var dstring = weekday[dnumber];
-    return dstring;
-}
-function getNavigationandPages(tx) {
-     var sql = "select audienceID from audPrefs"; 
-     db.transaction(function (tx) {
-            tx.executeSql(sql, [], function(tx,results) {
-                var len = results.rows.length;
-                for(var i = 0; i < len; i++) {
-                  var audience = results.rows.item(i);                
-                  var audienceID = audience.audienceID;
+            var len = results.rows.length;
+            for(var i = 0; i < len; i++) {
+                var audience = results.rows.item(i);                
+                //console.log("aud = ", audience);
+                var audienceID = audience.audienceID;
                 buildPages(audienceID);    
-                  var navsql = "select n.navtitle,n.navicon,n2a.navlink,n2a.navorder from appNavs n Inner Join appNavToAudience n2a on n.id = n2a.navid where n2a.audid ='"+audienceID+"' order by navorder"; 
-                       db.transaction(function (tx) {      
-                                    tx.executeSql(navsql, [], function(tx,navresults) {
-                                       var navlen = navresults.rows.length;
-                                       $('.dynNavbar').html('');
-                                        var pagerNavTemplate = '<div><a href="#" class="navright ui-link ui-btn"><i class="fa fa-chevron-right fa-2x"></i></a></div>';
-                                        for(var i = 0; i < navlen; i++) {
-                                            var navigationrow = navresults.rows.item(i);  
-                                            var navlink = navigationrow.navlink;
-                                            var navIcon = navigationrow.navIcon;
-                                            var navTemplate = '<div><a href="#'+navlink+'" class="ui-link ui-btn"><i class="fa '+navIcon+' fa-2x"></i></a></div>';
-                                            $('.dynNavbar').append(navTemplate);
-                                            
-                                            // if (i == 4){
-                                             //$('.dynNavbar').append(pagerNavTemplate);
-                                            // }else{
-                                         //   var navTemplate = '<div><a href="#'+navlink+'" class="ui-link ui-btn"><i class="fa '+navIcon+' fa-2x"></i></a></div>';
-                                            //$('.dynNavbar').append(navTemplate);
-                                           //  };
-                                        };
-                                  
-                                   attachScroller();
-                                    
-                                });
-                        });
-                };
-            });
-     });
+                var navsql = "select n.navtitle,n.navicon,n2a.navlink,n2a.navorder from appNavs n Inner Join appNavToAudience n2a on n.id = n2a.navid where n2a.audid ='"+audienceID+"' order by navorder"; 
+                db.transaction(function (tx) {      
+                    tx.executeSql(navsql, [], function(tx,navresults) {
+                        //console.log("navresults = ", navresults);
+                        var pagearray = [];
+                        for(var i = 0; i < navresults.rows.length; i++) {
+                           pagearray.push(navresults.rows.item(i));
+                           pagearray[i].navorder += 1;
+                        };
+                        pagearray.unshift({navIcon: "fa-birthday-cake", navTitle: "Events", navlink: "events", navorder: 1});
+                        //console.log("pagearray = ", pagearray);
+                        //rowid: 8, id:"", pagetitle: "Events", pagecontents:"<p>Events</p>", pageActive: 1, navlink: "events", navTitle: "Events", navIcon: "fa-birthday-cake"});
+                        var navlen = pagearray.length;
+
+                        $('.dynNavbar').html('');
+                        var pagerNavTemplate = '<div><a href="#" class="navright ui-link ui-btn"><i class="fa fa-chevron-right fa-2x"></i></a></div>';
+                        for(var i = 0; i < navlen; i++) {
+                            var navigationrow = pagearray[i];  
+                            var navlink = navigationrow.navlink;
+                            var navIcon = navigationrow.navIcon;
+                            var navTemplate = '<div><a href="#'+navlink+'" class="ui-link ui-btn"><i class="fa '+navIcon+' fa-2x"></i></a></div>';
+                            $('.dynNavbar').append(navTemplate);
+
+                            // if (i == 4){
+                            //$('.dynNavbar').append(pagerNavTemplate);
+                            // }else{
+                            //   var navTemplate = '<div><a href="#'+navlink+'" class="ui-link ui-btn"><i class="fa '+navIcon+' fa-2x"></i></a></div>';
+                            //$('.dynNavbar').append(navTemplate);
+                            //  };
+                        };
+
+                        //attachScroller();
+                        //console.log("attaching scroller");
+
+                    });
+                });
+            }
+        });
+    });
 }
 function buildPages(audienceID) {
-    var audienceID
-    var pageTemplate='<div data-role="page" id="${id}" class="dyn"><div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader">  <div class="headerLinks"><a href="#phonenums"><i class="fa fa-chevron-left iconfloat"></i></a><div class="headerlinktext"><a href="#phonenums">home</a></div></div><h1>Hamilton<br>${pagetitle}</h1></div><div data-iscroll="" data-role="content" class="ui-content"><div>${pagecontents}</div></div> <footer data-role="footer" data-position="fixed" data-id="foo1"><nav data-role="navbar"><div class="container dynNavbar"><div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div></div></nav></footer>';
-     var sql = "Select p.pagetitle,p.pagecontents,p.id from Pages p Inner Join appPageToNav apn ON p.id = apn.pageid Inner Join appNavs n on apn.navid = n.id Inner Join appNavToAudience n2a on n.id = n2a.navid where p.pageactive=1 and n2a.audid ='"+audienceID+"'"; 
+    //var audienceID;
+    var pageTemplate='<div data-role="page" id="${id}" class="dyn"><div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader"><a class="backbtn"><i class="fa fa-chevron-left fa-2x iconfloat"></i><div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>${pagetitle}</h1></div><div data-iscroll="" data-role="content" class="ui-content"><div>${pagecontents}</div></div> <footer data-role="footer" data-position="fixed" data-id="foo1"><nav data-role="navbar"><div class="container dynNavbar"></div></nav></footer>';
+
+    //var pageTemplate='<div data-role="page" id="${id}" class="dyn"><div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader"><i class="fa fa-chevron-left fa-2x iconfloat"></i><div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div><h1>${pagetitle}</h1></div><div data-iscroll="" data-role="content" class="ui-content"><div>${pagecontents}</div></div><footer data-role="footer" data-position="fixed" data-id="foo1"><nav data-role="navbar"><div class="container dynNavbar"><div></div></div></nav></footer>';
+    var sql = "Select p.pagetitle,p.pagecontents,p.id from Pages p Inner Join appPageToNav apn ON p.id = apn.pageid Inner Join appNavs n on apn.navid = n.id Inner Join appNavToAudience n2a on n.id = n2a.navid where p.pageactive=1 and n2a.audid ='" + audienceID + "'"; 
     db.transaction(function (tx) {
-        tx.executeSql(sql, [], function(tx,results) {
-               var pagelen = results.rows.length;
-                var pagearray=[];
-                for(var i = 0; i < pagelen; i++) {
-                   pagearray.push(results.rows.item(i))
-                };
+        tx.executeSql(sql, [], function(tx,xresults) {
+            var results = xresults.rows.item(0);
+            var pagelen = results.length;
+            var pagearray = [];
+            for(var i = 0; i < pagelen; i++) {
+                pagearray.push(results.item(i));
+            };
+            //console.log(pagearray);
             var currentpagecount = $(".dyn").length;
+            //console.log(currentpagecount);
             if (currentpagecount < pagelen) {
                 $.template("attachPageTemplate", pageTemplate);
                 $.tmpl("attachPageTemplate", pagearray).insertAfter('#lastStatic');
              
             };
-            });
-    });
- 
-};
+        });
+    }); 
+}
+//            pagearray.push({rowid: 8, id:"", pagetitle: "Events", pagecontents:"<p>Events</p>", pageActive: 1, navTitle: "Events", navIcon: "fa-birthday-cake"});
 loadPhoneList = function(items){
     var phonecontacts = [];
     for (i = 0; i < items.rows.length; i++)
     {
         phonecontacts.push(items.rows.item(i));
     }   
+    //console.log("classx", phonecontacts);
     var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span>{{if url}}<br><span class="smgrey website" data-url="${url}">Website</span>{{/if}}{{if email}}<span class="smgrey website" data-mailto="${email}">${email}</span>{{/if}}</a></li>';
-    var permphones ='<li><a href="tel:1-847-555-5555"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li><li><a href="scratch.html" data-rel="external" data-ajax="false">Test Page</a></li><li><a href="scroll.html" data-rel="external" data-ajax="false">Test Page</a></li><li><a href="custom.html" data-rel="external" data-ajax="false">Scroller</a></li>';
+    var permphones ='<li><a href="tel:1-847-555-5555"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li>';
     $('#phonenumlist').html('');
     $.template("contactTemplate", phonetemplate);
-    $.tmpl("contactTemplate", phonecontacts).appendTo('ul#phonenumlist');
+    $.tmpl("contactTemplate", phonecontacts).appendTo('#phonenumlist');
     $("#phonenumlist").prepend(permphones);
     $('#phonenumlist').listview("refresh");
-	};
+    //console.log(permphones, permphones);
+};
 function getNumbers_success(tx, results) {
+    //console.log("hi!");
+    //console.log(results);
     loadPhoneList(results);
-    
 }
 function ckTable(tx, callBack,table){ 
     var sql = "SELECT CASE WHEN tbl_name = '"+table+"' THEN 1 ELSE 0 END FROM sqlite_master WHERE tbl_name = '"+table+"' AND type = 'table'";
@@ -222,24 +202,42 @@ $(function () {
 // had to add handlers for external links for in app browser nonsense
 function handleExternalURLs() {
     // Handle click events for all external URLs
-    if (device.platform.toUpperCase() === 'ANDROID') {
+    /*console.log(device.platform);
+    if (device.platform === null) {
         $(document).on('click', 'a[href^="http"]', function (e) {
-            var url = $(this).attr('href');
-            navigator.app.loadUrl(url, { openExternal: true });
             e.preventDefault();
+            var url = $(this).attr('href');
+            window.open(url, '_system');
+        });
+    }
+    else if (device.platform.toUpperCase() === 'ANDROID') {
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            window.open(url, '_system');
         });
     }
     else if (device.platform.toUpperCase() === 'IOS') {
+        
         $(document).on('click', 'a[href^="http"]', function (e) {
-            var url = $(this).attr('href');
-            window.open(url, '_blank');
-            alert('clicked a link');
             e.preventDefault();
+            var url = $(this).attr('href');
+            window.open(url, '_system');
         });
     }
     else {
-       
-    }
+       console.log("bleh");
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
+            window.open(url, '_blank');
+        });
+    }*/
+    $(document).on('click', 'a[href^="http"]', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url, '_system', 'location=yes');
+    });
 }
 function setAudiencePrefTable() {
      var sql = 
@@ -325,7 +323,7 @@ function BuildContentTables(tx) {
 }
 /* Pull full JSON Feed */
 function loadFullJson(){
-                $.getJSON( "https://hamilton.edu/appPages/ajax/getpages.cfm", function( data ) { 
+                $.getJSON( "https://mercury.hamilton.edu:7075/appPages/ajax/getpages.cfm", function( data ) { 
                     if (data.audience.length > 0) {
                        loadAppAudJson(data.audience);
                     } 
@@ -341,58 +339,9 @@ function loadFullJson(){
                     if (data.pagetonav.length > 0) {
                        loadappPageToNavJson(data.pagetonav);
                     } 
-                      if (data.dininghours.length > 0) {
-                       loadDiningHoursJson(data.dininghours);
-                    } 
-                      if (data.diningdays.length > 0) {
-                      loadDiningDaysJson(data.diningdays);
-                    } 
                 });
             };
 /* insert feed parts in to dbs and update accordingly */
-function loadDiningDaysJson(data) {
-     var dininghourssql = "CREATE TABLE IF NOT EXISTS appDiningDaystoHalls ( "+
-            "id varchar(50) PRIMARY KEY, " +
-            "diningday INT, " +
-            "dininghallid VARCHAR(50))";
-    db.transaction(function (transaction) {
-        var len = data.length;
-         transaction.executeSql(dininghourssql);  
-        if (len > 0) {
-            
-          transaction.executeSql('Delete from appDiningDaystoHalls');  
-        }
-        for(var i = 0; i < len; i++) {
-            var id=data[i].id;
-            var diningday=data[i].diningday;     
-            var dininghallid=data[i].dininghallid;           
-            transaction.executeSql('INSERT INTO appDiningDaystoHalls (id,diningday,dininghallid) VALUES (?,?,?)',[id, diningday, dininghallid]);
-        }
-    });
-}
-function loadDiningHoursJson(data) {
-     var dininghourssql = "CREATE TABLE IF NOT EXISTS appDiningHours ( "+
-            "id varchar(50) PRIMARY KEY, " +
-            "diningHall VARCHAR(150), " +
-            "diningStartTime VARCHAR(50), " +
-            "diningEndTime VARCHAR(50), " +
-            "diningOrder INT)";
-    db.transaction(function (transaction) {
-        var len = data.length;
-         transaction.executeSql(dininghourssql);  
-        if (len > 0) {
-          transaction.executeSql('Delete from appDiningHours');  
-        }
-        for(var i = 0; i < len; i++) {
-            var id=data[i].id;
-             var diningHall=data[i].diningHall; 
-             var diningStartTime=data[i].diningStartTime; 
-             var diningEndTime=data[i].diningEndTime; 
-             var diningOrder=data[i].diningOrder;   
-            transaction.executeSql('INSERT INTO appDiningHours (id,diningHall,diningStartTime,diningEndTime,diningOrder) VALUES (?,?,?,?,?)',[id, diningHall,diningStartTime,diningEndTime,diningOrder]);
-        }
-    });
-}
 function loadPagesJson(data) {
         db.transaction(function (transaction) {
             var len = data.length;
@@ -475,13 +424,6 @@ function loadappPageToNavJson(data) {
 /* Check to see if version is Stale */
 
 
-function attachScroller() {
-           $(".container").owlCarousel({
-      items : 6, //10 items above 1000px browser width
-      itemsMobile : [500,5] // itemsMobile disabled - inherit from itemsTablet option   
-      });
-
-}
 // initial app load
 $(document).on("pagecontainerbeforechange", function (event, ui) {
     onDeviceReady();
@@ -495,7 +437,7 @@ $(document).on('pageshow', '#phonenums', function (e, data) {
 //document.addEventListener('deviceready', onDeviceReady, false);
 
 // main worker event, find out if the db is there if the data is stale etc.
-$(document).on('pagecontainerbeforecreate', 'body', function () {
+$(document).on('pagebeforecreate', 'body', function () {
     //use this function to find out if the app has access to the internet
     checkConnection();
     if (connectionStatus === 'online') {
@@ -537,27 +479,46 @@ $(document).on('pagecontainerbeforecreate', 'body', function () {
 $(document).on('pagebeforeshow', '#phonenums', function (e, data) {
    loadPhoneJson();
 }); 
-$(document).on('pagebeforeshow', '#dininghrs', function (e, data) {
-    getDiningHours();
-}); 
 $(document).on('pagebeforeshow', '.dyn', function (e, data) {
-        var pageid = ($.mobile.activePage.attr('id'));
-        var htmlcontent = $('#'+pageid+'>.ui-content>.iscroll-scroller>.iscroll-content div').text();
-        $('#'+pageid+'>.ui-content>.iscroll-scroller>.iscroll-content div').html('').html(htmlcontent);
+    
+    var pageid = ($.mobile.activePage.attr('id'));
+    var htmlcontent = $('#'+pageid+'>.ui-content>.iscroll-scroller>.iscroll-content div').text();
+    $('#'+pageid+'>.ui-content>.iscroll-scroller>.iscroll-content').html('').html(htmlcontent);
 }); 
+
 //news rss load and rebind
 $(document).on('pagebeforeshow', '#news', function (e, data) {
     $('#news .iscroll-content').rssfeed('http://students.hamilton.edu/rss/articles.cfm?item=A9AAF6B5-FB82-2ADF-26A75A82CDDD1221', {
-            limit: 10,
+        limit: 25,
+        linktarget: '_blank',
+        header: false
+      }, rewriteClass);
+}); 
+$(document).on('pagebeforeshow', '#events', function (e, data) {
+    $('#events .iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
+            limit: 25,
             linktarget: '_blank',
             header: false
-          }, rewriteClass);
+          }, rewriteClassEvents);
 }); 
+$(document).on('pagebeforeshow', '#diningmenu', function (e, data) {
+    $('#events .iscroll-content').rssfeed('http://legacy.cafebonappetit.com/rss/menu/109', {
+            limit: 25,
+            linktarget: '_blank',
+            header: false
+          }, rewriteClassDiningMenu);
+}); 
+
+$(document).on('pagebeforeshow', function(event, ui){ 
+    //var shownPage = $(".ui-page.ui-page-theme-a.ui-page-header-fixed.ui-page-footer-fixed.iscroll-page.ui-page-active");
+    //console.log(ui.toPage[0]);
+    //attachScroller($(ui.toPage[0]));
+    
+});
 // load campus map after page shows - don't know why I have to do this though.
 $(document).on('pageshow', '#map', function (e, data) {
     setTimeout(function () {
         $.getScript( "js/campus.map.js", function( data, textStatus, jqxhr ) {
         });
-
     }, 100);
 }); 

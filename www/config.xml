@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "edu.hamilton.ihamilton-ionic"
-        versionCode="11"
-        version   = "1.1.0">
+        id        = "edu.hamilton.studentappJTT"
+        versionCode="10"
+        version   = "1.0.0">
 
-    <name>Hamilton Student App</name>
+    <name>Hamilton -Jim Test</name>
 
     <description>
-        New to Hamilton? Can't remember when Opus II closes on Sundays? Download Hamilton Student today!
-
-- Clickable list of most important phone numbers
-- Hours for all on-campus dining, including what's open right now
-- Zoomable campus map for navigating all of our 1,350 acres
-- Mobile version of The Spec! Keep up on all the latest news, updated for the 21st century
-
-This app is produced by the Student Assembly LITS committee. Questions? Feedback? Come to our meetings at 9pm in Sadove or email cslee@hamilton.edu.
-
-Created by: Don Stayner, Jim Thomson
+        Jim's test App
     </description>
 
     <author href="http://hamilton.edu" email="webhelp@hamilton.edu">
-        Don Stayner, Jim Thomson
+        Jim Thomson and Don Stayner
     </author>
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />
@@ -57,6 +67,9 @@ Created by: Don Stayner, Jim Thomson
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+    <access origin="*" browserOnly="true" />
 
     <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" gap:platform="android" gap:qualifier="mdpi"/>
@@ -94,7 +107,7 @@ Created by: Don Stayner, Jim Thomson
     <gap:splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" gap:platform="android" gap:qualifier="port-xxhdpi"/>
     <gap:splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" gap:platform="android" gap:qualifier="port-xxxhdpi"/>
 
-    <gap:splash src="resources/ios/splash/Default-568h@2x.png" gap:platform="ios" width="640" height="1136"/>
+    <gap:splash src="resources/ios/splash/Default-568h@2x~iphone.png" gap:platform="ios" width="640" height="1136"/>
     <gap:splash src="resources/ios/splash/Default-667h.png" width="750" gap:platform="ios" height="1334"/>
     <gap:splash src="resources/ios/splash/Default-736h.png" width="1242" gap:platform="ios" height="2208"/>
     <gap:splash src="resources/ios/splash/Default-Landscape-736h.png" gap:platform="ios" width="2208" height="1242"/>

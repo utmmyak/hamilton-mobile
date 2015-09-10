@@ -1,0 +1,247 @@
+body {
+
+  /* Disable Safari scrollbars, because jQuery Mobile annoyingly insists on setting the
+     min-height of the page to 320px. It does this (unsuccessfully, in 1.0.1, but successfully
+     in 1.1) in order to keep the Mobile Safari location bar from appearing during page
+     transitions. But this causes a problem in desktop Safari if the height is <320px.
+     If you resize to <320 in a desktop browser, you will see a scrollbar if you don't
+     use this style.
+     I haven't put this in jquery.mobile.iscrollview.css, because it has to be applied
+     to <body>, and so it will affect the entire site/app. It is an appropriate
+     setting for any site/app meant to use a page size fixed at the browser window size.
+     If your site/app mixes fixed-height pages with scrolling pages, you will need to
+     work out another solution. */
+  overflow:hidden;
+
+  /* optimizeSpeed is the default. Using optimizeLegibility here will typically DOUBLE
+     rendering time! So, think twice about using optimizeLegibility */
+  text-rendering: optimizeSpeed;
+
+  /* subpixel-antialiased is the default, but you might like to use antialiased for a thinner look
+     in Safari. There is no speed penalty for this, nor a speed advantage for "none", which looks
+     absolutely terrible... */
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  /* Shut off long touch on links for info. If this is set to "default", then a long touch
+     on a link will display the URL in a popup. This is pretty darn annoying. */
+  -webkit-touch-callout: none;
+
+  /* Shut off content selection, because it's really annoying when dragging
+     You might like to do this only for scroller content, though, or enable it for certain
+     text you want the user to be able to cut-and-paste */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+/* Style header bar and footer bar with a 1px red border at top and bottom. This facilitates
+   a quick visual indication of correct sizing of the page. You should not see any white
+   space above the header or below the footer. (Note that Retina devices will show a 2px border,
+   rather than 1px.) Use your OS's accessibility features to magnify and inspect. On mobile
+   devices, there is usually a way to capture the screen contents to an image file that you can
+   later examine. (iPhone: Home+On/Off)
+*/
+
+.ui-header.ui-bar-a,
+.ui-footer.ui-bar-a {
+    border-top: 1px solid #ff0000;
+    border-bottom: 1px solid #ff0000;
+    margin-top:-20px;
+}
+
+/* make room for version buttons in header */
+.ui-header .ui-title {
+  text-align: right;
+  margin-left: 10px;
+    font-size:22px;
+    margin: 0 10% 0 0;
+}
+
+/* Style iScroll wrapper with a 1px green border at top and bottom. You should see no gap
+   or different color between the top of the wrapper and the bottom of the header, or between
+   the bottom of the wrapper and the top of the footer.
+*/
+.iscroll-wrapper {
+  border-top: 0px solid #00ff00;
+  border-bottom: 0px solid #00ff00;
+    width:100%;
+}
+
+.red {color:red; font-size: 1.2em;}
+.smgrey {color: gray; font-size: .8em;}
+footer {height:65px;width: 400px;}
+.ui-navbar a {
+       height: 47px; 
+}
+a:visited {color:#000;}
+a:link {color:#000;}
+.ui-btn-a:visited {background-color: #f6f6f6;}
+.ui-btn-a:link {background-color: #f6f6f6;}
+.ui-btn-active {background-color: #f6f6f6;}
+.ui-btn-a:focus {background-color: #f6f6f6;}
+.ui-page-theme-a .ui-btn.ui-btn-active,
+html .ui-bar-a .ui-btn.ui-btn-active,
+html .ui-body-a .ui-btn.ui-btn-active,
+html body .ui-group-theme-a .ui-btn.ui-btn-active,
+html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
+  border-color: #ddd;
+  color: #333;
+  text-shadow: 0 1px 0 #f3f3f3;}
+.ui-navbar .ui-btn-inner {
+  font-size: 14px;
+}
+.hamicon {float: left; margin-left: 2%; width:57px; height: 57px;}
+.imgResponsive {max-width: 100%; height: auto; width: 100%;}
+
+.ui-page .pageheader {
+    background-color: #002f86;
+    border: 0;
+    color: #fff;
+    padding-top: 25px;
+    margin-bottom: 15px;
+}
+.footer {
+    background: #ccc;
+     height: 35px;
+    bottom: 0;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.rssFeed a {
+	color: #444;
+	text-decoration: none;
+}
+.rssFeed a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+.rssHeader { display: none; padding: 0.2em 0; }
+.rssBody ul { list-style: none; width: 100%; }
+.rssBody ul, .rssRow, .rssRow h4, .rssRow p {
+	margin: 0;
+	padding: 0;
+}
+
+.rssRow { padding: 0.8em; }
+.rssRow h4 { font-size: 1.1em; }
+.rssRow div {
+	font-size: 90%;
+	color: #666;
+	margin: 0.2em 0 0.4em 0;
+}
+
+.odd { background-color: #fff; }
+.even { background-color: #dedede; }
+
+.rssRow .rssMedia {
+	padding: 0.5em;
+	font-size: 1em;
+}
+.rssRow h4 { margin: 0; font-size: 1.2em; letter-spacing: -1px; }
+.rssRow h4 a { text-decoration: none; }
+.rssRow h4 a:hover { color: darkblue; }
+.rssRow div { font-size: 0.9em; color: #999; }
+.iscroll-scroller {
+
+     width:100%;
+  }
+.iscroll-content {padding:0px;}
+.iconfloat {float:left; margin-left: 7%; margin-top: 3%;}
+.hozNavbar {overflow: hidden; xwidth: 5000px;}
+/* this is a placeholder all dynamic pages will go in here*/
+#lastStatic {display: none;}
+#mapContent { padding: 0; }
+#map_canvas { width: 100%; }
+.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
+.ui-content {margin-top:20px;}
+footer {height: 60px;}
+.container div {
+        float: left;
+    }
+.container div a{
+        width: 60px;
+        height: 60px;
+    margin: 0;
+    padding-top:20px;
+    }
+@media only screen and (max-height: 280px){
+  .ui-header {
+    height: 30px;
+  }
+
+  .ui-header .ui-title {
+    font-size: 14px;
+  }
+
+  /* Make the buttons in the header just disappear - they're too big for a tiny header */
+  .ui-header .ui-btn {
+    display: none;
+  }
+
+  .ui-navbar a {
+    height: 37px;    /* + 2px border = 39px */
+  }
+
+  .ui-navbar .ui-btn-inner {
+    font-size: 13px;
+  }
+    
+}
+
+@media DISABLED {
+  .iscroll-scroller,
+  .iscroll-scroller * {
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* So, for the demo, I'm using this one, which doesn't target the scroller itself, and
+   targets specific top-level elements inside the scroller. */
+@media all {
+  .iscroll-content li  {
+    -webkit-transform: translateZ(0);
+  }
+}
+
+.iscroll-content .ui-listview li.ui-btn-up-c
+  {
+  background-image: none;
+  text-shadow: none;
+  }
+
+.iscroll-content .ui-listview li.ui-btn-hover-c
+  {
+  background-image: none;
+  text-shadow: none;
+  }
+
+.iscroll-content .ui-listview li.ui-btn-down-c
+  {
+  background-image: none;
+  text-shadow: none;
+     width:100%;
+  }
+
+.iscroll-content .ui-listview *.ui-btn-up-c a.ui-link-inherit
+  {
+  }
+
+.iscroll-content. .ui-listview *.ui-btn-hover-c a.ui-link-inherit
+  {
+  }
+
+.iscroll-content .ui-listview *.ui-btn-down-c a.ui-link-inherit
+  {
+  }
+
+/* Remove background image from non-button scroller content */
+.iscroll-content .ui-body-c
+  {
+  background-image: none;
+  }
+

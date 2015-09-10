@@ -55,12 +55,11 @@ body {
 /* make room for version buttons in header */
 .ui-header .ui-title {
   text-align: right;
-    font-size:20px;
-    margin: 0 0 0 0;
-    padding-right:5px;
+  margin-left: 10px;
+    font-size:22px;
+    margin: 0 10% 0 0;
 }
-.hrstext ul { -webkit-padding-start: 0px;}
-.hrstext ul li { list-style: none;color: gray; font-size: .85em;margin-bottom:3px;}
+
 /* Style iScroll wrapper with a 1px green border at top and bottom. You should see no gap
    or different color between the top of the wrapper and the bottom of the header, or between
    the bottom of the wrapper and the top of the footer.
@@ -94,19 +93,9 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 .ui-navbar .ui-btn-inner {
   font-size: 14px;
 }
-.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {color: #fff;}
-.ui-page-theme-a a:hover, html .ui-bar-a a:hover, html .ui-body-a a:hover, html body .ui-group-theme-a a:hover {color: #fff;}
-.ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {color: #fff;}
 .hamicon {float: left; margin-left: 2%; width:57px; height: 57px;}
 .imgResponsive {max-width: 100%; height: auto; width: 100%;}
-.headerLinks {float: left; display: inline; width:30%;padding-top:42px;}
-.headerLinks i.fa {float: left; padding-right: 10px;}
-.headertext {color:#fff; display: inline; float: left; margin-left:5px; }
-.headertext:hover {color:#fff; }
-.headertext:visited {color:#fff; }
-.headerLinks a {color:#fff; text-decoration: none;}
-.headerLinks a:hover {text-decoration: none;}
-.headerlinktext { padding-top: 3px; padding-left: 8px;}
+
 .ui-page .pageheader {
     background-color: #002f86;
     border: 0;
@@ -180,8 +169,6 @@ footer {height: 60px;}
     margin: 0;
     padding-top:20px;
     }
-
-
 @media only screen and (max-height: 280px){
   .ui-header {
     height: 30px;
@@ -257,4 +244,21 @@ footer {height: 60px;}
   {
   background-image: none;
   }
+.ui-block-2x-height {
+  height: 6em;
+}
+.ui-block-2x-height .ui-btn {
+  height: 4em;
+  vertical-align: middle;
 
+}
+.ui-block-2x-height .ui-btn i {
+  margin-top: .5em;
+}
+#home[data-role="page"] {
+  box-shadow: 0px 0px 100px rgba(0,0,0,.5) inset;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 0;
+}
