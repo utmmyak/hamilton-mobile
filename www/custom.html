@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Owl Carousel - Custom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jQuery Responsive Carousel - Owl Carusel">
+        <link href="css/jquery.mobile-1.4.5.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/jquery.mobile.iscrollview-pull.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="css/hamApp.css" media="screen" rel="stylesheet" type="text/css" />
+      <link href="css/owl.carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="javascripts/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="javascripts/demo.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+   <script src="javascripts/iscroll.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+    <script src="javascripts/jquery.zrssfeed.min.js" type="text/javascript"></script>
+    <script src="js/jquery.tmpl.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/fastclick.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/utils.js" type="text/javascript"></script>
+    <script src="phonegap.js"></script>
+<script src="js/owl.carousel.js"></script>
+    <!-- Owl Carousel Assets -->
+    
+  </head>
+  <body>
+
+
+              <div class="owl-carousel owl-demo">
+                 <div class="item"><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                    <div class="item"><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                    
+                    <div class="item"><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+         
+                    <div class="item"><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                    
+                     <div class="item"><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                      <div class="item"><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
+                    <div class="item"><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                  
+                    <div class="item"><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+         
+                    <div class="item"><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                    <div class="item"><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                    
+                    <div class="item"><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                    
+                    <div class="item"><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+         
+                    <div class="item"><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                     <div class="item"><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
+                    <div class="item"><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
+                    
+                    <div class="item"><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
+         
+                    <div class="item"><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+              </div>
+            
+
+
+    <!-- Demo -->
+
+    <style>
+    .owl-demo .item{
+        background: #3fbf79;
+      
+        margin: 0px;
+        width:60px;
+        color: #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        text-align: center;
+    }
+    
+    </style>
+
+
+    <script>
+    $(document).ready(function() {
+
+      var owl = $(".owl-demo");
+
+      owl.owlCarousel({
+      items : 17, //10 items above 1000px browser width
+      itemsDesktop : [1000,5], //5 items between 1000px and 901px
+      itemsDesktopSmall : [900,3], // 3 items betweem 900px and 601px
+      itemsTablet: [600,2], //2 items between 600 and 0;
+      itemsMobile : [500,5] // itemsMobile disabled - inherit from itemsTablet option   
+      });
+
+      
+
+    });
+    </script>
+
+  </body>
+</html>

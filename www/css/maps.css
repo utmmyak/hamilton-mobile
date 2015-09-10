@@ -1,0 +1,7 @@
+html { height: 100% } 
+body { height: 100%; margin: 0px; padding: 0px }
+
+#mapContent { padding: 0; }
+#map_canvas { width: 100%; }
+
+.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
