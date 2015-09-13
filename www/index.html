@@ -22,7 +22,7 @@
     <script src="js/fastclick.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/utils.js" type="text/javascript"></script>
-    <script src="js/owl.carousel.js"></script>
+    <script src="js/moment.min.js" type="text/javascript"></script>
     <script src="phonegap.js"></script>
   </head>
   <body>
@@ -35,16 +35,6 @@
         
         <div data-iscroll="" data-role="content" class="ui-content">
           <ul data-role="listview" class="widelist" id="phonenumlist" data-filter="true" data-autodividers="true">
-            
-            <!--
-            <li>
-              <a href="#" onClick="window.open('http://angularjs.org','_blank','location=yes');return false;">Testing Blank</a>
-            </li>-->
-            <!-- <script>
-            var d = new Date();
-            var foo = getFriendlyDay(d.getDay());
-            alert(foo);
-            </script>-->
             
           </ul>
           <br>
@@ -159,44 +149,34 @@
               <div id="feed" class="rssFeed" ></div>
             </div>
             <!-- /content -->
-            
-            <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-              <nav data-role="navbar">
-                <div class="container owl-carousel dynNavbar">
-                  <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                  <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                  <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                  <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                  <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                  <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-                </div>
-              </nav>
-            </footer>-->
           </div>
-          <div data-role="page" id="diningmenu">
-            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideleft" class="pageheader">
+          <div data-role="page" id="diningmenus">
+            <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
               <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
-              </div>
-              <div class="ui-content diningmenuholder" data-iscroll="" data-role="content">
-                <div id="feed" class="rssFeed" ></div>
-              </div>
-              <!-- /content -->
-              
-              <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
-                <nav data-role="navbar">
-                  <div class="container owl-carousel dynNavbar">
-                    <div><a href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-                    <div><a href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-                    <div><a href="#dininghrs"><i class="fa fa-cutlery fa-2x"></i></a></div>
-                    <div><a href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-                    <div><a href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                    <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
-                  </div>
-                </nav>
-              </footer>-->
+                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div>
+              </a>
+              <h1>Menus</h1>
             </div>
-            <!-- end of navigation bar -->
+            <div data-role="header" data-theme="b" data-transition="slideleft" class="apageheader menu-show">
+              
+            </div>
+            <div class="ldr"></div>
+            <div data-iscroll="" data-role="content" class="ui-content dining-halls">
+              <ul data-role="listview" class="widelist diningmenuholder">
+                <li data-bamco-id="109"><a>Soper Commons Cafe</a></li>
+                <li data-bamco-id="110"><a>McEwen Cafe</a></li>
+                <li data-bamco-id="598"><a>The Little Pub</a></li>
+                <li data-bamco-id="512"><a>The Howard Diner</a></li>
+              </ul>
+            </div>
+            <!-- /content -->
+            <div data-iscroll="" data-role="content" class="ui-content items">
+              <ul data-role="listview" class="widelist diningmenuholder" data-filter="true">
+                
+              </ul>
+            </div>
+            <!-- /content -->
+
           </div>
           
           <div data-role="page" id="events">
@@ -222,10 +202,8 @@
                 </nav>
               </footer>-->
             </div>
-            <!-- end of navigation bar -->
-          </div>
-          <!-- /footer -->
-        </div>
+          <!-- /page -->
+        
         <div data-role="page" id="map">
           
           <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader" >
@@ -260,6 +238,7 @@
               </nav>
             </footer>-->
           </div>
+    
           <div data-role="page" id="home">
             <figure id="ham-home-img">
               <img src="./images/ham_logo.png" width="180" >
@@ -274,7 +253,7 @@
               <div class="ui-grid-b">
                 <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
                 <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-                <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#diningmenu"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
+                <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#diningmenus"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
               </div>
             </div>
             
@@ -298,15 +277,13 @@
               <li><a href="#map" id="${id}">${name}</a></li>
           </script>
           
-        </div>
         <div data-role="page" id="list" data-close-btn="right">
           <div data-role="header" class="ui-bar-b">
             <h1>Locations</h1>
           </div>
           <div data-role="content">
-          <ul id="listing" data-role="listview" data-filter="true"></ul>
+            <ul id="listing" data-role="listview" data-filter="true"></ul>
+          </div>
         </div>
-      </div>
-      <div id="lastStatic"></div>
     </body>
   </html>

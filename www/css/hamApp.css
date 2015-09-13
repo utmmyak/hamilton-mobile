@@ -158,7 +158,7 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 #mapContent { padding: 0; }
 #map_canvas { width: 100%; }
 .map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
-.ui-content {margin-top:20px;}
+.ui-content:not(.items)  {margin-top:20px;}
 footer {height: 60px;}
 .container div {
         float: left;
@@ -268,3 +268,25 @@ footer {height: 60px;}
 .ui-btn {
   border: none;
 }
+.diningmenuholder li {
+  cursor: pointer;
+}
+.menu-show {
+  display: none;
+}
+.menu-hide {
+  display: block;
+}
+.ui-li-has-icon > img.ui-li-icon:not(:first-child) {
+  position: relative;
+  left: -.625em;
+  top: .17em;
+  max-height: 1em;
+  max-width: 1em;
+}
+.ui-li-has-count > span.ui-li-count:not(:last-child) {
+}
+
+.meal-times {
+  color: #AAA;
+  text-shadow: 1px 1px 3px #444;
