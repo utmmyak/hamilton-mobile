@@ -182,11 +182,41 @@
           <div data-role="page" id="events">
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
               <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Events</h1>
-              </div>
-              <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+                <h1>Events</h1>
+                <a class="filter" href="#filterEvents" data-rel="dialog" data-transition="slidefade"><i class="fa fa-bars fa-2x"></i></a>
+            </div>
+            <div class="ui-content eventsholder" data-iscroll="" data-role="content">
                 <div id="feed" class="rssFeed" ></div>
+            </div>
+              
+          </div>
+      
+      
+          <!-- EVENTS POPUP  MENU -->
+          
+          <div data-role="page" id="filterEvents" >
+              <div data-role="header" class="ui-bar-b">
+                <h1>Events</h1>
               </div>
+              <div data-role="collapsibleset" data-theme="b" data-content-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:250px;">
+            <div data-role="collapsible" data-inset="false">
+            <h2>Farm animals</h2>
+                <ul data-role="listview">
+                    <li><a href="#" data-rel="dialog">Chicken</a></li>
+                    <li><a href="#" data-rel="dialog">Cow</a></li>
+                    <li><a href="#" data-rel="dialog">Duck</a></li>
+                    <li><a href="#" data-rel="dialog">Sheep</a></li>
+                </ul>
+            </div>
+              </div>
+              <!--</div>
+             <div data-role="content">
+                <ul id="eventslist" data-role="listview" data-filter="true"></ul>
+              </div> -->
+            </div>
+            
+            
               <!-- /content -->
               
               <!--<footer data-role="footer" data-position="fixed" data-id="foo1">
@@ -200,9 +230,9 @@
                     <div><a href="#" class="navright"><i class="fa fa-chevron-right fa-2x"></i></a></div>
                   </div>
                 </nav>
-              </footer>-->
+              </footer>
             </div>
-          <!-- /page -->
+           /page -->
         
         <div data-role="page" id="map">
           
