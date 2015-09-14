@@ -716,6 +716,7 @@ var diningJSON = null;
   });
 
   $(document).on('pagebeforeshow', '#events', function (e, data) {
+    $.getScript("js/events.js", function (data, textStatus, jqxhr) {});
     $('#events .iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
       limit: 25,
       linktarget: '_blank',
