@@ -288,5 +288,36 @@ footer {height: 60px;}
 }
 
 .meal-times {
-  color: #AAA;
+  color: #CCC;
   text-shadow: 1px 1px 3px #444;
+}
+.alert.warning {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1; 
+}
+.alert {
+  display: none;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert.tight {
+  margin-bottom: 0;
+  margin: 0;
+}
+.alert.always {
+  display: block;
+}
+.menu-out-of-date {
+  margin-bottom: -20px;
+}
+.menu-out-of-date.navmargin {
+  margin-top: 20px;
+}

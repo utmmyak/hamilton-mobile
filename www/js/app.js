@@ -21,17 +21,41 @@ var diningJSON = null;
     db = window.openDatabase("appContentsDB", "1.0", "HamiltonCollege", 200000);
   }
   
+  
+  var diningDataCheck = function(data) {
+    if (data.hasOwnProperty("status") && data.status === false) {
+      $(".menu-invalid-data").fadeIn();
+      
+    }
+    else {
+      $(".menu-invalid-data").fadeOut();
+    }
+    
+    var current = new Date();
+    var menuDateSplit = data.days[0].date.split('-');
+    if (current.getFullYear() != Number(menuDateSplit[0]) ||
+        current.getMonth() + 1 != Number(menuDateSplit[1]) ||
+        current.getDate() != Number(menuDateSplit[2])) {
+      $(".menu-out-of-date").fadeIn();
+    }
+    else {
+      $(".menu-out-of-date").fadeOut();
+    }
+  };
+  
   var diningJSONOffline = function() {
     var sql = "SELECT jsonData FROM diningmenu";
     db.transaction(function (tx) {
       tx.executeSql(sql, [], function(txn, data) {
         diningJSON = $.parseJSON(data.rows.item(0).jsonData);
+        diningDataCheck(diningJSON);
       }, function(err){
        alert("Error processing SQL: " + err.code); 
       });
     });
   };
 
+  var lastDiningHall = null;
   diningJSONCallback = function (adata) {
     db.transaction(function (tx) {
       if (adata != null) {
@@ -40,18 +64,32 @@ var diningJSON = null;
       
       tx.executeSql('INSERT INTO diningmenu (jsonData) VALUES (?)', 
                     [JSON.stringify(adata, null, 2)]);
+      if (diningJSON != null) {
+        diningJSON = adata;
+        var idActive = $("ul.meals li a.ui-btn-active").data("meal-id");
+        
+        initializeDiningHall(lastDiningHall);
+        if (idActive !== undefined) {
+          console.log("setting again" + idActive);
+          $('ul.meals li a[data-meal-id="' + idActive + '"]').click();
+        }
+      }
       diningJSON = adata;
+      diningDataCheck(adata);
     });
   };
 
   
   var jsonNotLoadedInitially = false;
   var initializeDiningHall = function (targetDiningHall) {
+    lastDiningHall = targetDiningHall;
     if (diningJSON === null) { // diningJSON is null there is no json loaded
       if (!jsonNotLoadedInitially) {
         $( "#diningmenus .ldr" ).loader("show");
         jsonNotLoadedInitially = true;
       }
+      diningJSONOffline();
+      
       setTimeout(function(){initializeDiningHall(targetDiningHall);}, 160);
       return;
     }
@@ -65,7 +103,7 @@ var diningJSON = null;
     var lookupFoodItem = function (itemID, extra) {
       var item = data.items[itemID];
       var display = data.items[itemID].label;
-      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "Made without Gluten-Containing Ingredients": "gf"};
+      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "Made without Gluten-Containing Ingredients": "gf", "farm to fork": "f2f", "seafood watch": "sw"};
       if (extra && item.cor_icon != []) {
         /*for (var id in item.cor_icon) {
           display = '<img height="16" width="16" src="' + data.cor_icons[id].image + '" class="ui-li-icon">'
@@ -82,9 +120,6 @@ var diningJSON = null;
       }
       return display;
     };
-
-    $("#diningmenus .menu-show").css("display", "block");
-    $("#diningmenus .menu-hide").css("display", "none");
 
     var cafe = data.days[0].cafes[targetDiningHall];    
     
@@ -111,13 +146,13 @@ var diningJSON = null;
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
                                    meal.starttime + '-' + meal.endtime + '</p></a></li>');
       
-      if (defaultMealSet) { // if current meal has already been set, there is no need need to parse
+      if (!defaultMealSet) { // if current meal has already been set, there is no need need to parse
         // parse the dayparts of this meal into javascript dates
         var now = new Date();
         var start = meal.starttime.split(':');
         var end = meal.endtime.split(':');
         var startDate = new Date();
-        var endDate = startDate;
+        var endDate = new Date();
         startDate.setHours(Number(start[0]));
         startDate.setMinutes(Number(start[1]));
         endDate.setHours(Number(end[0]));
@@ -132,16 +167,21 @@ var diningJSON = null;
       }
     });
     
+    $("#diningmenus .menu-show").css("display", "block");
+    $(".menu-out-of-date").removeClass("navmargin");
+    $("#diningmenus .menu-hide").css("display", "none");
+    
+    
     $(".meals li a:not(.go-back)").click(function(){ // initialize meal when navbar link is pressed
       initializeMeal($(this).data("meal-id"));
     });
 
     if (!defaultMealSet && cafe.dayparts[0].length > 0) { // no meals going on now
-      $(".items .diningmenuholder").html('<li><font style="white-space:normal">There are no current meals at this dining hall, please select one above.</font></li>');
+      $(".items .diningmenuholder").html('<li><font style="white-space:normal"><div class="alert info always tight">There are no current meals at this dining hall, please select one above.</div></font></li>');
       $('.items .diningmenuholder').listview("refresh");
     }
     else if (cafe.dayparts[0].length === 0) { // no meals in the day at all
-      $(".items .diningmenuholder").html('<li><font style="white-space:normal">We could not find any meals today for this dining hall.</font></li>');
+      $(".items .diningmenuholder").html('<li><font style="white-space:normal"><div class="alert info always tight">We could not find any meals today for this dining hall.</div></font></li>');
       $('.items .diningmenuholder').listview("refresh");
     }
     
@@ -153,6 +193,7 @@ var diningJSON = null;
     var goBack = function(){ // leave the meals/items view and return to dining hall list
       $("#diningmenus .apageheader.menu-show").css("display", "none");
       $("#diningmenus .pageheader.menu-hide").css("display", "block");
+      $(".menu-out-of-date").addClass("navmargin");
 
       $(".meals").css("display", "none");
       $(".dining-halls").css("display", "block");
@@ -167,8 +208,10 @@ var diningJSON = null;
   function loadAllDiningJSON() {
     checkConnection();
     if (connectionStatus == "online") {
+      var today = new Date();
+      var todayStr = today.toISOString().substring(0, 10);
       $.ajax({
-        url: "http://legacy.cafebonappetit.com/api/2/menus?format=jsonp&cafe=110,109,598,512&callback=diningJSONCallback",
+        url: "http://legacy.cafebonappetit.com/api/2/menus?format=jsonp&cafe=110,109,598,512&callback=diningJSONCallback&date=" + todayStr,
         cache: 'true',
         dataType: 'jsonp',
         jsonpCallback: 'diningJSONCallback'
