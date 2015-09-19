@@ -34,7 +34,7 @@ body {
   -ms-user-select: none;
   -moz-user-select: none;
   user-select: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
 /* Style header bar and footer bar with a 1px red border at top and bottom. This facilitates
@@ -54,10 +54,11 @@ body {
 
 /* make room for version buttons in header */
 .ui-header .ui-title {
-  text-align: right;
-  margin-left: 10px;
+  /*text-align: right;*/
+  text-shadow: none;
+  /*margin-left: 10px;*/
     font-size:22px;
-    margin: 0 10% 0 0;
+    /*margin: 0 10% 0 0;*/
 }
 
 /* Style iScroll wrapper with a 1px green border at top and bottom. You should see no gap
@@ -320,4 +321,41 @@ footer {height: 60px;}
 }
 .menu-out-of-date.navmargin {
   margin-top: 20px;
+}
+.open-indicator {
+  width: 16px;
+  display: inline-block;
+  background-color: rgb(120,120,120);
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid rgb(100,100,100);
+  vertical-align: super;
+  margin: 0;
+  padding: 0;
+}
+.open-indicator.open {
+  background-color: rgb(75,170,10);
+  border: 1px solid rgb(40,120,18);
+}
+.open-indicator.closed {
+  background-color: rgb(180,20,28);
+  border: 1px solid rgb(160,18,32);
+}
+.hours-text {
+  color: #777;
+  display: block;
+  font-weight: normal;
+}
+.dining-hall-block {
+  display: inline-block;
+  margin-left: 1.1em;
+}
+.item-description {
+  display: block;
+  white-space: normal;
+  word-wrap: normal;
+  color: #777;
+  font-size: 11pt;
+  font-weight: normal;
+  width: 100%;
 }
