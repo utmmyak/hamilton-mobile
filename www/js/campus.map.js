@@ -8,7 +8,8 @@ var campusMap = (function(){
 	
 	// private variables
 	var  map = {}
-		,infoWin = new google.maps.InfoWindow({})
+        ,windows = []
+		,infoWin = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400})
 		,showPoints = true
 		,hamLatLng = new google.maps.LatLng(43.050741,-75.407442);		// defaults to center of hamilton college
 
@@ -47,8 +48,8 @@ var campusMap = (function(){
 				.attr('title',point.name)
 				.addClass('map-point')
 				.css({
-					 'left':(location.x)
-					,'top':(location.y-15)
+					 'left':(location.x-5)//These values(-5 and -10) added for infowindow to be directly over marker
+					,'top':(location.y-10)
 				});
 			
 			fragment.appendChild(mapPoint.get(0));
@@ -71,19 +72,56 @@ var campusMap = (function(){
 			.tmpl(App.points)
 			.appendTo('ul#listing');
 	};
+    
+    // create all infowindows
+    var createInfoWins = function() {
+        $.each(App.points,function(index,value){
+			temp = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400});
+            temp.setPosition(new google.maps.LatLng(value.lat, value.lng));
+            temp.setContent("<div id=\"content\" style=\"text-align:center\">"+
+                            "<img src=\"http://www.hamilton.edu"+value.imgpath+"\" style=\"max-width:100%;max-height:auto;\">"+
+                            "<h1 id=\"firstHeading\" class=\"firstHeading\">"+value.name+"</h1>"+
+                            "<div id=\"bodyContent\" style=\"text-align:left\">"+
+                            "<p>"+value.description+"</p>"+
+                            "</div>"+
+                            "</div>"
+                            );
+            windows.push(temp);
+		});	
+    };
 	
 	// update a building record in the array 
 	var updatePoint = function(index,position,value){ App.points[index][position] = value };
 	
 	// show info window
 	var showInfo = function(id){
-
+        /*
 		var item = getPoint(id);	
 		infoWin.setPosition(new google.maps.LatLng(item.lat,item.lng));
-		infoWin.setContent(item.name);
-		infoWin.open(map);	
+		infoWin.setContent("<div id=\"content\" style=\"text-align:center\">"+
+                            "<img src=\"http://www.hamilton.edu"+item.imgpath+"\" style=\"max-width:100%;max-height:auto;\">"+
+                            "<h1 id=\"firstHeading\" class=\"firstHeading\">"+item.name+"</h1>"+
+                            "<div id=\"bodyContent\" style=\"text-align:left\">"+
+                            "<p>"+item.description+"</p>"+
+                            "</div>"+
+                            "</div>"
+                            );
+		infoWin.open(map);	*/
+        temp = getWindow(id);
+        temp.open(map);
+        infoWin = temp;
 	};
 
+    // get the infowindow
+    var getWindow = function(id){
+        var item = [];
+        $.each(App.points,function(index,value){
+            if( id == value.id) 
+                item= windows[index];
+        });       
+        return item;
+    }
+    
 	// hide info window
 	var hideInfo = function(){ infoWin.close() };
 	
@@ -147,6 +185,7 @@ var campusMap = (function(){
 			,dataType:'json'
 			,success: function(data,textStatus,jqXHR){
 				loadPoints(data);
+                createInfoWins();
 			}
 		});
 
@@ -187,8 +226,19 @@ var campusMap = (function(){
 				position: google.maps.ControlPosition.TOP_LEFT
 			}
         };
+        
 		map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
+        
+        //Hide default points of interest by google(already have our own)
+        var styles = [
+               {
+                 featureType: "poi",
+                 stylers: [
+                  { visibility: "off" }
+                 ]   
+                }
+            ];
+        map.setOptions({styles: styles});
 				
 	});
 	var OverlayMap = new MapOverlay({map:map});
