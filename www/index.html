@@ -101,42 +101,167 @@
           <!-- /content -->
         </div>
 
-        <div data-role="page" id="events">
+              <div data-role="page" id="events">
           <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
             <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
               <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
               <h1>Events</h1>
-              <a class="filter" href="#filterEvents" data-rel="dialog" data-transition="slidefade"><i class="fa fa-bars fa-2x"></i></a>
+              <a href="#eventsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
           </div>
           <div class="ui-content eventsholder" data-iscroll="" data-role="content">
               <div id="feed" class="rssFeed" ></div>
           </div>
+            
+            <div data-role ="popup" id = "eventsFilterPopup" data-theme="b">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose an event type</li>
+                <li><a href="#athleticEvents">Athletics</a></li>
+                <li><a href="#artEvents">Arts</a></li>
+                <li><a href="#alumniEvents">Alumni</a></li>
+                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
+                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
+                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
+                    <ul data-role="listview">
+                            <li><a href="#" data-rel="dialog">Place 1</a></li>
+                            <li><a href="#" data-rel="dialog">Place 2</a></li>
+                            <li><a href="#" data-rel="dialog">Place 3</a></li>
+                            <li><a href="#" data-rel="dialog">Place 4</a></li>
+                    </ul>
+                
+                </div><!-- /collapsible -->
 
+            </ul>
+            </div>
         </div>
 
 
-        <!-- EVENTS POPUP  MENU -->
+        <div data-role="page" id="athleticEvents">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <h1>Athletic Events</h1>
+              <a href="#athleticsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
+            </div>
+            <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+            </div>
+            <div data-role ="popup" id = "athleticsFilterPopup" data-theme="b">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose an event type</li>
+                <li><a href="#events">All Events</a></li>
+                <li><a href="#artEvents">Arts</a></li>
+                <li><a href="#alumniEvents">Alumni</a></li>
+                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
+                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
+                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
+                    <ul data-role="listview">
+                            <li><a href="#" data-rel="dialog">Place 1</a></li>
+                            <li><a href="#" data-rel="dialog">Place 2</a></li>
+                            <li><a href="#" data-rel="dialog">Place 3</a></li>
+                            <li><a href="#" data-rel="dialog">Place 4</a></li>
+                    </ul>
+                
+                </div><!-- /collapsible -->
 
-        <div data-role="page" id="filterEvents" >
-            <div data-role="header" class="ui-bar-b">
-              <h1>Events</h1>
+            </ul>
             </div>
-            <div data-role="collapsibleset" data-theme="b" data-content-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" style="margin:0; width:250px;">
-          <div data-role="collapsible" data-inset="false">
-          <h2>Farm animals</h2>
-              <ul data-role="listview">
-                  <li><a href="#" data-rel="dialog">Chicken</a></li>
-                  <li><a href="#" data-rel="dialog">Cow</a></li>
-                  <li><a href="#" data-rel="dialog">Duck</a></li>
-                  <li><a href="#" data-rel="dialog">Sheep</a></li>
-              </ul>
-          </div>
+        </div>
+
+        <div data-role="page" id="artEvents">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <h1>Arts Events</h1>
+              <a href="#artsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
-            <!--</div>
-           <div data-role="content">
-              <ul id="eventslist" data-role="listview" data-filter="true"></ul>
-            </div> -->
-          </div>
+            <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+            </div>
+            <div data-role ="popup" id = "artsFilterPopup" data-theme="b">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose an event type</li>
+                <li><a href="#events">All Events</a></li>
+                <li><a href="#athleticEvents">Athletics</a></li>
+                <li><a href="#alumniEvents">Alumni</a></li>
+                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
+                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
+                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
+                    <ul data-role="listview">
+                            <li><a href="#" data-rel="dialog">Place 1</a></li>
+                            <li><a href="#" data-rel="dialog">Place 2</a></li>
+                            <li><a href="#" data-rel="dialog">Place 3</a></li>
+                            <li><a href="#" data-rel="dialog">Place 4</a></li>
+                    </ul>
+                
+                </div><!-- /collapsible -->
+
+            </ul>
+            </div>
+        </div>
+
+        <div data-role="page" id="alumniEvents">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <h1>Alumni Events</h1>
+              <a href="#alumniFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
+            </div>
+            <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+            </div>
+            <div data-role ="popup" id = "alumniFilterPopup" data-theme="b">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose an event type</li>
+                <li><a href="#events">All Events</a></li>
+                <li><a href="#athleticEvents">Athletics</a></li>
+                <li><a href="#artEvents">Arts</a></li>
+                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
+                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
+                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
+                    <ul data-role="listview">
+                            <li><a href="#" data-rel="dialog">Place 1</a></li>
+                            <li><a href="#" data-rel="dialog">Place 2</a></li>
+                            <li><a href="#" data-rel="dialog">Place 3</a></li>
+                            <li><a href="#" data-rel="dialog">Place 4</a></li>
+                    </ul>
+                
+                </div><!-- /collapsible -->
+
+            </ul>
+            </div>
+        </div>
+
+        <div data-role="page" id="collegeCalendarEvents">
+            <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
+            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <h1>College Calendar Events</h1>
+              <a href="#collegeCalendarFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
+            </div>
+            <div class="ui-content eventsholder" data-iscroll="" data-role="content">
+                <div id="feed" class="rssFeed" ></div>
+            </div>
+            <div data-role ="popup" id = "collegeCalendarFilterPopup" data-theme="b">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose an event type</li>
+                <li><a href="#events">All Events</a></li>
+                <li><a href="#athleticEvents">Athletics</a></li>
+                <li><a href="#artEvents">Arts</a></li>
+                <li><a href="#alumniEvents">Alumni</a></li>
+                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
+                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
+                    <ul data-role="listview">
+                            <li><a href="#" data-rel="dialog">Place 1</a></li>
+                            <li><a href="#" data-rel="dialog">Place 2</a></li>
+                            <li><a href="#" data-rel="dialog">Place 3</a></li>
+                            <li><a href="#" data-rel="dialog">Place 4</a></li>
+                    </ul>
+                
+                </div><!-- /collapsible -->
+
+            </ul>
+            </div>
+        </div>
 
       <div data-role="page" id="map">
 
