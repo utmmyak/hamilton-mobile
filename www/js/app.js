@@ -925,8 +925,39 @@ var diningJSON = null;
   });
 
   $(document).on('pagebeforeshow', '#events', function (e, data) {
-    $.getScript("js/events.js", function (data, textStatus, jqxhr) {});
     $('#events').find('.iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassEvents);
+  });
+    
+  $(document).on('pagebeforeshow', '#athleticEvents', function (e, data) {
+    $('#athleticEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassEvents);
+  });
+
+  $(document).on('pagebeforeshow', '#artEvents', function (e, data) {
+    $('#artEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassEvents);
+  });
+
+  $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
+    $('#alumniEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassEvents);
+  });
+    
+  $(document).on('pagebeforeshow', '#collegeCalendarEvents', function (e, data) {
+    $('#collegeCalendarEvents').find('.iscroll-content').rssfeed('https://www.google.com/calendar/feeds/hamilton.edu_3239373830363935323439%40resource.calendar.google.com/public/basic', {
       limit: 25,
       linktarget: '_blank',
       header: false
