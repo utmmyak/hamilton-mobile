@@ -1,7 +1,14 @@
-var diningJSONCallback;
+var diningJSONCallback; // need to declare all jsonp callbacks as global variables
+var feedbackSentDone;
+var bugReportDone;
 var diningJSON = null;
 (function () {
   'use strict';
+  var errorConsole;
+  window.onerror=function(msg, url, linenumber, column, errorObj){
+    errorConsole += msg + " " + url + ":" + linenumber + ":" + column + " (" + errorObj + ")";
+    return false;
+  };
 
   function rewriteClass() {
     $('h4 a').addClass("external");
@@ -113,6 +120,7 @@ var diningJSON = null;
       });
       if (cafe.dayparts[0].length != 0) {
         cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endTime));
+        cafeElement.find("a").removeClass("ui-disabled");
       } else {
         cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
         cafeElement.find("a").addClass("ui-disabled");
@@ -160,7 +168,7 @@ var diningJSON = null;
         if (lastDiningHall) {
           initializeDiningHall(lastDiningHall);
         }
-        if (idActive !== undefined) {
+        if (idActive != undefined) {
           console.log("setting again" + idActive);
           $('ul.meals li a[data-meal-id="' + idActive + '"]').click();
         }
@@ -421,11 +429,17 @@ var diningJSON = null;
                 navlink: "events",
                 navorder: 0
               });
-              pagearray.unshift({
+              pagearray.push({
                 navIcon: "fa-cutlery",
                 navTitle: "Dining Menus",
                 navlink: "diningmenus",
                 navorder: 10
+              });
+              pagearray.push({
+                navIcon: "fa-comment",
+                navTitle: "Feedback",
+                navlink: "feedback",
+                navorder: 11
               });
 
               pagearray.sort(navorderCmp);
@@ -845,7 +859,54 @@ var diningJSON = null;
       initializeDiningHall(id);
       $(".dining-halls").css("display", "none");
     });
+  });
 
+  feedbackSentDone = function() {
+    console.log("eee");
+    $(".feedback-sent-popup").popup("open");
+  };
+  $(document).on('pagebeforeshow', '#feedback', function (e, data) {
+    //$('[data-role="navbar"]').navbar();
+    $('#feedback-navbarcont .xnavbar li a').removeClass('ui-btn-icon-top');
+    $('form.feedback').submit(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      $.ajax({
+        method: 'POST',
+        url: 'https://www.hamilton.edu/appPages/ajax/collectFeedback.cfm',
+        data: {
+          isBug: false,
+          email: $('#feedback-email').val(),
+          description: $('#feedback-text').val(),
+          platform:  device.platform
+        }
+      }).complete(feedbackSentDone);
+    });
+  });
+
+  bugReportDone = function() {
+    $(".bug-reported-popup").popup("open");
+  };
+  $(document).on('pagebeforeshow', '#feedback-bug', function (e, data) {
+    $('#feedback-bug-navbarcont .xnavbar li a').removeClass('ui-btn-icon-top');
+    $('form.bug').submit(function(e){
+      e.preventDefault();
+      e.stopPropagation();
+
+      $.ajax({
+        method: 'POST',
+        url: 'https://www.hamilton.edu/appPages/ajax/collectFeedback.cfm',
+        data: {
+          isBug: true,
+          description: $('#bug-description-text').val(),
+          reproductionSteps: $('#bug-reproduction-text').val(),
+          email: $('#bug-email').val(),
+          platform:  device.platform,
+          consoleDump: errorConsole
+        }
+      });
+    });
   });
 
   $(document).on('pagebeforeshow', '.dyn', function (e, data) {

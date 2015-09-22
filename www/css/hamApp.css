@@ -359,3 +359,6 @@ footer {height: 60px;}
   font-weight: normal;
   width: 100%;
 }
+.bug,.feedback {
+    padding: 0.4em
+}
