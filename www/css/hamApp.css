@@ -159,7 +159,7 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 #mapContent { padding: 0; }
 #map_canvas { width: 100%; }
 .map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
-.ui-content:not(.items)  {margin-top:20px;}
+.ui-content:not(.items):not(.dining-halls)  {margin-top:20px;}
 footer {height: 60px;}
 .container div {
         float: left;
@@ -257,7 +257,7 @@ footer {height: 60px;}
   margin-top: .5em;
 }
 #home[data-role="page"] {
-  margin: 0.4em;
+  /*margin: 0.4em;*/
   padding-top: 0;
 }
 
@@ -292,10 +292,18 @@ footer {height: 60px;}
   color: #CCC;
   text-shadow: 1px 1px 3px #444;
 }
+.items {
+  display: none;
+}
+.alert.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
 .alert.warning {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
 }
 .alert.info {
   color: #31708f;
@@ -315,12 +323,6 @@ footer {height: 60px;}
 }
 .alert.always {
   display: block;
-}
-.menu-out-of-date {
-  margin-bottom: -20px;
-}
-.menu-out-of-date.navmargin {
-  margin-top: 20px;
 }
 .open-indicator {
   width: 16px;
@@ -346,6 +348,9 @@ footer {height: 60px;}
   display: block;
   font-weight: normal;
 }
+.dining-halls {
+  height: 260px
+}
 .dining-hall-block {
   display: inline-block;
   margin-left: 1.1em;
@@ -360,5 +365,10 @@ footer {height: 60px;}
   width: 100%;
 }
 .bug,.feedback {
-    padding: 0.4em
+  padding: 0.4em
+}
+#diningmenus > .footer-nav-days {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

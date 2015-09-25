@@ -1,6 +1,4 @@
 var diningJSONCallback; // need to declare all jsonp callbacks as global variables
-var feedbackSentDone;
-var bugReportDone;
 var diningJSON = null;
 (function () {
   'use strict';
@@ -31,14 +29,102 @@ var diningJSON = null;
   var jsonNotLoadedInitially = false;
   var loadDiningAJAXRequest;
 
+  var updateDiningHallHours = function(data) {
+    /* POST: updates the hours and open/closed signs in the dining halls menu
+     *
+     */
+    for (var key in data.days[0].cafes) {
+      if (data.days[0].cafes.hasOwnProperty(key)) {
+        var now = new Date();
+        var cafe = data.days[0].cafes[key];
+        var cafeElement = $("li[data-bamco-id=\"" + key + "\"]");
+        if (key == 512) {
+          if (cafe.dayparts[0].length == 0) {
+            if (((now.getDay() == 0 || now.getDay() == 6) &&
+                (now.getHours > 15))) {
+              cafeElement.find(".open-indicator").addClass("open");
+              cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
+            } else if (now.getDay() != 0 && now.getDay() != 6 && (now.getHours() > 9)) {
+              cafeElement.find(".open-indicator").addClass("open");
+              cafeElement.find(".dining-hall-block .hours-text").text("09:00 - 24:00");
+            } else {
+              cafeElement.find(".open-indicator").addClass("closed");
+              cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
+            }
+            continue;
+          } else {
+            cafeElement.removeClass("ui-li-static").children().wrapAll("<a></a>");
+            $('.dining-halls .diningmenuholder').listview("refresh");
+            cafeElement.children("a").click(function () {
+              var id = $(this).parent().attr("data-bamco-id");
+              initializeDiningHall(id);
+              $(".dining-halls").css("display", "none");
+            });
+          }
+        }
+
+        var mealSet = false;
+        var endTime = "";
+
+        $.each(cafe.dayparts[0], function (id, meal) { // for each meal
+          // parse the dayparts of this meal into javascript dates
+
+          var start = meal.starttime.split(':');
+          var end = meal.endtime.split(':');
+          var startDate = new Date();
+          var endDate = new Date();
+          startDate.setHours(Number(start[0]));
+          startDate.setMinutes(Number(start[1]));
+          endDate.setHours(Number(end[0]));
+          endDate.setMinutes(Number(end[1]));
+          if (id == 0) {
+            cafeElement.find("a .dining-hall-block .hours-text").text(meal.starttime);
+            endTime = meal.endtime;
+          } else {
+            endTime = meal.endtime;
+          }
+
+          // is this meal going on now?
+          if (startDate < now && endDate > now) {
+            mealSet = true;
+            return false;
+          }
+        });
+        if (cafe.dayparts[0].length != 0) {
+          console.log(key, " not closed");
+          cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endTime));
+          cafeElement.find("a").removeClass("ui-disabled");
+        } else {
+          console.log(key, " is closed");
+          cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
+          cafeElement.find("a").addClass("ui-disabled");
+        }
+
+        if (mealSet) {
+          cafeElement.find("a .open-indicator").addClass("open");
+        } else {
+          cafeElement.find("a .open-indicator").addClass("closed");
+        }
+      }
+    }
+
+  };
+
   var diningDataCheck = function(data) {
+    /* PRE: data is JSON to check
+    POST: determines whether menu data should be stored (i.e. is up to date & etc)
+          updates warnings/errors to reflect data retrieved
+     */
     console.log("starting checks");
     if (data.hasOwnProperty("status") && data.status === false) {
-      $(".menu-invalid-data").fadeIn();
+      $(".menu-not-loaded").fadeIn();
+      return false;
     }
     else {
-      $(".menu-invalid-data").fadeOut();
+      $(".menu-not-loaded").fadeOut();
     }
+
+    var menuCurrentDate = true;
 
     var current = new Date();
     var menuDateSplit = data.days[0].date.split('-');
@@ -46,8 +132,12 @@ var diningJSON = null;
         current.getMonth() + 1 != Number(menuDateSplit[1]) ||
         current.getDate() != Number(menuDateSplit[2])) {
       $(".menu-out-of-date").fadeIn();
+      $(".menu-out-of-date .date-container").text(data.days[0].date);
+
+      menuCurrentDate = false;
     }
     else {
+
       $(".menu-out-of-date").fadeOut();
 
       loadDiningAJAXRequest.abort();
@@ -56,129 +146,74 @@ var diningJSON = null;
       // but the response often takes a while to download so this should be fine
     }
 
+    $("#this-day").addClass("ui-btn-active ui-state-persist");
+    $("#next-day").removeClass("ui-btn-active");
+    $("#prev-day").removeClass("ui-btn-active");
 
     if (jsonNotLoadedInitially) { // json was not loaded, but is now loaded so hide loader
       $( "#diningmenus").find(".ldr" ).loader( "hide");
       $.mobile.loading( "hide" );
     }
 
-    for (var key in data.days[0].cafes) {
-      var now = new Date();
-      var cafe = data.days[0].cafes[key];
-      var cafeElement = $("li[data-bamco-id=\"" + key + "\"]");
-      if (key == 512) {
-        if (cafe.dayparts[0].length == 0) {
-          if (((now.getDay() == 0 || now.getDay() == 6) &&
-              (now.getHours > 15))) {
-            cafeElement.find(".open-indicator").addClass("open");
-            cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
-          } else if (now.getDay() != 0 && now.getDay() != 6 && (now.getHours() > 9)) {
-            cafeElement.find(".open-indicator").addClass("open");
-            cafeElement.find(".dining-hall-block .hours-text").text("09:00 - 24:00");
-          } else {
-            cafeElement.find(".open-indicator").addClass("closed");
-            cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
-          }
-          continue;
-        } else {
-          cafeElement.removeClass("ui-li-static").children().wrapAll("<a></a>");
-          $('.dining-halls .diningmenuholder').listview("refresh");
-          cafeElement.children("a").click(function () {
-            var id = $(this).parent().attr("data-bamco-id");
-            initializeDiningHall(id);
-            $(".dining-halls").css("display", "none");
-          });
-        }
-      }
+    updateDiningHallHours(data);
 
-      var mealSet = false;
-      var endTime = "";
-
-      $.each(cafe.dayparts[0], function (id, meal) { // for each meal
-        // parse the dayparts of this meal into javascript dates
-
-        var start = meal.starttime.split(':');
-        var end = meal.endtime.split(':');
-        var startDate = new Date();
-        var endDate = new Date();
-        startDate.setHours(Number(start[0]));
-        startDate.setMinutes(Number(start[1]));
-        endDate.setHours(Number(end[0]));
-        endDate.setMinutes(Number(end[1]));
-        if (id == 0) {
-          cafeElement.find("a .dining-hall-block .hours-text").text(meal.starttime);
-          endTime = meal.endtime;
-        } else {
-          endTime = meal.endtime;
-        }
-
-        // is this meal going on now?
-        if (startDate < now && endDate > now) {
-          mealSet = true;
-          return false;
-        }
-      });
-      if (cafe.dayparts[0].length != 0) {
-        cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endTime));
-        cafeElement.find("a").removeClass("ui-disabled");
-      } else {
-        cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
-        cafeElement.find("a").addClass("ui-disabled");
-      }
-
-      if (mealSet) {
-        cafeElement.find("a .open-indicator").addClass("open");
-      } else {
-        cafeElement.find("a .open-indicator").addClass("closed");
-      }
-
-    }
+    return menuCurrentDate;
   };
 
-  var diningJSONOffline = function() {
+  var diningJSONLoadOffline = function() {
     var sql = "SELECT jsonData FROM diningmenu";
     db.transaction(function (tx) {
       tx.executeSql(sql, [], function(txn, data) {
         if (data.rows.length == 0) {
           $( ".ldr" ).loader("show");
+          $.mobile.loading( "show" );
           jsonNotLoadedInitially = true;
           return;
         }
         diningJSON = $.parseJSON(data.rows.item(0).jsonData);
         diningDataCheck(diningJSON);
+        updateDiningHallHours(diningJSON);
       }, function(err){
         alert("Error processing SQL: " + err.code);
       });
     });
   };
 
-  var lastDiningHall = null;
-  diningJSONCallback = function (adata) {
-    db.transaction(function (tx) {
-      if (adata != null) {
-        tx.executeSql('DELETE FROM diningmenu');
-      }
-
-      tx.executeSql('INSERT INTO diningmenu (jsonData) VALUES (?)',
-                    [JSON.stringify(adata, null, 2)]);
-      if (diningJSON != null) {
-        diningJSON = adata;
-        var idActive = $("ul.meals li a.ui-btn-active").data("meal-id");
-
-        if (lastDiningHall) {
-          initializeDiningHall(lastDiningHall);
-        }
-        if (idActive != undefined) {
-          console.log("setting again" + idActive);
-          $('ul.meals li a[data-meal-id="' + idActive + '"]').click();
-        }
-      }
+  var updateDiningMenu = function (adata) {
+    if (diningJSON != null) {
       diningJSON = adata;
-      diningDataCheck(adata);
-    });
+      var idActive = $("ul.meals li a.ui-btn-active").data("meal-id");
+
+      if (lastDiningHall) {
+        initializeDiningHall(lastDiningHall);
+      }
+      if (idActive != undefined) {
+        console.log("setting again" + idActive);
+        $('ul.meals li a[data-meal-id="' + idActive + '"]').click();
+      }
+    }
+    diningJSON = adata;
   };
 
+  var lastDiningHall = null;
+  diningJSONCallback = function (adata) {
+    if (diningDataCheck(adata)) {
+      console.log("updating database with new dining menu");
+      db.transaction(function (tx) {
+        if (adata != null) {
+          tx.executeSql('DELETE FROM diningmenu');
+        }
 
+        tx.executeSql('INSERT INTO diningmenu (jsonData) VALUES (?)',
+            [JSON.stringify(adata, null, 2)]);
+        updateDiningMenu(adata);
+
+      });
+    } else {
+      console.log("dining menu old could not update database");
+      updateDiningMenu(adata);
+    }
+  };
 
   var initializeDiningHall = function (targetDiningHall) {
     lastDiningHall = targetDiningHall;
@@ -227,7 +262,6 @@ var diningJSON = null;
           $(".items .diningmenuholder").append("<li>" + lookupFoodItem(item, true) + "</li>").enhanceWithin();
         });
       });
-      $(".items").css("display", "block");
       $('.items ul').listview("refresh");
     };
     var defaultMealSet = false; // assume that no meal is going on now
@@ -264,6 +298,7 @@ var diningJSON = null;
     $("#diningmenus .menu-show").css("display", "block");
     $(".menu-out-of-date").removeClass("navmargin");
     $("#diningmenus .menu-hide").css("display", "none");
+    $(".items").css("display", "block");
 
 
     $(".meals li a:not(.go-back)").click(function(){ // initialize meal when navbar link is pressed
@@ -285,11 +320,12 @@ var diningJSON = null;
     $('.meals li a.go-back').removeClass('ui-btn-icon-top');
 
     var goBack = function(){ // leave the meals/items view and return to dining hall list
-      $("#diningmenus .apageheader.menu-show").css("display", "none");
-      $("#diningmenus .pageheader.menu-hide").css("display", "block");
+      $("#diningmenus .menu-show").css("display", "none");
+      $("#diningmenus .menu-hide").css("display", "block");
       $(".menu-out-of-date").addClass("navmargin");
 
       $(".meals").css("display", "none");
+      $(".items").css("display", "none");
       $(".div.ui-content.items").css("display", "none");
       $(".dining-halls").css("display", "block");
       $(".dining-halls .diningmenuholder").css("display", "block");
@@ -309,22 +345,39 @@ var diningJSON = null;
 
   };
 
-  function loadAllDiningJSON() {
+  function loadAllDiningJSON(dayDelta) {
+    $('[data-role="navbar"]').navbar();
     checkConnection();
+    if (dayDelta === undefined) {
+      dayDelta = 0;
+    }
 
+    
     if (connectionStatus == "online") {
-      var today = new Date();
-      var todayStr = moment(new Date()).format("YYYY-MM-D");
+      console.log('delta', dayDelta);
+      var thisDay = moment(new Date()).add(dayDelta, 'd');
+      var thisDayStr = thisDay.format("YYYY-MM-D"); // sets day difference to dayDelta
+      $("#this-day").html(thisDayStr + "<br/>Current Day");
+      $("#prev-day").html(thisDay.add(-1, 'd').format("YYYY-MM-D") + "<br/>Previous");
+      $("#next-day").html(thisDay.add(2, 'd').format("YYYY-MM-D") + "<br/>Next");
 
       loadDiningAJAXRequest = $.ajax({
-        url: "http://legacy.cafebonappetit.com/api/2/menus?format=jsonp&cafe=110,109,598,512&callback=diningJSONCallback&date=" + todayStr,
+        url: "http://legacy.cafebonappetit.com/api/2/menus?format=jsonp&cafe=110,109,598,512&callback=diningJSONCallback&date=" + thisDayStr,
         cache: 'true',
         dataType: 'jsonp',
         jsonpCallback: 'diningJSONCallback'
       });
-      diningJSONOffline(); // online load from database while we wait
+
+      if (dayDelta == 0) { // only offline data will be from the current day
+        diningJSONLoadOffline(); // online load from database while we wait
+      }
+
     } else {
-      diningJSONOffline(); // if not online, load from database
+      if (dayDelta == 0) {
+        diningJSONLoadOffline(); // if not online, load from database
+      } else {
+        $(".menu-not-loaded").fadeIn();
+      }
     }
   }
 
@@ -438,7 +491,7 @@ var diningJSON = null;
               pagearray.push({
                 navIcon: "fa-comment",
                 navTitle: "Feedback",
-                navlink: "feedback",
+                navlink: "feedback-page",
                 navorder: 11
               });
 
@@ -849,7 +902,7 @@ var diningJSON = null;
   });
   $(document).on('pagebeforeshow', '#diningmenus', function (e, data) {
     //loadDiningJSON();
-    loadAllDiningJSON();
+    loadAllDiningJSON(0);
     $( "#diningmenus .ldr" ).loader({
       defaults: true,
       theme: 'b'
@@ -859,20 +912,43 @@ var diningJSON = null;
       initializeDiningHall(id);
       $(".dining-halls").css("display", "none");
     });
+    var currentDiningDayDelta = 0;
+    $("#prev-day").click(function(){
+      currentDiningDayDelta -= 1;
+      console.log("loading", currentDiningDayDelta);
+      $( ".ldr" ).loader("show");
+      $.mobile.loading( "show" );
+      jsonNotLoadedInitially = true;
+
+      loadAllDiningJSON(currentDiningDayDelta);
+    });
+    $("#next-day").click(function(){
+      currentDiningDayDelta += 1;
+      console.log("loading", currentDiningDayDelta);
+      $( ".ldr" ).loader("show");
+      $.mobile.loading( "show" );
+      jsonNotLoadedInitially = true;
+      loadAllDiningJSON(currentDiningDayDelta);
+    });
   });
 
-  feedbackSentDone = function() {
-    console.log("eee");
-    $(".feedback-sent-popup").popup("open");
+  var feedbackSentDone = function(data, textStatus, jqXHR) {
+    if (jqXHR.status == 200) {
+      $("#feedback-sent-popup").text(data);
+      $("#feedback-sent-popup").popup("open");
+      console.log("success!");
+    } else {
+      console.log("failure :(");
+    }
   };
-  $(document).on('pagebeforeshow', '#feedback', function (e, data) {
+  $(document).on('pagebeforeshow', '#feedback-page', function (e, data) {
     //$('[data-role="navbar"]').navbar();
-    $('#feedback-navbarcont .xnavbar li a').removeClass('ui-btn-icon-top');
+    $('#feedback-navbarcont').find('.xnavbar > li > a').removeClass('ui-btn-icon-top');
     $('form.feedback').submit(function(e){
       e.preventDefault();
       e.stopPropagation();
 
-      $.ajax({
+      var xfer = $.ajax({
         method: 'POST',
         url: 'https://www.hamilton.edu/appPages/ajax/collectFeedback.cfm',
         data: {
@@ -881,20 +957,25 @@ var diningJSON = null;
           description: $('#feedback-text').val(),
           platform:  device.platform
         }
-      }).complete(feedbackSentDone);
+      }).done(feedbackSentDone);
     });
   });
 
-  bugReportDone = function() {
-    $(".bug-reported-popup").popup("open");
+  var bugReportDone = function(data, textStatus, jqXHR) {
+    if (jqXHR.status == 200) {
+      $("#bug-reported-popup").text(data);
+      $("#bug-reported-popup").popup("open");
+    } else {
+      console.log("failure :(");
+    }
   };
   $(document).on('pagebeforeshow', '#feedback-bug', function (e, data) {
-    $('#feedback-bug-navbarcont .xnavbar li a').removeClass('ui-btn-icon-top');
+    $('#feedback-bug-navbarcont').find('.xnavbar > li > a').removeClass('ui-btn-icon-top');
     $('form.bug').submit(function(e){
       e.preventDefault();
       e.stopPropagation();
 
-      $.ajax({
+      var xfer = $.ajax({
         method: 'POST',
         url: 'https://www.hamilton.edu/appPages/ajax/collectFeedback.cfm',
         data: {
@@ -905,7 +986,7 @@ var diningJSON = null;
           platform:  device.platform,
           consoleDump: errorConsole
         }
-      });
+      }).done(bugReportDone);
     });
   });
 

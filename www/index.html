@@ -71,9 +71,10 @@
     </div>
 
     <div data-role="page" id="diningmenus">
-      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
-        <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-          <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div>
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
+        <a class="back-btn ui-link ui-btn" href="#home" style="background-color:#002f86; color: white; width: 6em">
+            <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+            <span style="vertical-align: middle">Home</span>
         </a>
         <h1>Dining</h1>
       </div>
@@ -82,11 +83,11 @@
       </div>
       <div class="ldr"></div>
 
-      <div class="alert warning menu-invalid-data navmargin">
-        <strong>Warning</strong> the menu you see here may be out of date.
+      <div class="alert tight error menu-not-loaded navmargin">
+        <strong>Error</strong> the menu you requested could not be loaded.
       </div>
-      <div class="alert warning menu-out-of-date navmargin">
-        <strong>Warning</strong> the menu you see here may be out of date.
+      <div class="alert tight warning menu-out-of-date navmargin">
+        <strong>Warning</strong> this menu is for <span class="date-container">a different date</span>.
       </div>
       <div data-iscroll="" data-role="content" class="ui-content dining-halls">
         <ul data-role="listview" class="widelist diningmenuholder">
@@ -102,6 +103,15 @@
 
         </ul>
       </div>
+      <div data-role="footer" data-theme="b" class="menu-hide footer-nav-days">
+        <div data-role="navbar" class="ui-navbar" role="navigation">
+          <ul>
+            <li><a class="ui-btn-icon-left ui-icon-arrow-l" id="prev-day"></a></li>
+            <li><a class="ui-btn-active ui-state-persist" id="this-day"></a></li>
+            <li><a class="ui-btn-icon-right ui-icon-arrow-r" id="next-day"></a></li>
+          </ul>
+        </div><!-- /navbar -->
+      </div><!-- /footer -->
       <!-- /content -->
     </div>
 
@@ -280,29 +290,12 @@
           </ul>
         </div>
       </div>
-      <div data-role="page" id="map">
-
-        <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="none" class="pageheader" >
-          <a class="back-btn ui-link ui-btn" style="z-index: 10000" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-            <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a><h1>Campus Map</h1>
-            <div id="mapNav" data-role="navbar">
-              <ul style="margin-top: 35px; margin-bottom: -45px">
-                <li><a href="#list" id="find" data-rel="dialog" data-transition="pop" ><i class="fa fa-search fa-lg"></i>&nbsp;Find</a></li>
-                <li><a href="javascript:void(0);" id="compass"><i class="fa fa-compass fa-lg"></i>&nbsp;My Location</a></li>
-              </ul>
-            </div>
-          </div>
-
       <div data-iscroll="" data-role="content" class="ui-content">
         <div id="mapContent" data-role="content">
           <div id="map_canvas"></div>
         </div>
       </div>
     </div>
-
-    <script id="listTmpl" type="text/x-jquery-tmpl">
-        <li><a href="#map" id="${id}">${name}</a></li>
-    </script>
 
     <div data-role="page" id="list" data-close-btn="right">
       <div data-role="header" class="ui-bar-b">
@@ -313,7 +306,7 @@
       </div>
     </div>
 
-    <div data-role="page" id="feedback">
+    <div data-role="page" id="feedback-page">
       <div data-role="header" data-theme="b" data-transition="slideleft">
         <div id="feedback-navbarcont" data-role="navbar">
           <ul class="xnavbar">
@@ -321,10 +314,10 @@
               <a class="back-btn ui-btn-icon-left" href="#home" data-icon="arrow-l">Home</a>
             </li>
             <li>
-              <a class="ui-btn-icon-left ui-btn-active ui-state-persist" id="feedback-nav" href="#feedback" data-icon="comment">Feedback</a>
+              <a class="ui-btn-icon-left ui-btn-active ui-state-persist" id="feedback-nav2" href="#feedback-page" data-icon="comment">Feedback</a>
             </li>
             <li>
-              <a class="ui-btn-icon-left" id="bug-nav" href="#feedback-bug" data-icon="gear">Bug</a>
+              <a class="ui-btn-icon-left" id="bug-nav2" href="#feedback-bug" data-icon="gear">Bug</a>
             </li>
           </ul>
         </div>
@@ -335,7 +328,7 @@
         <label for="feedback-email">Email (so we can get back to you)</label>
         <input type="email" name="feedback-email" id="feedback-email">
         <button type="submit">Send</button>
-        <div id="feedback-sent-popup" data-role="popup" data-theme="e" data-overlay-theme="a" class="ui-content">
+        <div id="feedback-sent-popup" data-role="popup" data-theme="a" data-overlay-theme="a" class="ui-content">
           Bug reported.
         </div>
       </form>
@@ -349,7 +342,7 @@
               <a class="back-btn ui-btn-icon-left" href="#home" data-icon="arrow-l">Home</a>
             </li>
             <li>
-              <a class="ui-btn-icon-left" id="feedback-nav" href="#feedback" data-icon="comment">Feedback</a>
+              <a class="ui-btn-icon-left" id="feedback-nav" href="#feedback-page" data-icon="comment">Feedback</a>
             </li>
             <li>
               <a class="ui-btn-icon-left ui-btn-active ui-state-persist" id="bug-nav" href="#feedback-bug" data-icon="gear">Bug</a>
