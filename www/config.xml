@@ -25,14 +25,14 @@
         versionCode="10"
         version   = "1.0.0">
 
-  <name>Hamilton -Jim Test</name>
+  <name>Hamilton Mobile</name>
 
   <description>
-      Jim's test App
+      Hamilton College's mobile app
   </description>
 
   <author href="http://hamilton.edu" email="webhelp@hamilton.edu">
-      Jim Thomson and Don Stayner
+      Jim Thomson, Don Stayner, Katherine Droppa, Sam Kotlove, Chris Lee and Noah Lowenthal
   </author>
   <preference name="KeyboardDisplayRequiresUserAction" value="true" />
   <preference name="SuppressesIncrementalRendering" value="false" />
@@ -88,13 +88,13 @@
   <gap:plugin name="cordova-plugin-network-information" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
   <gap:plugin name="cordova-plugin-vibration" source="npm" />-->
-  <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
 
-  <access origin="*" />
+  <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+  <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
 
   <!--<access origin="*" browserOnly="true" />-->
 
-  <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
+  <!--<icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="resources/android/icon/drawable-mdpi-icon.png" gap:platform="android" gap:qualifier="mdpi"/>
   <icon src="resources/android/icon/drawable-hdpi-icon.png" gap:platform="android" gap:qualifier="hdpi"/>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png" gap:platform="android" gap:qualifier="xhdpi"/>
@@ -139,7 +139,7 @@
   <gap:splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" gap:platform="ios" width="1536" height="2048"/>
   <gap:splash src="resources/ios/splash/Default-Portrait~ipad.png" gap:platform="ios" width="768" height="1024"/>
   <gap:splash src="resources/ios/splash/Default@2x~iphone.png" gap:platform="ios" width="640" height="960"/>
-  <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>
+  <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>-->
 
   <!-- Default Icon and Splash -->
   <icon src="resources/icon.png" /> 
@@ -148,7 +148,6 @@
   <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-whitelist" spec="1" />
   <access origin="*"/>
-  <preference name="websecurity" value="disable" />
   
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
