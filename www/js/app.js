@@ -494,6 +494,12 @@ var diningJSON = null;
                 navlink: "feedback-page",
                 navorder: 11
               });
+              pagearray.push({
+                navIcon: "fa-calendar",
+                navTitle: "Calendar",
+                navlink: "collegeCalendar",
+                navorder: 12
+              });
 
               pagearray.sort(navorderCmp);
               // sorts the list by navorder
