@@ -1,0 +1,67 @@
+/* BUFF AND BLUE */
+
+.homeicon {
+    color: rgb(214,  186,  139) !important;
+    font-family: 'Josefin Slab';
+    font-size: 14.5px;
+    padding: 5px !important;
+    text-shadow: none !important;
+    background: none !important;
+}
+
+.homeicon:hover{
+    background: rgb(214,  186,  139) !important;
+    border-radius: 15px;
+    color: white !important;
+}
+
+span:hover #svg path, svg circle, svg rect {
+    color: red;
+}
+
+svg path, svg circle, svg rect{
+    fill: rgb(214,  186,  139); 
+}
+
+svg {
+    width: 30px !important;
+}
+
+.ath{
+    width: 25px !important;   
+}
+
+.news{
+    width: 35px !important;   
+}
+
+.title_bar {
+    padding: 5px;
+    margin-right: 12px;
+    background: rgb(214,  186,  139);
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: rgb(0,  47,  134);
+    font-family: '';
+    font-size: xx-large;
+    text-align: center;
+    text-shadow: none;
+    color: rgb(0,  47,  134);
+    text-decoration: underline;
+}
+
+.home-settings{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: none;
+    padding: 20px;
+    text-shadow: none;
+}
+
+.icon-settings{
+    color: rgb(214,  186,  139) !important;   
+}
