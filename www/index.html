@@ -26,23 +26,47 @@
     <script src="phonegap.js"></script>
   </head>
   <body>
+    <!-- HOME PAGE -->
     <div data-role="page" id="home">
-      <figure id="ham-home-img">
-        <img src="./images/ham_logo.png" width="180" >
-      </figure>
-      <hr class="home-divider">
-      <div class="dyn-nav">
-        <div class="ui-grid-b">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#phonenums"><i class="fa fa-phone fa-2x"></i></a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#events"><i class="fa fa-birthday-cake fa-2x"></i></a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#diningmenus"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-        </div>
-        <div class="ui-grid-b">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn" href="#map"><i class="fa fa-map-marker fa-2x"></i></a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn" href="#news"><i class="fa fa-newspaper-o fa-2x"></i></a></div>
-        </div>
+      <div id="ham-home-img" class="title_bar" style="padding-bottom:0px;">
+        <img src="/icons/Ham.png" width=35% style=" margin-top: 2px; border:solid; border-color:white; border-radius: 12px;">
       </div>
+      <!-- <hr class="home-divider">
+      STATIC BACKGROUND HEIGHT- not good -->
+      <div class="dyn-nav" style="background: white; height: 550px">
+      <!-- first row -->
+        <div class="ui-grid-c"> 
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="/icons/contacts.svg" class=" imgResponsive svg " /><br>Contacts</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#events"><img src="/icons/calender.svg" class="imgResponsive svg" /><br>Calander</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon hours" href="#dininghrs"><img src="/icons/dining.svg" class="imgResponsive svg"/><br>Dining Hours</a></div>
+            <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
+        </div>
+          <!-- second row -->
+        <div class="ui-grid-c">
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="/icons/map.svg" class="imgResponsive svg" /><br>Map</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="/icons/news.svg" class="imgResponsive svg news" /><br>News</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="/icons/dining.svg" class="imgResponsive svg news-width" /><br>Dining</a></div>
+            <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
+        </div>
+          <!-- third row -->
+      <div class="ui-grid-c">
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#phonenums"><img src="/icons/AthleticsH.svg" class="imgResponsive svg ath-width" /><br>Athletics</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback"><img src="/icons/comment.svg" class="imgResponsive svg" /><br>Feedback</a></div>
+          
+        </div>
+          <!-- fourth row 
+          <div class="ui-grid-b">
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
+        </div>-->
+        
+          <div class="home-settings"><a href="#diningmenus"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
+      </div>
+      
     </div>
+    <!-- END HOME PAGE -->
+    
+    
     <div data-role="page" id="phonenums">
       <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slidefade" class="pageheader">
         <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
