@@ -889,12 +889,12 @@ var diningJSON = null;
           setAudiencePrefTable();
           //populate pref table ( later will be based on the user choice)
           PopulateAudiencePrefTable();
-          getNavigationandPages();
+          //getNavigationandPages();
         } else {
           //it exists get all the pages.
           PopulateAudiencePrefTable();
           // this function builds the pages and the navigation
-          getNavigationandPages();
+          //getNavigationandPages();
         }
       }, table);
 
