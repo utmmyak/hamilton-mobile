@@ -847,6 +847,19 @@ var diningJSON = null;
       }
     });
   }
+    
+
+  function BuildColorTable() {
+      
+      
+  }
+    
+  function LoadColors() {
+      
+      
+      
+  }
+    
   /* Check to see if version is Stale */
 
 
@@ -895,6 +908,19 @@ var diningJSON = null;
           PopulateAudiencePrefTable();
           // this function builds the pages and the navigation
           //getNavigationandPages();
+        }
+      }, table);
+        
+      //Color CSS Switcher- unsure if necessary    
+      var table = 'colors';
+      ckTable(db, function (callBack) {
+        if (callBack == 0) {
+          //create db tables
+          BuildColorTable();
+          
+        } else {
+          //table exists, use preferred css colors
+          LoadColors();
         }
       }, table);
 

@@ -9,6 +9,9 @@
     <link href="stylesheets/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="stylesheets/jquery.mobile.iscrollview-pull.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="css/hamApp.css" media="screen" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/buff_blue_color.css" title="blue">
+    <link rel="alternate stylesheet" type="text/css" href="css/color_icons.css" title="muli">  
+    <link rel="alternate stylesheet" type="text/css" href="css/large.css" title="large">  
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
       
@@ -37,25 +40,24 @@
       </div>
       <!-- <hr class="home-divider">
       STATIC BACKGROUND HEIGHT- not good -->
-      <div class="dyn-nav" style="background: white; height: 550px">
+      <div class="home-all-icons">
       <!-- first row -->
         <div class="ui-grid-c"> 
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="/icons/contacts.svg" class=" imgResponsive svg " /><br>Contacts</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#events"><img src="/icons/calender.svg" class="imgResponsive svg" /><br>Calander</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon hours" href="#dininghrs"><img src="/icons/dining.svg" class="imgResponsive svg"/><br>Dining Hours</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="/icons/dining.svg" class="imgResponsive svg"/><br>Dining</a></div>
             <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
         </div>
           <!-- second row -->
         <div class="ui-grid-c">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="/icons/map.svg" class="imgResponsive svg" /><br>Map</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="/icons/news.svg" class="imgResponsive svg news" /><br>News</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="/icons/dining.svg" class="imgResponsive svg news-width" /><br>Dining</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="/icons/news.svg" class="imgResponsive svg news-width" /><br>News</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#phonenums"><img src="/icons/AthleticsH.svg" class="imgResponsive svg ath-width" /><br>Athletics</a></div>
             <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
         </div>
           <!-- third row -->
       <div class="ui-grid-c">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#phonenums"><img src="/icons/AthleticsH.svg" class="imgResponsive svg ath-width" /><br>Athletics</a></div>
           <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback"><img src="/icons/comment.svg" class="imgResponsive svg" /><br>Feedback</a></div>
           
         </div>
@@ -64,9 +66,19 @@
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
         </div>-->
         
-          <div class="home-settings"><a href="#diningmenus"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
+          <div class="home-settings"><a href="#colorsettings" data-rel="popup" data-transition="pop"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
       </div>
-      
+            
+            <div data-role ="popup" id = "colorsettings" data-theme="a">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Choose a Theme</li>
+                <li><a href="#athleticEvents">Buff &amp; Blue</a></li>
+                <li><a href="#artEvents">Multi-Colored</a></li>
+                <li><a href="#alumniEvents">Large Icon</a></li>
+                </ul>
+        </div>
+        
+        
     </div>
     <!-- END HOME PAGE -->
     
@@ -120,7 +132,7 @@
       <div data-iscroll="" data-role="content" class="ui-content dining-halls">
         <ul data-role="listview" class="widelist diningmenuholder">
           <li data-bamco-id="109"><a><span class="open-indicator"></span><span class="dining-hall-block">Soper Commons<span class="hours-text">07:30 - 20:00</span></span></a></li>
-          <li data-bamco-id="110"><a><span class="open-indicator"></span><span class="dining-hall-block">McEwen Cafe<span class="hours-text">07:30 - 20:00</span></span></span></a></li>
+          <li data-bamco-id="110"><a><span class="open-indicator"></span><span class="dining-hall-block">McEwen Cafe<span class="hours-text">07:30 - 20:00</span></span></a></li>
           <li data-bamco-id="598"><a><span class="open-indicator"></span><span class="dining-hall-block">The Little Pub<span class="hours-text">11:30 - 20:00</span></span></a></li>
           <li data-bamco-id="512"><span class="open-indicator"></span><span class="dining-hall-block">The Howard Diner<span class="hours-text">9:00 - 24:00</span></span></li>
         </ul>
@@ -148,7 +160,7 @@
         <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
           <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
           <h1>Events</h1>
-              <a href="#eventsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
+              <a href="#eventsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
       </div>
       <div class="ui-content eventsholder" data-iscroll="" data-role="content">
           <div id="feed" class="rssFeed" ></div>

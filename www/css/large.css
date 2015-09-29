@@ -1,22 +1,30 @@
-/* BUFF AND BLUE */
+/*saved color settings Buff/blue/white */
 
-.homeicon {
-    color: rgb(214,  186,  139) !important;
-    font-family: 'Josefin Slab';
-    font-size: 14.5px;
-    padding: 5px !important;
-    text-shadow: none !important;
-    background: none !important;
+.homebtn {
+    font-family: cursive;
+    font-size: small;
 }
 
-svg path, svg circle, svg rect{
-    fill: currentcolor; 
+.homeicon {
+    color: rgb(0,  47,  134) !important;
+    font-family: 'Josefin Slab';
+    font-size: 15px;
+    padding: 5px !important;
+    text-shadow: none !important;
+    background: white !important;
+    border-width: thick;
+    border-style: solid;
+    border-radius: 15px;
 }
 
 .homeicon:hover{
     background: rgb(214,  186,  139) !important;
     border-radius: 15px;
     color: white !important;
+}
+
+svg path, svg circle, svg rect{
+    fill: rgb(0,  47,  134); 
 }
 
 svg {
@@ -33,11 +41,8 @@ svg {
 
 .title_bar {
     padding: 5px;
-    background: rgb(214,  186,  139);
-    border-top-width: 20px;
-    border-bottom-width: 20px;
-    border-right-width: 0px;
-    border-left-width: 0px;
+    background: white;
+    border-width: 20px;
     border-style: solid;
     border-color: rgb(0,  47,  134);
     font-family: '';
@@ -58,14 +63,7 @@ svg {
 }
 
 .icon-settings{
-    color: rgb(214,  186,  139) !important;
-    padding: 3px;
-}
-
-.icon-settings:hover{
-    background: rgb(214,  186,  139) !important;
-    border-radius: 5px;
-    color: white !important;   
+    color: rgb(214,  186,  139) !important;   
 }
 
 .home-all-icons{
