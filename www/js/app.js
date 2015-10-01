@@ -356,10 +356,10 @@ var diningJSON = null;
     if (connectionStatus == "online") {
       console.log('delta', dayDelta);
       var thisDay = moment(new Date()).add(dayDelta, 'd');
-      var thisDayStr = thisDay.format("YYYY-MM-D"); // sets day difference to dayDelta
+      var thisDayStr = thisDay.format("YYYY-MM-DD"); // sets day difference to dayDelta
       $("#this-day").html(thisDayStr + "<br/>Current Day");
-      $("#prev-day").html(thisDay.add(-1, 'd').format("YYYY-MM-D") + "<br/>Previous");
-      $("#next-day").html(thisDay.add(2, 'd').format("YYYY-MM-D") + "<br/>Next");
+      $("#prev-day").html(thisDay.add(-1, 'd').format("YYYY-MM-DD") + "<br/>Previous");
+      $("#next-day").html(thisDay.add(2, 'd').format("YYYY-MM-DD") + "<br/>Next");
 
       loadDiningAJAXRequest = $.ajax({
         url: "http://legacy.cafebonappetit.com/api/2/menus?format=jsonp&cafe=110,109,598,512&callback=diningJSONCallback&date=" + thisDayStr,

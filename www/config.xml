@@ -91,6 +91,7 @@
 
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
+  <gap:plugin name="cordova-plugin-geolocation" source="npm" />
 
   <!--<access origin="*" browserOnly="true" />-->
 
@@ -148,9 +149,12 @@
   <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-whitelist" spec="1" />
   <access origin="*"/>
-  
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*/*" />
+  <allow-navigation href="file://*/*" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
+  <allow-intent href="file://*/*" />
   <allow-intent href="tel:*" />
   <allow-intent href="sms:*" />
   <allow-intent href="mailto:*" />

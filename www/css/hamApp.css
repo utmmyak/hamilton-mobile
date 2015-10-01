@@ -156,9 +156,9 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 .hozNavbar {overflow: hidden; xwidth: 5000px;}
 /* this is a placeholder all dynamic pages will go in here*/
 #lastStatic {display: none;}
-#mapContent { padding: 0; }
+#mapContent { padding: 0; margin-top: 2.8em; }
 #map_canvas { width: 100%; }
-.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
+.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: url('images/map-marker-blue.png') top left no-repeat;}
 .ui-content:not(.items):not(.dining-halls)  {margin-top:20px;}
 footer {height: 60px;}
 .container div {
@@ -180,15 +180,15 @@ footer {height: 60px;}
   }
 
   /* Make the buttons in the header just disappear - they're too big for a tiny header */
-  .ui-header .ui-btn {
+  .ui-header:not(.map) .ui-btn {
     display: none;
   }
 
-  .ui-navbar a {
+  .ui-navbar:not(.map) a {
     height: 37px;    /* + 2px border = 39px */
   }
 
-  .ui-navbar .ui-btn-inner {
+  .ui-navbar:not(.map) .ui-btn-inner {
     font-size: 13px;
   }
     
