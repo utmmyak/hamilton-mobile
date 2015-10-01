@@ -36,34 +36,33 @@
     <!-- HOME PAGE -->
     <div data-role="page" id="home">
       <div id="ham-home-img" class="title_bar" style="padding-bottom:0px;">
-        <img src="/icons/Ham.png" width=35% style=" margin-top: 2px; border:solid; border-color:white; border-radius: 12px;">
+        <img src="icons/Ham.png" width=35% style=" margin-top: 2px; border:solid; border-color:white; border-radius: 12px;">
       </div>
       <!-- <hr class="home-divider">
       STATIC BACKGROUND HEIGHT- not good -->
       <div class="home-all-icons">
       <!-- first row -->
         <div class="ui-grid-c"> 
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="/icons/contacts.svg" class=" imgResponsive svg " /><br>Contacts</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#events"><img src="/icons/calender.svg" class="imgResponsive svg" /><br>Calander</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="/icons/dining.svg" class="imgResponsive svg"/><br>Dining</a></div>
-            <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg"/><br>Contacts</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg"/><br>Calendar</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg"/><br>Dining</a></div>
+          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg"/><br>Events</a></div>
         </div>
           <!-- second row -->
         <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="/icons/map.svg" class="imgResponsive svg" /><br>Map</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="/icons/news.svg" class="imgResponsive svg news-width" /><br>News</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#phonenums"><img src="/icons/AthleticsH.svg" class="imgResponsive svg ath-width" /><br>Athletics</a></div>
-            <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg"/><br>Map</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>News</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
+          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg"/><br>WHCL</a></div>
         </div>
           <!-- third row -->
       <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#phonenums"><img src="/icons/list_icon.svg" class="imgResponsive svg" /><br>Clubs</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback"><img src="/icons/comment.svg" class="imgResponsive svg" /><br>Feedback</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg" /><br>Feedback</a></div>
           
         </div>
           <!-- fourth row 
           <div class="ui-grid-b">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="/icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
         </div>-->
         
           <div class="home-settings"><a href="#colorsettings" data-rel="popup" data-transition="pop"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
@@ -109,10 +108,25 @@
       </div>
       <!-- /content -->
     </div>
+    
+    <div data-role="page" id="radio">
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
+          <a class="ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+              <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <span style="vertical-align: middle">Home</span>
+          </a>
+          <h1>WHCL Radio</h1>
+      </div>
+      <div style="text-align:center">
+        <audio controls src="http://150.209.66.147:8000/stream/1/" style="margin-left:auto; margin-right:auto;width:24em"></audio>
+      </div>
+      <!-- /content -->
+    </div>
+    
 
     <div data-role="page" id="diningmenus">
       <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
-        <a class="back-btn ui-link ui-btn" href="#home" style="background-color:#002f86; color: white; width: 6em">
+        <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
             <i class="fa fa-chevron-left fa-2x iconfloat"></i>
             <span style="vertical-align: middle">Home</span>
         </a>
