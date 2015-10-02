@@ -82,13 +82,13 @@
     </div>
     <!-- END HOME PAGE -->
     
-    
     <div data-role="page" id="phonenums">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slidefade" class="pageheader">
-        <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-          <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div>
-        </a>
-        <h1>Phone Numbers</h1>
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
+          <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+              <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <span style="vertical-align: middle">Home</span>
+          </a>
+          <h1>Phone Numbers</h1>
       </div>
       <div data-iscroll="" data-role="content" class="ui-content">
         <ul data-role="listview" class="widelist" id="phonenumlist" data-filter="true" data-autodividers="true">
@@ -98,11 +98,12 @@
     </div>
 
     <div data-role="page" id="news">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-        <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-          <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div>
-        </a>
-        <h1>News</h1>
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
+          <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+              <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <span style="vertical-align: middle">Home</span>
+          </a>
+          <h1>News</h1>
       </div>
       <div class="ui-content newsholder" data-iscroll="" data-role="content">
         <div id="feed" class="rssFeed" ></div>
@@ -111,7 +112,7 @@
     </div>
     
     <div data-role="page" id="radio">
-      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
           <a class="ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
               <i class="fa fa-chevron-left fa-2x iconfloat"></i>
               <span style="vertical-align: middle">Home</span>
@@ -126,7 +127,7 @@
     
 
     <div data-role="page" id="diningmenus">
-      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
             <i class="fa fa-chevron-left fa-2x iconfloat"></i>
             <span style="vertical-align: middle">Home</span>
@@ -171,11 +172,13 @@
     </div>
 
     <div data-role="page" id="events">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-        <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-          <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
-          <h1>Events</h1>
-              <a href="#eventsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
+          <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+              <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+              <span style="vertical-align: middle">Home</span>
+          </a>
+          <h1>All Events</h1>
+          <a href="#eventsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
       </div>
       <div class="ui-content eventsholder" data-iscroll="" data-role="content">
           <div id="feed" class="rssFeed" ></div>
@@ -187,8 +190,7 @@
                 <li><a href="#athleticEvents">Athletics</a></li>
                 <li><a href="#artEvents">Arts</a></li>
                 <li><a href="#alumniEvents">Alumni</a></li>
-                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
-                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW 
+                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW
                 <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
                     <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
                     <ul data-role="listview">
@@ -204,8 +206,10 @@
 
         <div data-role="page" id="athleticEvents">
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+                  <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                  <span style="vertical-align: middle">Home</span>
+              </a>
               <h1>Athletic Events</h1>
               <a href="#athleticsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
@@ -218,8 +222,7 @@
                 <li><a href="#events">All Events</a></li>
                 <li><a href="#artEvents">Arts</a></li>
                 <li><a href="#alumniEvents">Alumni</a></li>
-                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
-                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW 
+                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW
                 <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
                     <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
                     <ul data-role="listview">
@@ -235,8 +238,10 @@
 
         <div data-role="page" id="artEvents">
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+                  <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                  <span style="vertical-align: middle">Home</span>
+              </a>
               <h1>Arts Events</h1>
               <a href="#artsFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
@@ -249,8 +254,7 @@
                 <li><a href="#events">All Events</a></li>
                 <li><a href="#athleticEvents">Athletics</a></li>
                 <li><a href="#alumniEvents">Alumni</a></li>
-                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
-                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW 
+                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW
                 <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
                     <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
                     <ul data-role="listview">
@@ -266,8 +270,10 @@
 
         <div data-role="page" id="alumniEvents">
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-            <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+                  <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                  <span style="vertical-align: middle">Home</span>
+              </a>
               <h1>Alumni Events</h1>
               <a href="#alumniFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
@@ -280,8 +286,7 @@
                 <li><a href="#events">All Events</a></li>
                 <li><a href="#athleticEvents">Athletics</a></li>
                 <li><a href="#artEvents">Arts</a></li>
-                <li><a href="#collegeCalendarEvents">College Calendar</a></li>
-                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW 
+                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW
                 <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
                     <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
                     <ul data-role="listview">
@@ -295,10 +300,13 @@
             </div>
         </div>
 
-        <div data-role="page" id="collegeCalendarEvents">
+        <!--<div data-role="page" id="collegeCalendarEvents">
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
             <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-              <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
+              <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+                  <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                  <span style="vertical-align: middle">Home</span>
+              </a>
               <h1>College Calendar Events</h1>
               <a href="#collegeCalendarFilterPopup" data-rel="popup" data-transition="slideup" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
@@ -312,22 +320,12 @@
                 <li><a href="#athleticEvents">Athletics</a></li>
                 <li><a href="#artEvents">Arts</a></li>
                 <li><a href="#alumniEvents">Alumni</a></li>
-                <!-- COMMENTING OUT COLLAPSIBLE LOCATION OPTION FOR NOW 
-                <div data-role="collapsible" data-theme="b" data-inset="false" data-content-theme="d" data-iconpos="right" style="border: 0px">
-                    <h3 style="margin-top: 0px !important;margin-bottom: 0px !important;">By Location</h3>
-                    <ul data-role="listview">
-                            <li><a href="#" data-rel="dialog">Place 1</a></li>
-                            <li><a href="#" data-rel="dialog">Place 2</a></li>
-                            <li><a href="#" data-rel="dialog">Place 3</a></li>
-                            <li><a href="#" data-rel="dialog">Place 4</a></li>
-                    </ul
-                </div><-->
             </ul>
             </div>
-        </div>
+        </div>-->
 
     <div data-role="page" id="map">
-      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide" style="padding-top: 0; margin-bottom: 0">
+      <div data-id="header" data-role="header" data-transition="slideleft" class="pageheader menu-hide">
           <a class="ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
               <i class="fa fa-chevron-left fa-2x iconfloat"></i>
               <span style="vertical-align: middle">Home</span>
@@ -431,9 +429,11 @@
     
      <div data-role="page" id="collegeCalendar">
         <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" data-transition="slideup" class="pageheader">
-          <a class="back-btn ui-link ui-btn" href="#home"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
-            <div class="hamicon"><img src="resources/ios/icon/icon-72@2x.png" class="imgResponsive" /></div></a>
-              <h1>College Calendar</h1>
+            <a class="back-btn ui-link ui-btn" href="#home" data-transition="slideright" style="background-color:#002f86; color: white; width: 6em">
+                <i class="fa fa-chevron-left fa-2x iconfloat"></i>
+                <span style="vertical-align: middle">Home</span>
+            </a>
+            <h1>College Calendar</h1>
         </div>
         <!-- might need to mess with height stretching more --> 
         <div class="ui-content eventsholder" data-iscroll="" data-role="content">

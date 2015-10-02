@@ -13,7 +13,7 @@ svg path, svg circle, svg rect{
     fill: currentcolor; 
 }
 
-.homeicon:hover{
+.homeicon:hover,.homeicon:active{
     background: rgb(214,  186,  139) !important;
     border-radius: 15px;
     color: white !important;
