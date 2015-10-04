@@ -36,13 +36,13 @@ var campusMap = (function(){
         infoWin = temp;
     };
 
-
+    var bounds = new google.maps.LatLngBounds(); // the limit for scrolling the map
     var putAllPointsOnMap = function() {
         for (var i in App.points) {
             if (App.points.hasOwnProperty(i)){
                 var point = App.points[i],
                     latlng = new google.maps.LatLng(point.lat,point.lng);
-
+                bounds.extend(latlng);
                 var marker = new google.maps.Marker({
                     position: latlng,
                     map: map,
@@ -53,10 +53,12 @@ var campusMap = (function(){
                 marker.set('role', 'marker');
                 marker.addListener('click', markerClick);
                 marker.addListener('touchdown', markerClick);
-              console.log("point", i, "added");
+                console.log("point", i, "added");
             }
         }
+        map.fitBounds(bounds); // enforce map scrolling limit
     };
+
 
     // get all buildings points
     var loadPoints = function(items){
@@ -76,7 +78,7 @@ var campusMap = (function(){
             temp = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400});
             temp.setPosition(new google.maps.LatLng(value.lat, value.lng));
             temp.setContent("<div id=\"content\" style=\"text-align:center\">"+
-                            "<img src=\"http://www.hamilton.edu"+value.imgpath+"\" style=\"max-width:100%;max-height:160px;\">"+
+                            '<div style="height: 140px;"><img src="http://www.hamilton.edu'+value.imgpath+'" style="max-width:100%;max-height:160px;"></div>'+
                             "<h1 id=\"firstHeading\" class=\"firstHeading\">"+value.name+"</h1>"+
                             "<div id=\"bodyContent\" style=\"text-align:left\">"+
                             "<p>"+value.description+"</p>"+
@@ -104,8 +106,8 @@ var campusMap = (function(){
     // add a current location marker to map
     var addLocationMarker = function(curLatLng, curMap) {
         var marker = new google.maps.Marker({
-             position: curLatLng
-            ,map: curMap
+            position: curLatLng,
+            map: curMap
         });
     };
 
@@ -166,6 +168,7 @@ var campusMap = (function(){
 
         // setup and display map
         var mapOptions = {
+            minZoom: 15,
             zoom: 16,
             maxZoom: 19,
             center: hamLatLng,
@@ -193,6 +196,14 @@ var campusMap = (function(){
                 }
             ];
         map.setOptions({styles: styles});
+
+        google.maps.event.addListener(map, 'dragend', function(){
+            if (bounds.contains(map.getCenter())) return;
+            map.setCenter(hamLatLng);
+        });
+
     });
+
     return App;
+
 })();

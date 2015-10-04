@@ -54,10 +54,11 @@ body {
 
 /* make room for version buttons in header */
 .ui-header .ui-title {
-  /*text-align: right;*/
-  text-shadow: none;
-  /*margin-left: 10px;*/
+    /*text-align: right;*/
+    text-shadow: none;
+    /*margin-left: 10px;*/
     font-size:22px;
+    margin: 0 15%;
     /*margin: 0 10% 0 0;*/
 }
 
@@ -108,9 +109,14 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
     background-color: #002f86;
     border: 0;
     color: #fff;
+<<<<<<< HEAD
     height: 70px;
     padding-top: 5px;
     margin-bottom: 5px;
+=======
+    /*padding-top: 25px;
+    margin-bottom: 15px;*/
+>>>>>>> cf1c597f80fc48ee440a597dfa4aefd77426bf8e
 }
 .footer {
     background: #ccc;
@@ -172,7 +178,9 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 #mapContent { padding: 0; margin-top: 2.8em; }
 #map_canvas { width: 100%; }
 .map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: url('images/map-marker-blue.png') top left no-repeat;}
-.ui-content:not(.items):not(.dining-halls)  {margin-top:20px;}
+.ui-header .ui-title:last-child {
+    margin: 0 0;
+}
 footer {height: 60px;}
 .container div {
         float: left;

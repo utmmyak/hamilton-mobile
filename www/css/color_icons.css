@@ -7,7 +7,7 @@
     background: none !important;
 }
 
-.homeicon:hover{
+.homeicon:hover,.homeicon:active{
     background: rgb(0,  47,  134) !important;
     border-radius: 15px;
     color: white !important;
