@@ -94,15 +94,23 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 .ui-navbar .ui-btn-inner {
   font-size: 14px;
 }
-.hamicon {float: left; margin-left: 2%; width:57px; height: 57px;}
+.hamicon {margin-left: 10px; 
+    width:30px; 
+    padding-top: 10px; 
+    border-radius: 5px; 
+    background: white !important; 
+    color: rgb(0,  47,  134);
+}
+
 .imgResponsive {max-width: 100%; height: auto; width: 100%;}
 
 .ui-page .pageheader {
     background-color: #002f86;
     border: 0;
     color: #fff;
-    padding-top: 25px;
-    margin-bottom: 15px;
+    height: 70px;
+    padding-top: 5px;
+    margin-bottom: 5px;
 }
 .footer {
     background: #ccc;
@@ -152,7 +160,12 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
      width:100%;
   }
 .iscroll-content {padding:0px;}
-.iconfloat {float:left; margin-left: 7%; margin-top: 3%;}
+.iconfloat {
+    float:left;  
+    margin-top: 17%; 
+    color: rgb(0,  47,  134); 
+    text-shadow: none;
+    }
 .hozNavbar {overflow: hidden; xwidth: 5000px;}
 /* this is a placeholder all dynamic pages will go in here*/
 #lastStatic {display: none;}
@@ -269,6 +282,32 @@ footer {height: 60px;}
 .ui-btn {
   border: none;
 }
+
+.back-btn {
+  border: none;
+  height: 35px;
+  background: white !important;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  margin-top: 7px;
+  color: rgb(0,  47,  134);
+}
+
+svg path, svg circle, svg rect{
+    fill: currentcolor; 
+}
+
+.back-btn:hover {
+    background: rgb(214,  186,  139) !important;
+    fill: white !important;
+}
+
+.house {
+    color: rgb(0,  47,  134);
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
 .diningmenuholder li {
   cursor: pointer;
 }
@@ -373,4 +412,10 @@ footer {height: 60px;}
   width: 100%;
 }
 
+.hamTitle {
+    color: rgb(0,  47,  134);
+    padding: 0px !important;
+    margin: 0px !important;
+
+}
 
