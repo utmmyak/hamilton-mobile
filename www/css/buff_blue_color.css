@@ -10,7 +10,7 @@
 }
 
 svg path, svg circle, svg rect{
-    fill: currentcolor; 
+    fill: currentColor; 
 }
 
 .homeicon:hover,.homeicon:active{
@@ -32,14 +32,14 @@ svg {
 }
 
 .title_bar {
-    padding: 5px;
-    background: rgb(214,  186,  139);
-    border-top-width: 20px;
-    border-bottom-width: 20px;
+    padding: 15px;
+    background: rgb(0,  47,  134);
+    border-top-width: 18px;
+    border-bottom-width: 0px;
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(0,  47,  134);
+    border-color: rgb(214,  186,  139);
     font-family: '';
     font-size: xx-large;
     text-align: center;

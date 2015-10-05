@@ -109,14 +109,9 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
     background-color: #002f86;
     border: 0;
     color: #fff;
-<<<<<<< HEAD
     height: 70px;
     padding-top: 5px;
     margin-bottom: 5px;
-=======
-    /*padding-top: 25px;
-    margin-bottom: 15px;*/
->>>>>>> cf1c597f80fc48ee440a597dfa4aefd77426bf8e
 }
 .footer {
     background: #ccc;
@@ -421,9 +416,16 @@ svg path, svg circle, svg rect{
 }
 
 .hamTitle {
-    color: rgb(0,  47,  134);
-    padding: 0px !important;
-    margin: 0px !important;
-
+    color: white !important;
+    padding-top: 5px !important;
+    margin-right: 15% !important;
+    margin-left: 15% !important;
+    height: 50px;
+    width: 70%;
+    border-bottom: solid;
+    border-top: solid;
 }
 
+svg path, svg circle, svg rect{
+    fill: currentColor; 
+}
