@@ -1068,14 +1068,6 @@ var diningJSON = null;
       header: false
     }, rewriteClassEvents);
   });
-    
-  $(document).on('pagebeforeshow', '#collegeCalendarEvents', function (e, data) {
-    $('#collegeCalendarEvents').find('.iscroll-content').rssfeed('https://www.google.com/calendar/feeds/hamilton.edu_3239373830363935323439%40resource.calendar.google.com/public/basic', {
-      limit: 25,
-      linktarget: '_blank',
-      header: false
-    }, rewriteClassEvents);
-  });
 
   $(document).on('pagebeforeshow', function (event, ui) {
     //var shownPage = $(".ui-page.ui-page-theme-a.ui-page-header-fixed.ui-page-footer-fixed.iscroll-page.ui-page-active");
