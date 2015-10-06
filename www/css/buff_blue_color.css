@@ -19,7 +19,7 @@ svg path, svg circle, svg rect{
     color: white !important;
 }
 
-svg {
+.svg-width {
     width: 30px !important;
 }
 
@@ -27,8 +27,8 @@ svg {
     width: 25px !important;   
 }
 
-.news{
-    width: 35px !important;   
+.news-width{
+    width: 35px !important;
 }
 
 .title_bar {
@@ -46,6 +46,12 @@ svg {
     text-shadow: none;
     color: rgb(0,  47,  134);
     text-decoration: underline;
+}
+
+.ham-logo{
+  margin-top:-430px; 
+  background: rgb(0,  47,  134) !important; 
+  color: #001F86 !important;
 }
 
 .home-settings{

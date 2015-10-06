@@ -17,7 +17,7 @@ svg path, svg circle, svg rect{
     fill: currentColor; 
 }
 
-svg {
+.svg-width {
     width: 30px !important;
 }
 
@@ -57,20 +57,27 @@ svg {
 }
 
 .title_bar {
-    padding: 5px;
-    background: rgb(214,  186,  139);
-    border-top-width: 20px;
-    border-bottom-width: 20px;
+    padding: 15px;
+    background: rgb(0,  47,  134);
+    border-top-width: 18px;
+    border-bottom-width: 0px;
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(0,  47,  134);
+    border-color: rgb(214,  186,  139);
     font-family: '';
     font-size: xx-large;
     text-align: center;
     text-shadow: none;
     color: rgb(0,  47,  134);
     text-decoration: underline;
+}
+
+
+.ham-logo{
+  margin-top:-450px; 
+  background: none !important;  
+  color: white !important;
 }
 
 .home-settings{
@@ -84,4 +91,9 @@ svg {
 
 .icon-settings{
     color: rgb(214,  186,  139) !important;   
+}
+
+.home-all-icons{
+    background: none !important; 
+    height: 600px;
 }

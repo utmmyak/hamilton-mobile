@@ -418,12 +418,12 @@ svg path, svg circle, svg rect{
 .hamTitle {
     color: white !important;
     padding-top: 5px !important;
-    margin-right: 15% !important;
-    margin-left: 15% !important;
+
     height: 50px;
-    width: 70%;
-    border-bottom: solid;
-    border-top: solid;
+    
+    border: solid;
+    border-radius: 10px;
+    background: rgb(214,  186,  139);
 }
 
 svg path, svg circle, svg rect{

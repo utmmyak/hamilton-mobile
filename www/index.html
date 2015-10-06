@@ -44,21 +44,21 @@
       <div class="home-all-icons">
       <!-- first row -->
         <div class="ui-grid-c"> 
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg"/><br>Contacts</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg"/><br>Calendar</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg"/><br>Dining</a></div>
-          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg"/><br>Events</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></div>
+          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg-width svg"/><br>Calendar</a></div>
+          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></div>
+          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></div>
         </div>
           <!-- second row -->
         <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg"/><br>Map</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>News</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
-          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg"/><br>WHCL</a></div>
+          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></div>
         </div>
           <!-- third row -->
       <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg" /><br>Feedback</a></div>
+          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></div>
           
         </div>
           <!-- fourth row 
@@ -66,19 +66,20 @@
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
         </div>-->
         
-          <div class="home-settings"><a href="#colorsettings" data-rel="popup" data-transition="pop"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
+         <!-- <div class="home-settings"><a href="#colorsettings" data-rel="popup" data-transition="pop"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
       </div>
             
             <div data-role ="popup" id = "colorsettings" data-theme="a">
             <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider">Choose a Theme</li>
-                <li><a href="#athleticEvents">Buff &amp; Blue</a></li>
-                <li><a href="#artEvents">Multi-Colored</a></li>
-                <li><a href="#alumniEvents">Large Icon</a></li>
-                </ul>
+                <li><a href="#" onclick="setActiveStyleSheets('blue'); return true;">Buff &amp; Blue</a></li>
+                <li><a href="#" onclick="setActiveStyleSheets('multi'); return true;">Multi-Colored</a></li>
+                <!--<li><a href="#alumniEvents">Large Icon</a></li> 
+                </ul>  -->
         </div>
-        
-        
+        <div class="ham-logo">
+            <img src="icons/ham_seal.svg" class="imgResponsive svg"/>
+        </div>
     </div>
     <!-- END HOME PAGE -->
     
