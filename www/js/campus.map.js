@@ -37,10 +37,11 @@ var campusMap = (function(){
     };
 
     var bounds = new google.maps.LatLngBounds(); // the limit for scrolling the map
-    var putAllPointsOnMap = function() {
-        for (var i in App.points) {
-            if (App.points.hasOwnProperty(i)){
-                var point = App.points[i],
+    var putAllPointsOnMap = function(data) {
+        for (var i in data) {
+            if (data.hasOwnProperty(i)){
+              console.log('adding', i);
+                var point = data[i],
                     latlng = new google.maps.LatLng(point.lat,point.lng);
                 bounds.extend(latlng);
                 var marker = new google.maps.Marker({
@@ -53,7 +54,6 @@ var campusMap = (function(){
                 marker.set('role', 'marker');
                 marker.addListener('click', markerClick);
                 marker.addListener('touchdown', markerClick);
-                console.log("point", i, "added");
             }
         }
         map.fitBounds(bounds); // enforce map scrolling limit
@@ -61,10 +61,10 @@ var campusMap = (function(){
 
 
     // get all buildings points
-    var loadPoints = function(items){
-        App.points = items;
-        fillFindList(App.points);
-    };
+    //var loadPoints = function(items){
+    //    App.points = items;
+    //    fillFindList(App.points);
+    //};
 
     var fillFindList = function(items){
         //$('#listTmpl')
@@ -73,8 +73,8 @@ var campusMap = (function(){
     };
     
     // create all infowindows
-    var createInfoWins = function() {
-        $.each(App.points,function(index,value){
+    var createInfoWins = function(data) {
+        $.each(data,function(index,value){
             temp = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400});
             temp.setPosition(new google.maps.LatLng(value.lat, value.lng));
             temp.setContent("<div id=\"content\" style=\"text-align:center\">"+
@@ -131,6 +131,7 @@ var campusMap = (function(){
 
 
     $(document).ready(function(){
+        console.log('loading campus map');
 
         $('#hamSplash .mobilenav.search').tap(function() {
 
@@ -146,11 +147,19 @@ var campusMap = (function(){
         });
 
         // ajax call to get buildings and locations json object
-        $.getJSON('ajax/locations.json', function(data, textStatus, jqXHR) {
-          loadPoints(data);
-          createInfoWins();
-          putAllPointsOnMap();
-        });
+        $.ajax({
+                  url: 'ajax/locations.json',
+                  dataType: 'json',
+                  method: 'POST'
+              })
+        .done(function(data) {
+          //loadPoints(data);
+          console.log('loaded locations.json');
+          App.points = data;
+          createInfoWins(data);
+          console.log(data);
+          putAllPointsOnMap(data);
+        }).error(function(jqXHR, textStatus, errorThrown){ console.log("error crit", errorThrown, textStatus, jqXHR); });
 
         $('#map_canvas')
             .css('height', $(document).height() - $('#map').find('[data-role=header]').height()  )
