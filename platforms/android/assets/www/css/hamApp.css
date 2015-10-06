@@ -34,7 +34,7 @@ body {
   -ms-user-select: none;
   -moz-user-select: none;
   user-select: none;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
 /* Style header bar and footer bar with a 1px red border at top and bottom. This facilitates
@@ -54,10 +54,12 @@ body {
 
 /* make room for version buttons in header */
 .ui-header .ui-title {
-  text-align: right;
-  margin-left: 10px;
+    /*text-align: right;*/
+    text-shadow: none;
+    /*margin-left: 10px;*/
     font-size:22px;
-    margin: 0 10% 0 0;
+    margin: 0 15%;
+    /*margin: 0 10% 0 0;*/
 }
 
 /* Style iScroll wrapper with a 1px green border at top and bottom. You should see no gap
@@ -93,15 +95,23 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 .ui-navbar .ui-btn-inner {
   font-size: 14px;
 }
-.hamicon {float: left; margin-left: 2%; width:57px; height: 57px;}
+.hamicon {margin-left: 10px; 
+    width:30px; 
+    padding-top: 10px; 
+    border-radius: 5px; 
+    background: white !important; 
+    color: rgb(0,  47,  134);
+}
+
 .imgResponsive {max-width: 100%; height: auto; width: 100%;}
 
 .ui-page .pageheader {
     background-color: #002f86;
     border: 0;
     color: #fff;
-    padding-top: 25px;
-    margin-bottom: 15px;
+    height: 70px;
+    padding-top: 5px;
+    margin-bottom: 5px;
 }
 .footer {
     background: #ccc;
@@ -151,14 +161,21 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
      width:100%;
   }
 .iscroll-content {padding:0px;}
-.iconfloat {float:left; margin-left: 7%; margin-top: 3%;}
+.iconfloat {
+    float:left;  
+    margin-top: 17%; 
+    color: rgb(0,  47,  134); 
+    text-shadow: none;
+    }
 .hozNavbar {overflow: hidden; xwidth: 5000px;}
 /* this is a placeholder all dynamic pages will go in here*/
 #lastStatic {display: none;}
-#mapContent { padding: 0; }
+#mapContent { padding: 0; margin-top: 2.8em; }
 #map_canvas { width: 100%; }
-.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: transparent url('../images/map-marker-blue.png') top left no-repeat;}
-.ui-content {margin-top:20px;}
+.map-point { position:absolute; z-index: 1000; width:20px; height: 30px; cursor:pointer; background: url('images/map-marker-blue.png') top left no-repeat;}
+.ui-header .ui-title:last-child {
+    margin: 0 0;
+}
 footer {height: 60px;}
 .container div {
         float: left;
@@ -179,15 +196,15 @@ footer {height: 60px;}
   }
 
   /* Make the buttons in the header just disappear - they're too big for a tiny header */
-  .ui-header .ui-btn {
+  .ui-header:not(.map) .ui-btn {
     display: none;
   }
 
-  .ui-navbar a {
+  .ui-navbar:not(.map) a {
     height: 37px;    /* + 2px border = 39px */
   }
 
-  .ui-navbar .ui-btn-inner {
+  .ui-navbar:not(.map) .ui-btn-inner {
     font-size: 13px;
   }
     
@@ -244,4 +261,171 @@ footer {height: 60px;}
   {
   background-image: none;
   }
+.ui-block-2x-height {
+  height: 6em;
+}
+.ui-block-2x-height .ui-btn {
+  height: 4em;
+  vertical-align: middle;
 
+}
+.ui-block-2x-height .ui-btn i {
+  margin-top: .5em;
+}
+#home[data-role="page"] {
+  /*margin: 0.4em;*/
+  padding-top: 0;
+}
+
+.home-divider {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+.ui-btn {
+  border: none;
+}
+
+.back-btn {
+  border: none;
+  height: 35px;
+  background: white !important;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  margin-top: 7px;
+  color: rgb(0,  47,  134);
+}
+
+svg path, svg circle, svg rect{
+    fill: currentcolor; 
+}
+
+.back-btn:hover {
+    background: rgb(214,  186,  139) !important;
+    fill: white !important;
+}
+
+.house {
+    color: rgb(0,  47,  134);
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.diningmenuholder li {
+  cursor: pointer;
+}
+.menu-show {
+  display: none;
+}
+.menu-hide {
+  display: block;
+}
+.ui-li-has-icon > img.ui-li-icon:not(:first-child) {
+  position: relative;
+  left: -.625em;
+  top: .17em;
+  max-height: 1em;
+  max-width: 1em;
+}
+.ui-li-has-count > span.ui-li-count:not(:last-child) {
+}
+
+.meal-times {
+  color: #CCC;
+  text-shadow: 1px 1px 3px #444;
+}
+.items {
+  display: none;
+}
+.alert.error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.alert.warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+.alert.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1; 
+}
+.alert {
+  display: none;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert.tight {
+  margin-bottom: 0;
+  margin: 0;
+}
+.alert.always {
+  display: block;
+}
+.open-indicator {
+  width: 16px;
+  display: inline-block;
+  background-color: rgb(120,120,120);
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid rgb(100,100,100);
+  vertical-align: super;
+  margin: 0;
+  padding: 0;
+}
+.open-indicator.open {
+  background-color: rgb(75,170,10);
+  border: 1px solid rgb(40,120,18);
+}
+.open-indicator.closed {
+  background-color: rgb(180,20,28);
+  border: 1px solid rgb(160,18,32);
+}
+.hours-text {
+  color: #777;
+  display: block;
+  font-weight: normal;
+}
+.dining-halls {
+  height: 260px
+}
+.dining-hall-block {
+  display: inline-block;
+  margin-left: 1.1em;
+}
+.item-description {
+  display: block;
+  white-space: normal;
+  word-wrap: normal;
+  color: #777;
+  font-size: 11pt;
+  font-weight: normal;
+  width: 100%;
+}
+.bug,.feedback {
+  padding: 0.4em
+}
+#diningmenus > .footer-nav-days {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.hamTitle {
+    color: white !important;
+    padding-top: 5px !important;
+
+    height: 50px;
+    
+    border: solid;
+    border-radius: 10px;
+    background: rgb(214,  186,  139);
+}
+
+svg path, svg circle, svg rect{
+    fill: currentColor; 
+}

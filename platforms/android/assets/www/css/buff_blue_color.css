@@ -1,0 +1,80 @@
+/* BUFF AND BLUE */
+
+.homeicon {
+    color: rgb(214,  186,  139) !important;
+    font-family: 'Josefin Slab';
+    font-size: 14.5px;
+    padding: 5px !important;
+    text-shadow: none !important;
+    background: none !important;
+}
+
+svg path, svg circle, svg rect{
+    fill: currentColor; 
+}
+
+.homeicon:hover,.homeicon:active{
+    background: rgb(214,  186,  139) !important;
+    border-radius: 15px;
+    color: white !important;
+}
+
+.svg-width {
+    width: 30px !important;
+}
+
+.ath-width{
+    width: 25px !important;   
+}
+
+.news-width{
+    width: 35px !important;
+}
+
+.title_bar {
+    padding: 15px;
+    background: rgb(0,  47,  134);
+    border-top-width: 18px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: rgb(214,  186,  139);
+    font-family: '';
+    font-size: xx-large;
+    text-align: center;
+    text-shadow: none;
+    color: rgb(0,  47,  134);
+    text-decoration: underline;
+}
+
+.ham-logo{
+  margin-top:-430px; 
+  background: rgb(0,  47,  134) !important; 
+  color: #001F86 !important;
+}
+
+.home-settings{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: none;
+    padding: 20px;
+    text-shadow: none;
+}
+
+.icon-settings{
+    color: rgb(214,  186,  139) !important;
+    padding: 3px;
+}
+
+.icon-settings:hover{
+    background: rgb(214,  186,  139) !important;
+    border-radius: 5px;
+    color: white !important;   
+}
+
+.home-all-icons{
+    background: rgb(0,  47,  134) !important; 
+    height: 600px;
+}

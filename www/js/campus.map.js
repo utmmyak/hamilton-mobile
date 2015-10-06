@@ -2,8 +2,8 @@ var campusMap = (function(){
 
     //public variables
     var App = {
-         points: []
-        ,currentLatLng: {}
+        points: [],
+        currentLatLng: {}
     };
 
     // private variables
