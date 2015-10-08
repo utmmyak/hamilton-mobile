@@ -143,8 +143,8 @@
   <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>-->
 
   <!-- Default Icon and Splash -->
-  <icon src="resources/icon.png" /> 
-  <gap:splash src="resources/splash.png" />  
+  <icon src="resources/icon.png" />
+  <gap:splash src="resources/splashportraitview.jpg" />  
 
   <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-whitelist" spec="1" />
