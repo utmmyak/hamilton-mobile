@@ -272,7 +272,11 @@ footer {height: 60px;}
 .ui-block-2x-height .ui-btn {
   height: 4em;
   vertical-align: middle;
-
+  overflow-y: visible;
+  word-wrap: break-word;
+  white-space: pre;
+  overflow-x: visible;
+  font-size: 16px;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
