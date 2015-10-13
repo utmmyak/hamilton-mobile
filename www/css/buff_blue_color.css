@@ -49,7 +49,10 @@ svg path, svg circle, svg rect{
 }
 
 .ham-logo{
-  margin-top:-430px; 
+  margin-top:-580px; 
+  margin-right: 0px !important;
+  height: 50%;
+  margin-bottom: 0px !important;
   background: rgb(0,  47,  134) !important; 
   color: #001F86 !important;
 }
