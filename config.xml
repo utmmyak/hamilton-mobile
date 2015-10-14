@@ -1,103 +1,168 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.hamilton.studentappJTT" version="1.0.0" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hamilton -Jim Test</name>
-    <description>
-        Jim's test App
-    </description>
-    <author email="webhelp@hamilton.edu" href="http://hamilton.edu">
-        Jim Thomson and Don Stayner
-    </author>
-    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-    <preference name="SuppressesIncrementalRendering" value="false" />
-    <preference name="UIWebViewBounce" value="false" />
-    <preference name="TopActivityIndicator" value="gray" />
-    <preference name="EnableLocation" value="false" />
-    <preference name="EnableViewportScale" value="false" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="ShowSplashScreenSpinner" value="true" />
-    <preference name="FadeSplashScreen" value="true" />
-    <preference name="FadeSplashScreenDuration" value=".25" />
-    <preference name="MediaPlaybackRequiresUserAction" value="false" />
-    <preference name="AllowInlineMediaPlayback" value="false" />
-    <preference name="BackupWebStorage" value="cloud" />
-    <content src="index.html" />
-    <gap:plugin name="org.apache.cordova.battery-status" />
-    <gap:plugin name="org.apache.cordova.camera" />
-    <gap:plugin name="org.apache.cordova.media-capture" />
-    <gap:plugin name="org.apache.cordova.console" />
-    <gap:plugin name="org.apache.cordova.contacts" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.globalization" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="org.apache.cordova.media" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" />
-    <icon gap:platform="android" gap:qualifier="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
-    <icon gap:platform="android" gap:qualifier="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
-    <icon gap:platform="android" gap:qualifier="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
-    <icon gap:platform="android" gap:qualifier="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
-    <icon gap:platform="android" gap:qualifier="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
-    <icon gap:platform="android" gap:qualifier="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
-    <icon gap:platform="ios" height="57" src="resources/ios/icon/icon.png" width="57" />
-    <icon gap:platform="ios" height="114" src="resources/ios/icon/icon@2x.png" width="114" />
-    <icon gap:platform="ios" height="40" src="resources/ios/icon/icon-40.png" width="40" />
-    <icon gap:platform="ios" height="80" src="resources/ios/icon/icon-40@2x.png" width="80" />
-    <icon gap:platform="ios" height="50" src="resources/ios/icon/icon-50.png" width="50" />
-    <icon gap:platform="ios" height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
-    <icon gap:platform="ios" height="60" src="resources/ios/icon/icon-60.png" width="60" />
-    <icon gap:platform="ios" height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
-    <icon gap:platform="ios" height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
-    <icon gap:platform="ios" height="72" src="resources/ios/icon/icon-72.png" width="72" />
-    <icon gap:platform="ios" height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
-    <icon gap:platform="ios" height="76" src="resources/ios/icon/icon-76.png" width="76" />
-    <icon gap:platform="ios" height="152" src="resources/ios/icon/icon-76@2x.png" width="152" />
-    <icon gap:platform="ios" height="29" src="resources/ios/icon/icon-small.png" width="29" />
-    <icon gap:platform="ios" height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
-    <gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="resources/android/splash/drawable-land-ldpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-mdpi" src="resources/android/splash/drawable-land-mdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-hdpi" src="resources/android/splash/drawable-land-hdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-xhdpi" src="resources/android/splash/drawable-land-xhdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-xxhdpi" src="resources/android/splash/drawable-land-xxhdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="land-xxxhdpi" src="resources/android/splash/drawable-land-xxxhdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="resources/android/splash/drawable-port-ldpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="resources/android/splash/drawable-port-mdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="resources/android/splash/drawable-port-hdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <gap:splash gap:platform="ios" height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
-    <gap:splash gap:platform="ios" height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
-    <gap:splash gap:platform="ios" height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
-    <gap:splash gap:platform="ios" height="1242" src="resources/ios/splash/Default-Landscape-736h.png" width="2208" />
-    <gap:splash gap:platform="ios" height="1536" src="resources/ios/splash/Default-Landscape@2x~ipad.png" width="2048" />
-    <gap:splash gap:platform="ios" height="768" src="resources/ios/splash/Default-Landscape~ipad.png" width="1024" />
-    <gap:splash gap:platform="ios" height="2048" src="resources/ios/splash/Default-Portrait@2x~ipad.png" width="1536" />
-    <gap:splash gap:platform="ios" height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
-    <gap:splash gap:platform="ios" height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
-    <gap:splash gap:platform="ios" height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
-    <icon src="resources/icon.png" />
-    <gap:splash src="resources/splash.png" />
-    <access origin="*" />
-    <plugin name="cordova-plugin-whitelist" version="1" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <platform name="android">
-        <allow-intent href="market:*" />
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
-    <engine name="android" spec="~4.1.1" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+#  KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+-->
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "edu.hamilton.ihamilton-ionic"
+        versionCode="12"
+        version   = "1.2.0">
+
+  <name>Hamilton Mobile</name>
+
+  <description>
+      Hamilton College's mobile app
+  </description>
+
+  <author href="http://hamilton.edu" email="webhelp@hamilton.edu">
+      Katherine Droppa, Sam Kotlove, Chris Lee, Noah Lowenthal, Don Stayner and Jim Thomson
+  </author>
+  <preference name="KeyboardDisplayRequiresUserAction" value="true" />
+  <preference name="SuppressesIncrementalRendering" value="false" />
+  <preference name="UIWebViewBounce" value="false" />
+  <preference name="TopActivityIndicator" value="gray" />
+  <preference name="EnableLocation" value="false" />
+  <preference name="EnableViewportScale" value="false" />
+  <preference name="AutoHideSplashScreen" value="true" />
+  <preference name="ShowSplashScreenSpinner" value="true" />
+  <preference name="FadeSplashScreen" value="true" />
+  <preference name="FadeSplashScreenDuration" value=".25" />
+  <preference name="MediaPlaybackRequiresUserAction" value="false" />
+  <preference name="AllowInlineMediaPlayback" value="false" />
+  <preference name="BackupWebStorage" value="cloud" />
+  <preference name="android-targetSdkVersion" value="15" />
+  <content src="index.html" />
+
+  <!--<gap:plugin name="org.apache.cordova.battery-status" />
+  <gap:plugin name="org.apache.cordova.camera" />
+  <gap:plugin name="org.apache.cordova.media-capture" />
+  <gap:plugin name="org.apache.cordova.console" />
+  <gap:plugin name="org.apache.cordova.contacts" />
+  <gap:plugin name="org.apache.cordova.device" />
+  <gap:plugin name="org.apache.cordova.device-motion" />
+  <gap:plugin name="org.apache.cordova.device-orientation" />
+  <gap:plugin name="org.apache.cordova.dialogs" />
+  <gap:plugin name="org.apache.cordova.file" />
+  <gap:plugin name="org.apache.cordova.file-transfer" />
+  <gap:plugin name="org.apache.cordova.geolocation" />
+  <gap:plugin name="org.apache.cordova.globalization" />
+  <gap:plugin name="org.apache.cordova.inappbrowser" />
+  <gap:plugin name="org.apache.cordova.media" />
+  <gap:plugin name="org.apache.cordova.network-information" />
+  <gap:plugin name="org.apache.cordova.splashscreen" />
+  <gap:plugin name="org.apache.cordova.vibration" />
+
+  <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->
+  <!--<gap:plugin name="cordova-plugin-battery-status" source="npm" />
+  <gap:plugin name="cordova-plugin-camera" source="npm" />
+  <gap:plugin name="cordova-plugin-media-capture" source="npm" />
+  <gap:plugin name="cordova-plugin-console" source="npm" />
+  <gap:plugin name="cordova-plugin-contacts" source="npm" />
+  <gap:plugin name="cordova-plugin-device" source="npm" />
+  <gap:plugin name="cordova-plugin-ce-motion" source="npm" />
+  <gap:plugin name="cordova-plugin-device-orientation" source="npm" />
+  <gap:plugin name="cordova-plugin-dialogs" source="npm" />
+  <gap:plugin name="cordova-plugin-file" source="npm" />
+  <gap:plugin name="cordova-plugin-file-transfer" source="npm" />
+  <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+  <gap:plugin name="cordova-plugin-globalization" source="npm" />
+  <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+  <gap:plugin name="cordova-plugin-media" source="npm" />
+  <gap:plugin name="cordova-plugin-network-information" source="npm" />
+  <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
+  <gap:plugin name="cordova-plugin-vibration" source="npm" />-->
+
+  <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
+  <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
+  <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+
+  <!--<access origin="*" browserOnly="true" />-->
+  <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
+  <icon src="resources/android/icon/drawable-mdpi-icon.png" gap:platform="android" gap:qualifier="mdpi"/>
+  <icon src="resources/android/icon/drawable-hdpi-icon.png" gap:platform="android" gap:qualifier="hdpi"/>
+  <icon src="resources/android/icon/drawable-xhdpi-icon.png" gap:platform="android" gap:qualifier="xhdpi"/>
+  <icon src="resources/android/icon/drawable-xxhdpi-icon.png" gap:platform="android" gap:qualifier="xxhdpi"/>
+  <icon src="resources/android/icon/drawable-xxxhdpi-icon.png" gap:platform="android" gap:qualifier="xxxhdpi"/>
+    
+  <icon src="resources/ios/icon/icon.png" gap:platform="ios" width="57" height="57"/>
+  <icon src="resources/ios/icon/icon@2x.png" gap:platform="ios" width="114" height="114"/>
+  <icon src="resources/ios/icon/icon-40.png" gap:platform="ios" width="40" height="40"/>
+  <icon src="resources/ios/icon/icon-40@2x.png" gap:platform="ios" width="80" height="80"/>
+  <icon src="resources/ios/icon/icon-50.png" gap:platform="ios" width="50" height="50"/>
+  <icon src="resources/ios/icon/icon-50@2x.png" gap:platform="ios" width="100" height="100"/>
+  <icon src="resources/ios/icon/icon-60.png" gap:platform="ios" width="60" height="60"/>
+  <icon src="resources/ios/icon/icon-60@2x.png" gap:platform="ios" width="120" height="120"/>
+  <icon src="resources/ios/icon/icon-60@3x.png" gap:platform="ios" width="180" height="180"/>
+  <icon src="resources/ios/icon/icon-72.png" gap:platform="ios" width="72" height="72"/>
+  <icon src="resources/ios/icon/icon-72@2x.png" gap:platform="ios" width="144" height="144"/>
+  <icon src="resources/ios/icon/icon-76.png" gap:platform="ios" width="76" height="76"/>
+  <icon src="resources/ios/icon/icon-76@2x.png" gap:platform="ios" width="152" height="152"/>
+  <icon src="resources/ios/icon/icon-small.png" gap:platform="ios" width="29" height="29"/>
+  <icon src="resources/ios/icon/icon-small@2x.png" gap:platform="ios" width="58" height="58"/>
+
+  <gap:splash src="resources/android/splash/drawable-land-ldpi-screen.png" gap:platform="android" gap:qualifier="land-ldpi"/>
+  <gap:splash src="resources/android/splash/drawable-land-mdpi-screen.png" gap:platform="android" gap:qualifier="land-mdpi"/>
+  <gap:splash src="resources/android/splash/drawable-land-hdpi-screen.png" gap:platform="android" gap:qualifier="land-hdpi"/>
+  <gap:splash src="resources/android/splash/drawable-land-xhdpi-screen.png" gap:platform="android" gap:qualifier="land-xhdpi"/>
+  <gap:splash src="resources/android/splash/drawable-land-xxhdpi-screen.png" gap:platform="android" gap:qualifier="land-xxhdpi"/>
+  <gap:splash src="resources/android/splash/drawable-land-xxxhdpi-screen.png" gap:platform="android" gap:qualifier="land-xxxhdpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-ldpi-screen.png" gap:platform="android" gap:qualifier="port-ldpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-mdpi-screen.png" gap:platform="android" gap:qualifier="port-mdpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-hdpi-screen.png" gap:platform="android" gap:qualifier="port-hdpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-xhdpi-screen.png" gap:platform="android" gap:qualifier="port-xhdpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" gap:platform="android" gap:qualifier="port-xxhdpi"/>
+  <gap:splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" gap:platform="android" gap:qualifier="port-xxxhdpi"/>
+
+    <gap:splash src="resources/ios/splash/Default-568h@2x.png" gap:platform="ios" width="640" height="1136"/>
+    <gap:splash src="resources/ios/splash/Default-667h.png" width="750" gap:platform="ios" height="1334"/>
+    <gap:splash src="resources/ios/splash/Default-736h.png" width="1242" gap:platform="ios" height="2208"/>
+    <gap:splash src="resources/ios/splash/Default-Landscape-736h.png" gap:platform="ios" width="2208" height="1242"/>
+    <gap:splash src="resources/ios/splash/Default-Landscape@2x~ipad.png" gap:platform="ios" width="2048" height="1536"/>
+    <gap:splash src="resources/ios/splash/Default-Landscape~ipad.png" gap:platform="ios" width="1024" height="768"/>
+    <gap:splash src="resources/ios/splash/Default-Portrait@2x~ipad.png" gap:platform="ios" width="1536" height="2048"/>
+    <gap:splash src="resources/ios/splash/Default-Portrait~ipad.png" gap:platform="ios" width="768" height="1024"/>
+    <gap:splash src="resources/ios/splash/Default@2x~iphone.png" gap:platform="ios" width="640" height="960"/>
+    <gap:splash src="resources/ios/splash/Default~iphone.png" gap:platform="ios" width="320" height="480"/>
+
+  <!-- Default Icon and Splash -->
+  <icon src="icon.png" />
+  <gap:splash src="resources/splashportraitview.jpg" />  
+
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+  <plugin name="cordova-plugin-whitelist" spec="1" />
+  <access origin="*"/>
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*/*" />
+  <allow-navigation href="file://*/*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-intent href="file://*/*" />
+  <allow-intent href="tel:*" />
+  <allow-intent href="sms:*" />
+  <allow-intent href="mailto:*" />
+  <allow-intent href="geo:*" />
+  <platform name="android">
+    <allow-intent href="market:*" />
+  </platform>
+  <platform name="ios">
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+  </platform>
 </widget>
