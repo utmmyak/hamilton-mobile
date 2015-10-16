@@ -34,7 +34,7 @@ svg path, svg circle, svg rect{
 .title_bar {
     padding: 15px;
     background: rgb(0,  47,  134);
-    border-top-width: 18px;
+    border-top-width: 20px;
     border-bottom-width: 0px;
     border-right-width: 0px;
     border-left-width: 0px;
@@ -49,7 +49,7 @@ svg path, svg circle, svg rect{
 }
 
 .ham-logo{
-  margin-top:-430px; 
+  margin-top:-300px !important; 
   background: rgb(0,  47,  134) !important; 
   color: #001F86 !important;
 }
@@ -76,5 +76,5 @@ svg path, svg circle, svg rect{
 
 .home-all-icons{
     background: rgb(0,  47,  134) !important; 
-    height: 600px;
+    height: 1000px;
 }

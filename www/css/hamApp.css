@@ -107,7 +107,12 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 
 .ui-page .pageheader {
     background-color: #002f86;
-    border: 0;
+    border-top-width: 20px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: rgb(214,  186,  139);
     color: #fff;
     height: 70px;
     padding-top: 5px;
@@ -276,7 +281,7 @@ footer {height: 60px;}
   word-wrap: break-word;
   white-space: pre;
   overflow-x: visible;
-  font-size: 16px;
+  font-size: 100%;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -427,12 +432,19 @@ svg path, svg circle, svg rect{
 .hamTitle {
     color: white !important;
     padding-top: 5px !important;
-
     height: 50px;
-    
     border: solid;
     border-radius: 10px;
     background: rgb(214,  186,  139);
+}
+
+.batteryBar {
+    border-top-width: 20px;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: rgb(214,  186,  139);
 }
 
 svg path, svg circle, svg rect{
