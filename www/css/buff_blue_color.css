@@ -3,7 +3,7 @@
 .homeicon {
     color: rgb(214,  186,  139) !important;
     font-family: 'Josefin Slab';
-    font-size: 14.5px;
+    font-size: 10%; 
     padding: 5px !important;
     text-shadow: none !important;
     background: none !important;
@@ -49,10 +49,9 @@ svg path, svg circle, svg rect{
 }
 
 .ham-logo{
-  margin-top:-580px; 
+  margin-top:-880px; 
   margin-right: 0px !important;
   height: 50%;
-  margin-bottom: 0px !important;
   background: rgb(0,  47,  134) !important; 
   color: #001F86 !important;
 }
@@ -79,5 +78,5 @@ svg path, svg circle, svg rect{
 
 .home-all-icons{
     background: rgb(0,  47,  134) !important; 
-    height: 600px;
+    height: 1000px;
 }
