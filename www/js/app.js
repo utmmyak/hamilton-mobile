@@ -414,7 +414,7 @@ var diningJSON = null;
 
     };
     $.ajax({
-      url: "https://mercury.hamilton.edu:7075/appPages/ajax/getAppData.cfm",
+      url: "https://www.hamilton.edu/appPages/ajax/getAppData.cfm",
       cache: 'true',
       dataType: 'json'
     }).done(jsonCallback);
@@ -744,7 +744,7 @@ var diningJSON = null;
 
   /* Pull full JSON Feed */
   function loadFullJson() {
-    $.getJSON("https://mercury.hamilton.edu:7075/appPages/ajax/getpages.cfm", function (data) {
+    $.getJSON("https://www.hamilton.edu/appPages/ajax/getpages.cfm", function (data) {
       if (data.audience.length > 0) {
         loadAppAudJson(data.audience);
       }
