@@ -23,7 +23,7 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "edu.hamilton.ihamilton-ionic"
         versionCode="12"
-        version   = "1.2.0">
+        version   = "1.2.1">
 
   <name>Hamilton Mobile</name>
 

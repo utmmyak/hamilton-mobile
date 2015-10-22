@@ -31,17 +31,17 @@
     <script src="js/utils.js" type="text/javascript"></script>
     <script src="js/moment.min.js" type="text/javascript"></script>
     <script src="phonegap.js"></script>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'self' 'unsafe-inline'; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; connect-src *;"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: filesystem; style-src * 'self' 'unsafe-inline'; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; media-src * 'self'; connect-src *;"/>
   </head>
   <body>
     <!-- HOME PAGE -->
-    <div data-role="page" id="home">
+    <div data-role="page" id="home" style="background-color:transparent!important">
       <div id="ham-home-img" class="title_bar" style="padding-bottom:0px;">
         <img src="icons/Hamilton.svg" class="imgResponsive hamTitle">
       </div>
       <!-- <hr class="home-divider">
       STATIC BACKGROUND HEIGHT- not good? -->
-      <div class="home-all-icons">
+      <div class="home-all-icons" style="background:none !important">
       <!-- first row -->
         <div class="ui-grid-c"> 
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></div>
@@ -75,10 +75,35 @@
                 <li><a href="#" onclick="setActiveStyleSheets('multi'); return true;">Multi-Colored</a></li>
                 <!--<li><a href="#alumniEvents">Large Icon</a></li> 
                 </ul>  -->
+        <div style="background-color: #001F86 !important;
+          -webkit-mask: url(icons/cupola.svg) no-repeat 0% 0%;
+          mask: url(icon.svg) no-repeat 50% 50%;
+          mask-size: 100%;
+          -webkit-mask-size: 100%;
+          z-index: -1;
+          opacity: .8;
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+          right: 0;
+          top: 0;
+          background-attachment: fixed;
+          background-position: bottom;
+                    -webkit-mask-position:bottom">
         </div>
-        <div class="ham-logo">
-            <img src="icons/cupola.svg" class="imgResponsive svg" />
+        <div style="position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgb(0, 47, 134) !important;
+          z-index: -2;">
         </div>
+      </div>
+        <!--<div class="ham-logo">
+            <img src="icons/cupola.svg" class="imgResponsive" />
+        </div>-->
+      
     </div>
     <!-- END HOME PAGE -->
     

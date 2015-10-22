@@ -39,7 +39,7 @@ var diningJSON = null;
         var cafe = data.days[0].cafes[key];
         var cafeElement = $("li[data-bamco-id=\"" + key + "\"]");
         if (key == 512) {
-          if (cafe.dayparts[0].length == 0) {
+          if (!(cafe.dayparts) || !(cafe.dayparts[0]) || cafe.dayparts[0].length == 0) {
             if (((now.getDay() == 0 || now.getDay() == 6) &&
                 (now.getHours > 15))) {
               cafeElement.find(".open-indicator").addClass("open");
