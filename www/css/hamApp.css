@@ -112,7 +112,7 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(214,  186,  139);
+    border-color: #002f86;
     color: #fff;
     height: 70px;
     padding-top: 5px;
@@ -444,7 +444,7 @@ svg path, svg circle, svg rect{
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(214,  186,  139);
+    /*border-color: rgb(214,  186,  139);*/
 }
 
 svg path, svg circle, svg rect{
