@@ -143,7 +143,7 @@
 
   <!-- Default Icon and Splash -->
   <icon src="icon.png" />
-  <gap:splash src="resources/splashportraitview.jpg" />  
+  <gap:splash src="splash.png" />  
 
   <gap:plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-whitelist" spec="1" />
