@@ -112,7 +112,7 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(214,  186,  139);
+    border-color: #002f86;
     color: #fff;
     height: 70px;
     padding-top: 5px;
@@ -281,7 +281,7 @@ footer {height: 60px;}
   word-wrap: break-word;
   white-space: pre;
   overflow-x: visible;
-  font-size: 100%;
+  font-size: 90%;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -444,7 +444,7 @@ svg path, svg circle, svg rect{
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
-    border-color: rgb(214,  186,  139);
+    border-color: rgb(0,  47,  134);
 }
 
 svg path, svg circle, svg rect{
