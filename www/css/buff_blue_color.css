@@ -40,6 +40,7 @@ svg path, svg circle, svg rect{
     border-left-width: 0px;
     border-style: solid;
     border-color: currentColor;
+    /*border-color: rgb(214,  186,  139);*/
     font-family: '';
     font-size: xx-large;
     text-align: center;
