@@ -149,8 +149,7 @@ var campusMap = (function(){
         // ajax call to get buildings and locations json object
         $.ajax({
                   url: 'ajax/locations.json',
-                  dataType: 'json',
-                  method: 'POST'
+                  dataType: 'json'
               })
         .done(function(data) {
           //loadPoints(data);
