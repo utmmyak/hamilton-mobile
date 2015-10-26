@@ -133,7 +133,7 @@ var diningJSON = null;
         current.getDate() != Number(menuDateSplit[2])) {
       $(".menu-out-of-date").fadeIn();
       $(".menu-out-of-date .date-container").text(data.days[0].date);
-
+      
       menuCurrentDate = false;
     }
     else {
@@ -155,7 +155,8 @@ var diningJSON = null;
       $.mobile.loading( "hide" );
     }
 
-    updateDiningHallHours(data);
+    //updateDiningHallHours(data);
+    //have the calling function decide whether to update dining hall hours or not
 
     return menuCurrentDate;
   };
@@ -171,8 +172,14 @@ var diningJSON = null;
           return;
         }
         diningJSON = $.parseJSON(data.rows.item(0).jsonData);
-        diningDataCheck(diningJSON);
-        updateDiningHallHours(diningJSON);
+        var upToDate = diningDataCheck(diningJSON, true);
+        // we are calling this offline, so it won't display anything if the data is not the right date
+        if (upToDate) {
+          $('.dining-halls .diningmenuholder').show();
+          updateDiningHallHours(diningJSON);
+        } else {
+          $('.dining-halls .diningmenuholder').fadeOut();
+        }
       }, function(err){
         alert("Error processing SQL: " + err.code);
       });
@@ -197,7 +204,7 @@ var diningJSON = null;
 
   var lastDiningHall = null;
   diningJSONCallback = function (adata) {
-    if (diningDataCheck(adata)) {
+    if (diningDataCheck(adata)) { // we are not checking this offline
       console.log("updating database with new dining menu");
       db.transaction(function (tx) {
         if (adata != null) {
@@ -206,11 +213,14 @@ var diningJSON = null;
 
         tx.executeSql('INSERT INTO diningmenu (jsonData) VALUES (?)',
             [JSON.stringify(adata, null, 2)]);
+        updateDiningHallHours(adata);
         updateDiningMenu(adata);
+        
 
       });
     } else {
       console.log("dining menu old could not update database");
+      updateDiningHallHours(adata);
       updateDiningMenu(adata);
     }
   };
