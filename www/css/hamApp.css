@@ -433,9 +433,7 @@ svg path, svg circle, svg rect{
     color: white !important;
     padding-top: 5px !important;
     height: 50px;
-    border: solid;
-    border-radius: 10px;
-    background: rgb(214,  186,  139);
+
 }
 
 .batteryBar {
