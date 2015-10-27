@@ -41,26 +41,37 @@
       </div>
       <!-- <hr class="home-divider">
       STATIC BACKGROUND HEIGHT- not good? -->
-      <div class="home-all-icons" style="background:none !important; height:auto">
+      <div class="home-all-icons">
       <!-- first row -->
-        <div class="ui-grid-c"> 
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg-width svg"/><br>Academic<br>Calendar</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>Spectator</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#webcam"><img src="icons/map.svg" class="imgResponsive svg-width svg" /><br>Webcam</a></div>
+
+        <!--<div class="ui-grid-c">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg-width svg"/><br>Academic<br>Calendar</a></div>
           <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></div>
           <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></div>
-        </div>
+        </div>-->
           <!-- second row -->
-        <div class="ui-grid-c">
+        <!--<div class="ui-grid-c">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>Spectator</a></div>
           <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
           <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></div>
-        </div>
+        </div>-->
           <!-- third row -->
-        <div class="ui-grid-c">
+        <!--<div class="ui-grid-c">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></div>
           <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#webcam"><img src="icons/map.svg" class="imgResponsive svg-width svg" /><br>Webcam</a></div>
-        </div>
+        </div>-->
           <!-- fourth row 
           <div class="ui-grid-b">
           <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
@@ -76,29 +87,9 @@
                 <li><a href="#" onclick="setActiveStyleSheets('multi'); return true;">Multi-Colored</a></li>
                 <!--<li><a href="#alumniEvents">Large Icon</a></li> 
                 </ul>  -->
-        <div style="background-color: #001F86 !important;
-          -webkit-mask: url(icons/cupola.svg) no-repeat 0% 0%;
-          mask: url(icons/cupola.svg) no-repeat 50% 50%;
-          mask-size: 100%;
-          -webkit-mask-size: 100%;
-          z-index: -1;
-          opacity: .8;
-          position: fixed;
-          bottom: 0px;
-          left: 0;
-          right: 0;
-          top: 0;
-          background-attachment: fixed;
-          background-position: bottom;
-                    -webkit-mask-position:0 2.8cm">
+        <div id="cupola-bkg">
         </div>
-        <div style="position: fixed;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: rgb(0, 47, 134) !important;
-          z-index: -2;">
+        <div id="bkg">
         </div>
       </div>
         <!--<div class="ham-logo">
