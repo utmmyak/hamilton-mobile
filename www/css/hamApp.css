@@ -500,3 +500,6 @@ a.homeicon.ui-btn {
     background-position: bottom;
     -webkit-mask-position:0 2.8cm
 }
+.news-navbarcont > .xnavbar > li > a {
+  height: initial;
+}

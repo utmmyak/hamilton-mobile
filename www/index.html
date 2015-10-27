@@ -48,7 +48,7 @@
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></div>
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></div>
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></div>
-        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>Spectator</a></div>
+        <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#ham-news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>News</a></div>
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></div>
         <div class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></div>
@@ -114,18 +114,52 @@
     </div>
 
     <div data-role="page" id="news">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
+      <div data-id="header" data-role="header" class="pageheader" data-theme="b">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
           <i class="fa fa-home fa-2x house"></i>
         </a>
-        <h1>News</h1>
+        <h1>Hamilton News</h1>
+        <div class="news-navbarcont" data-role="navbar">
+          <ul class="xnavbar">
+            <li>
+              <a class="ui-btn-active ui-state-persist" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
+            </li>
+            <li>
+              <a class="" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="ui-content newsholder" data-iscroll="" data-role="content">
-        <div id="feed" class="rssFeed" ></div>
+        <div id="ham-news-feed" class="rssFeed" ></div>
       </div>
       <!-- /content -->
     </div>
+
     
+    <div data-role="page" id="ham-news">
+      <div data-id="header" data-role="header" class="pageheader" data-theme="b">
+        <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+          <i class="fa fa-home fa-2x house"></i>
+        </a>
+        <h1>Hamilton News</h1>
+        <div class="news-navbarcont" data-role="navbar">
+          <ul class="xnavbar">
+            <li>
+              <a class="" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
+            </li>
+            <li>
+              <a class="ui-btn-active ui-state-persist" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ui-content newsholder" data-iscroll="" data-role="content">
+        <div id="ham-news-feed" class="rssFeed" ></div>
+      </div>
+      <!-- /content -->
+    </div>
+
     <div data-role="page" id="radio">
       <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>

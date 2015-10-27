@@ -13,6 +13,11 @@ var diningJSON = null;
     $('#news').find('.iscroll-content').attr("style", "");
     $('.newsholder').iscrollview('refresh');
   }
+  function rewriteClassHamNews() {
+    $('h4 a').addClass("external");
+    $('#ham-news').find('.iscroll-content').attr("style", "");
+    $('#ham-news .newsholder').iscrollview('refresh');
+  }
 
   function rewriteClassEvents() {
     $("h4 a").addClass("external");
@@ -1045,6 +1050,13 @@ var diningJSON = null;
       linktarget: '_blank',
       header: false
     }, rewriteClass);
+  });
+  $(document).on('pagebeforeshow', '#ham-news', function (e, data) {
+    $('#ham-news').find('.iscroll-content').rssfeed('https://www.hamilton.edu/news/rss/news.cfm', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassHamNews);
   });
 
   $(document).on('pagebeforeshow', '#events', function (e, data) {
