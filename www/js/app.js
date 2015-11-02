@@ -14,10 +14,11 @@ var diningJSON = null;
     $('.newsholder').iscrollview('refresh');
   }
 
-  function rewriteClassEvents() {
+  function rewriteClassEvents(name) {
     $("h4 a").addClass("external");
-    $('#events').find('.iscroll-content').attr("style", "");
-    $('.eventsholder').iscrollview('refresh');
+    $(name).find('.iscroll-content').attr("style", "");
+    $(name+' .eventsholder').iscrollview('refresh');
+      
   }
 
   var db;
@@ -1052,7 +1053,7 @@ var diningJSON = null;
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, rewriteClassEvents);
+    }, function(){ rewriteClassEvents('#events'); });
   });
     
   $(document).on('pagebeforeshow', '#athleticEvents', function (e, data) {
@@ -1060,7 +1061,7 @@ var diningJSON = null;
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, rewriteClassEvents);
+    }, function(){ rewriteClassEvents("#athleticEvents"); });
   });
 
   $(document).on('pagebeforeshow', '#artEvents', function (e, data) {
@@ -1068,7 +1069,7 @@ var diningJSON = null;
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, rewriteClassEvents);
+    }, function(){ rewriteClassEvents("#artEvents"); });
   });
 
   $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
@@ -1076,7 +1077,7 @@ var diningJSON = null;
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, rewriteClassEvents);
+    }, function(){ rewriteClassEvents('#alumniEvents'); });
   });
 
   $(document).on('pagebeforeshow', function (event, ui) {
