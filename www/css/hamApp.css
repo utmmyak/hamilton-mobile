@@ -281,7 +281,8 @@ footer {height: 60px;}
   word-wrap: break-word;
   white-space: pre;
   overflow-x: visible;
-  font-size: 90%;
+  /*font-size: 90%;*/
+    font-size: 100%;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -448,4 +449,69 @@ svg path, svg circle, svg rect{
 
 svg path, svg circle, svg rect{
     fill: currentColor; 
+}
+#home {
+
+    text-align:center;
+}
+.home-all-icons {
+    display:inline-block;
+    text-align:left
+}
+a.homeicon.ui-btn {
+    margin:4px;
+    width:78px;
+    height:78px;
+}
+.icon-float {
+    float:left;
+    /*display:inline-flex;*/
+    margin:0;
+    padding:0
+
+    /*width:90px*/
+}
+
+#bkg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0, 47, 134) !important;
+    z-index: -2;
+}
+#cupola-bkg {
+    background-color: #001F86 !important;
+    -webkit-mask: url(../icons/cupola.svg) no-repeat 0% 0%;
+    mask: url(../icons/cupola.svg) no-repeat 50% 50%;
+    mask-size: 100%;
+    -webkit-mask-size: 100%;
+    z-index: -1;
+    opacity: .8;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-attachment: fixed;
+    background-position: bottom;
+    -webkit-mask-position:0 2.8cm
+}
+.news-navbarcont > .xnavbar > li > a {
+  height: initial;
+}
+
+ 
+            /* #container div with absolute position and 100% width and height so it takes up whole window */
+#container {
+  padding:0;
+  margin:0;
+    position: absolute;
+  top:0;
+  bottom:0
+    left:0;
+  right:0;
+    width: 100%;
+    height: 100%;
 }

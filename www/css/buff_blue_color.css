@@ -78,6 +78,8 @@ svg path, svg circle, svg rect{
 }
 
 .home-all-icons{
-    background: rgb(0,  47,  134) !important; 
-    height: 1000px;
+    /*background: rgb(0,  47,  134) !important;
+    height: 1000px;*/
+    background:none !important;
+    height:auto;
 }

@@ -34,6 +34,8 @@
     <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: filesystem; style-src * 'self' 'unsafe-inline'; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; media-src * 'self'; connect-src *;"/>
   </head>
   <body>
+    <div id="container">
+    <div>
     <!-- HOME PAGE -->
     <div data-role="page" id="home" style="background-color:transparent!important">
       <div id="ham-home-img" class="title_bar" style="padding-bottom:0px;">
@@ -41,64 +43,26 @@
       </div>
       <!-- <hr class="home-divider">
       STATIC BACKGROUND HEIGHT- not good? -->
-      <div class="home-all-icons" style="background:none !important; height:auto">
-      <!-- first row -->
-        <div class="ui-grid-c"> 
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg-width svg"/><br>Academic<br>Calendar</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></div>
-          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></div>
-        </div>
-          <!-- second row -->
-        <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></div>
-          <div class="ui-block-b ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>Spectator</a></div>
-          <div class="ui-block-c ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></div>
-          <div class="ui-block-d ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></div>
-        </div>
-          <!-- third row -->
-        <div class="ui-grid-c">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></div>
-        </div>
-          <!-- fourth row 
-          <div class="ui-grid-b">
-          <div class="ui-block-a ui-block-2x-height"><a class="ui-btn homeicon" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg" /><br>WHCL</a></div>
-        </div>-->
+      <div class="home-icon-wrapper">
+        <ul class="home-all-icons" style="list-style:none; padding:0; padding-left:10px">
+        <!-- first row -->
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon con" href="#phonenums"><img src="icons/contacts.svg" class="imgResponsive svg-width svg"/><br>Contacts</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon cal" href="#collegeCalendar"><img src="icons/calender.svg" class="imgResponsive svg-width svg"/><br>Academic<br>Calendar</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon din" href="#diningmenus"><img src="icons/dining.svg" class="imgResponsive svg-width svg"/><br>Dining</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon clubs" href="#events"><img src="icons/list_icon.svg" class="imgResponsive svg-width svg"/><br>Events</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#map"><img src="icons/map.svg" class="imgResponsive svg-width svg"/><br>Map</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon newshome" href="#ham-news"><img src="icons/news.svg" class="imgResponsive svg news-width"/><br>News</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon ath" href="#athleticEvents"><img src="icons/AthleticsH.svg" class="imgResponsive svg ath-width"/><br>Athletics</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon whcl" href="#radio"><img src="icons/radio.svg" class="imgResponsive svg-width svg"/><br>WHCL</a></li>
+          <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></li>
+          <!--<li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#webcam"><img src="icons/map.svg" class="imgResponsive svg-width svg" /><br>Webcam</a></li>-->
+        </ul>
         
-         <!-- <div class="home-settings"><a href="#colorsettings" data-rel="popup" data-transition="pop"><i class="fa fa-cog fa-2x icon-settings"></i></a></div>
-      </div>
-            
-            <div data-role ="popup" id = "colorsettings" data-theme="a">
-            <ul data-role="listview" data-inset="true">
-                <li data-role="list-divider">Choose a Theme</li>
-                <li><a href="#" onclick="setActiveStyleSheets('blue'); return true;">Buff &amp; Blue</a></li>
-                <li><a href="#" onclick="setActiveStyleSheets('multi'); return true;">Multi-Colored</a></li>
-                <!--<li><a href="#alumniEvents">Large Icon</a></li> 
-                </ul>  -->
-        <div style="background-color: #001F86 !important;
-          -webkit-mask: url(icons/cupola.svg) no-repeat 0% 0%;
-          mask: url(icons/cupola.svg) no-repeat 50% 50%;
-          mask-size: 100%;
-          -webkit-mask-size: 100%;
-          z-index: -1;
-          opacity: .8;
-          position: fixed;
-          bottom: 0px;
-          left: 0;
-          right: 0;
-          top: 0;
-          background-attachment: fixed;
-          background-position: bottom;
-                    -webkit-mask-position:0 2.8cm">
+        <div id="cupola-bkg">
         </div>
-        <div style="position: fixed;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: rgb(0, 47, 134) !important;
-          z-index: -2;">
+        <div id="bkg">
         </div>
+          
       </div>
         <!--<div class="ham-logo">
             <img src="icons/cupola.svg" class="imgResponsive" />
@@ -122,18 +86,52 @@
     </div>
 
     <div data-role="page" id="news">
-      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
+      <div data-id="header" data-role="header" class="pageheader" data-theme="b">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
           <i class="fa fa-home fa-2x house"></i>
         </a>
-        <h1>News</h1>
+        <h1>Hamilton News</h1>
+        <div class="news-navbarcont" data-role="navbar">
+          <ul class="xnavbar">
+            <li>
+              <a class="ui-btn-active ui-state-persist" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
+            </li>
+            <li>
+              <a class="" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="ui-content newsholder" data-iscroll="" data-role="content">
-        <div id="feed" class="rssFeed" ></div>
+        <div id="ham-news-feed" class="rssFeed" ></div>
       </div>
       <!-- /content -->
     </div>
+
     
+    <div data-role="page" id="ham-news">
+      <div data-id="header" data-role="header" class="pageheader" data-theme="b">
+        <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+          <i class="fa fa-home fa-2x house"></i>
+        </a>
+        <h1>Hamilton News</h1>
+        <div class="news-navbarcont" data-role="navbar">
+          <ul class="xnavbar">
+            <li>
+              <a class="" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
+            </li>
+            <li>
+              <a class="ui-btn-active ui-state-persist" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="ui-content newsholder" data-iscroll="" data-role="content">
+        <div id="ham-news-feed" class="rssFeed" ></div>
+      </div>
+      <!-- /content -->
+    </div>
+
     <div data-role="page" id="radio">
       <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
@@ -148,7 +146,20 @@
       <!-- /content -->
     </div>
     
-
+    <div data-role="page" id="webcam">
+      <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
+        <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
+          <i class="fa fa-home fa-2x house"></i>
+        </a>
+          <h1>Webcams</h1>
+      </div>
+      <div style="text-align:center">
+        <h3>Martin's Way & KJ</h3>
+        <img src="http://150.209.65.30:80/mjpg/video.mjpg" height="480" width="640" class="" id="webcam-img" style="width:100%;height:auto" alt="Camera Image">
+      </div>
+      <!-- /content -->
+    </div>
+    
     <div data-role="page" id="diningmenus">
       <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false"  class="pageheader">
         <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-chevron-left fa-2x iconfloat"></i>
@@ -483,6 +494,7 @@
           <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hamilton.edu_3239373830363935323439%40resource.calendar.google.com&amp;color=%235F6B02&amp;ctz=America%2FNew_York" style=" border-width:0 " height="500" width="100%" frameborder="0" scrolling="no"></iframe>
         </div>
      </div>
-
+        </div>
+    </div>
   </body>
 </html>
