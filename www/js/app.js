@@ -124,8 +124,7 @@ var diningJSON = null;
     if (data.hasOwnProperty("status") && data.status === false) {
       $(".menu-not-loaded").fadeIn();
       return false;
-    }
-    else {
+    } else {
       $(".menu-not-loaded").fadeOut();
     }
 
@@ -140,8 +139,7 @@ var diningJSON = null;
       $(".menu-out-of-date .date-container").text(data.days[0].date);
       
       menuCurrentDate = false;
-    }
-    else {
+    } else {
 
       $(".menu-out-of-date").fadeOut();
 
@@ -1052,7 +1050,7 @@ var diningJSON = null;
     }, rewriteClass);
   });
   $(document).on('pagebeforeshow', '#ham-news', function (e, data) {
-    $('#ham-news').find('.iscroll-content').rssfeed('https://www.hamilton.edu/news/rss/news.cfm', {
+    $('#ham-news').find('.iscroll-content').rssfeed('https://www.hamilton.edu/news/rss/news.cfm?tag=news%20item', {
       limit: 25,
       linktarget: '_blank',
       header: false
@@ -1103,7 +1101,18 @@ var diningJSON = null;
       $.getScript("js/campus.map.js", function (data, textStatus, jqxhr) {});
     }, 100);
   });
-  
+  $(document).on('pageshow', '#webcam', function (e, data) {
+    $("#webcam-img").load();
+  });
+  $(document).one("mobileinit", function () {
+ 
+      // Setting #container div as a jqm pageContainer
+      $.mobile.pageContainer = $('#container');
+
+      // Setting default page transition to slide
+      $.mobile.defaultPageTransition = 'slide';
+
+  });
   //KJD Necessary for SVG images (icons)
   $(document).on('pagebeforeshow', '#home', function (e, data) {
       jQuery('img.svg').each(function(){
