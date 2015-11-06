@@ -282,7 +282,7 @@ footer {height: 60px;}
   white-space: pre;
   overflow-x: visible;
   /*font-size: 90%;*/
-    font-size: 100%;
+    font-size: 14px;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
