@@ -39,7 +39,7 @@
     <script src="phonegap.js"></script>
     <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: filesystem; style-src * 'self' 'unsafe-inline'; script-src * 'self' 'unsafe-inline' 'unsafe-eval'; media-src * 'self'; connect-src *;"/>
   </head>
-  <body>
+  <body style="height:auto">
     <div id="container">
     <div>
     <!-- HOME PAGE -->
@@ -64,9 +64,9 @@
           <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></li>
           <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#scroll"><img src="icons/GetScrolled.svg" class="imgResponsive scroll-width svg" /><br>Scroll</a></li>
           <!--<li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#webcam"><img src="icons/map.svg" class="imgResponsive svg-width svg" /><br>Webcam</a></li>-->
-            
+          <li class="icon-float ui-block-2x-height"><a href='https://weather.yahoo.com/united-states/new-york/clinton-2381752/' class="ui-btn homeicon"><div id="weather"></div></a></li>
         </ul>
-        <a href='https://weather.yahoo.com/united-states/new-york/clinton-2381752/'><div id="weather"></div></a>
+        
         <div id="cupola-bkg">
         </div>
         <div id="bkg">
@@ -101,12 +101,12 @@
         </a>
         <h1>Hamilton News</h1>
         <div class="news-navbarcont" data-role="navbar">
-          <ul class="xnavbar">
-            <li>
+          <ul class="xnavbar ui-grid-a">
+            <li class="ui-block-a">
               <a class="ui-btn-active ui-state-persist" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
             </li>
-            <li>
-              <a class="" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
+            <li class="ui-block-b">
+              <a class="ui-btn" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
             </li>
           </ul>
         </div>
@@ -125,11 +125,11 @@
         </a>
         <h1>Hamilton News</h1>
         <div class="news-navbarcont" data-role="navbar">
-          <ul class="xnavbar">
-            <li>
-              <a class="" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
+          <ul class="xnavbar ui-grid-a">
+            <li class="ui-block-a">
+              <a class="ui-btn" href="#news"><img src="icons/news.svg" class="imgResponsive news-width" style="vertical-align:inherit"/> Spectator</a>
             </li>
-            <li>
+            <li class="ui-block-b">
               <a class="ui-btn-active ui-state-persist" href="#ham-news"><img src="icons/news.svg" style="vertical-align:inherit" class="imgResponsive news-width"/> Hamilton News</a>
             </li>
           </ul>

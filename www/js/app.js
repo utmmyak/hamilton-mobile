@@ -197,11 +197,14 @@ var diningJSON = null;
 
       if (lastDiningHall) {
         initializeDiningHall(lastDiningHall);
+      } else {
+        $(".diningmenuholder").fadeIn();
       }
       if (idActive != undefined) {
         console.log("setting again" + idActive);
         $('ul.meals li a[data-meal-id="' + idActive + '"]').click();
       }
+      
     }
     diningJSON = adata;
   };
