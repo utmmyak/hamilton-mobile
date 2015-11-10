@@ -282,7 +282,7 @@ footer {height: 60px;}
   white-space: pre;
   overflow-x: visible;
   /*font-size: 90%;*/
-    font-size: 14px;
+    font-size: 15px;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -301,7 +301,7 @@ footer {height: 60px;}
   border: none;
 }
 
-.back-btn {
+.back-btn,.dining-back-btn {
   border: none;
   height: 35px;
   background: white !important;
@@ -514,4 +514,20 @@ a.homeicon.ui-btn {
   right:0;
     width: 100%;
     height: 100%;
+}
+ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
+    font-size:16px;
+}
+#diningmenus .dining-back-btn {
+    display:none
+}
+
+
+
+/* Some weather things */
+#weather > img {
+    margin-bottom: -4px
+}
+.weather-text {
+    margin:0
 }

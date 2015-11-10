@@ -285,7 +285,9 @@ var diningJSON = null;
 
     $('.apageheader.menu-show').html('<div id="meals-navbarcont" data-role="navbar"></div>');
     $('#meals-navbarcont').html('<ul class="meals xnavbar"></ul>');
-    $('.meals.xnavbar').html('<li class="back-cont"><a class="go-back ui-btn-icon-left" data-icon="arrow-l">Back</a></li>');
+    //$('.meals.xnavbar').html('<li class="back-cont"><a class="go-back ui-btn-icon-left" data-icon="arrow-l">Back</a></li>');
+    $('#diningmenus > .pageheader > .back-btn').hide();
+    $('#diningmenus > .pageheader > .dining-back-btn').show();
     console.log(cafe);
     $.each(cafe.dayparts[0], function (id, meal) { // for each meal
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
@@ -318,7 +320,7 @@ var diningJSON = null;
     $(".items").css("display", "block");
 
 
-    $(".meals li a:not(.go-back)").click(function(){ // initialize meal when navbar link is pressed
+    $(".meals li a").click(function(){ // initialize meal when navbar link is pressed
       initializeMeal($(this).data("meal-id"));
     });
 
@@ -334,12 +336,16 @@ var diningJSON = null;
     $('[data-role="navbar"]').navbar(); // necessary to apply styling to navbar (meal buttons)
 
     $(".meals").css("display", "block");
-    $('.meals li a.go-back').removeClass('ui-btn-icon-top');
+    //$('.meals li a.go-back').removeClass('ui-btn-icon-top');
 
     var goBack = function(){ // leave the meals/items view and return to dining hall list
       $("#diningmenus .menu-show").css("display", "none");
       $("#diningmenus .menu-hide").css("display", "block");
       $(".menu-out-of-date").addClass("navmargin");
+
+
+      $('#diningmenus > .pageheader > .back-btn').show();
+      $('#diningmenus > .pageheader > .dining-back-btn').hide();
 
       $(".meals").css("display", "none");
       $(".items").css("display", "none");
@@ -353,8 +359,11 @@ var diningJSON = null;
       $(document).off("backbutton", goBack);
     };
 
-    $(".meals li a.go-back").click(goBack);
-    $(".meals li.back-cont").click(goBack);
+
+
+    $('#diningmenus > .pageheader > .dining-back-btn').click(goBack);
+
+    //$(".meals li.back-cont").click(goBack);
 
     //document.addEventListener("backbutton", goBack, false);
     $(document).bind("backbutton", goBack);
@@ -595,7 +604,7 @@ var diningJSON = null;
     for (var i = 0; i < items.rows.length; i++) {
       phonecontacts.push(items.rows.item(i));
     }
-    var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span>{{if url}}<br><span class="smgrey website" data-url="${url}">Website</span>{{/if}}{{if email}}<span class="smgrey website" data-mailto="${email}">${email}</span>{{/if}}</a></li>';
+    var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span></li>';
     var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li>';
     var pnlist = $('#phonenumlist');
     pnlist.html('')
@@ -956,6 +965,8 @@ var diningJSON = null;
       defaults: true,
       theme: 'b'
     });
+
+    $(".dining-back-btn").removeClass('ui-btn-right').addClass('ui-btn-left');
     $(".dining-halls ul.diningmenuholder li a").click(function () {
       var id = $(this).parent().attr("data-bamco-id");
       initializeDiningHall(id);

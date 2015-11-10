@@ -9,8 +9,12 @@ $(document).ready(function() {
     success: function(weather) {
 //      html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
 //      $("#weather").html(html);
-        html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
-        $("#weather").html(html);
+        var imgDisp = $('<img>').attr('src', weather.forecast[0].thumbnail);
+        var tempDisp = $('<div/>').addClass('weather-text').html(weather.temp + '&deg;' + weather.units.temp);
+        var weatherEl = $("#weather");
+        weatherEl.empty();
+        weatherEl.append(imgDisp);
+        weatherEl.append(tempDisp);
     },
     error: function(error) {
       $("#weather").html('<p>'+error+'</p>');
