@@ -304,7 +304,7 @@ footer {height: 60px;}
 .back-btn,.dining-back-btn {
   border: none;
   height: 35px;
-  background: white !important;
+  background: none !important;
   margin-bottom: 5px;
   border-radius: 5px;
   margin-top: 7px;
@@ -316,12 +316,11 @@ svg path, svg circle, svg rect{
 }
 
 .back-btn:hover {
-    background: rgb(214,  186,  139) !important;
-    fill: white !important;
+    fill: rgb(214,  186,  139) !important;
 }
 
 .house {
-    color: rgb(0,  47,  134);
+    color: white;
     padding-top: 5px;
     padding-left: 5px;
 }
@@ -470,6 +469,31 @@ a.homeicon.ui-btn {
     padding:0
 
     /*width:90px*/
+}
+
+.svg-width {
+    width: 30px !important;
+}
+
+.ath-width{
+    padding-top: 3px;
+    width: 24px !important;   
+}
+
+.news-width{
+    width: 34px !important;
+}
+
+.map-width{
+    width: 35px !important;
+}
+
+.web-width{
+    width: 29px !important;   
+}
+
+.scroll-width{
+    width: 21px !important;
 }
 
 #bkg {
