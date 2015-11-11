@@ -76,3 +76,8 @@ svg path, svg circle, svg rect{
     background: -moz-linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* Standard syntax (must be last) */
 }
+
+
+#cap{
+    color: rgb(0,  47,  134) !important;
+}

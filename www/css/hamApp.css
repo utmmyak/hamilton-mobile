@@ -543,6 +543,8 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
     font-size:16px;
 }
 #diningmenus .dining-back-btn {
+    color:white !important;
+    box-shadow: none !important;
     display:none
 }
 /* Some weather things */
