@@ -107,16 +107,16 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 
 .ui-page .pageheader {
     background-color: #002f86;
-    border-top-width: 20px;
-    border-bottom-width: 0px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
     border-color: #002f86;
     color: #fff;
-    height: 70px;
-    padding-top: 5px;
-    margin-bottom: 5px;
+    height: 50px;
+    padding-top: 0px;
+    margin-bottom: 0px;
 }
 .footer {
     background: #ccc;
@@ -545,9 +545,6 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 #diningmenus .dining-back-btn {
     display:none
 }
-
-
-
 /* Some weather things */
 #weather > img {
     margin-bottom: -4px
