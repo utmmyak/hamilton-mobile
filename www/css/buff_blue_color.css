@@ -22,7 +22,7 @@ svg path, svg circle, svg rect{
 
 
 .title_bar {
-    padding: 15px;
+    padding: 0px;
     background: rgb(0,  47,  134);
     border-top-width: 18px;
     border-bottom-width: 0px;
@@ -70,11 +70,11 @@ svg path, svg circle, svg rect{
 }
 
 #home-gradient{
-    height: 20px;
-    background: -webkit-linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgb(3,20,52), rgb(0,47,134)); /* Standard syntax (must be last) */
+    height: 35px;
+    background: -webkit-linear-gradient(#001d52, rgb(0,47,134)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#001d52, rgb(0,47,134)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#001d52, rgb(0,47,134)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#001d52, rgb(0,47,134)); /* Standard syntax (must be last) */
 }
 
 

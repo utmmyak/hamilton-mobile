@@ -107,7 +107,7 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 
 .ui-page .pageheader {
     background-color: #002f86;
-    border-top-width: 10px;
+    border-top-width: 15px;
     border-bottom-width: 10px;
     border-right-width: 0px;
     border-left-width: 0px;
