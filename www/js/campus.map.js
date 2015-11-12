@@ -29,7 +29,7 @@ var campusMap = (function(){
     // hide info window
     var hideInfo = function(){ infoWin.close() };
 
-    var markerClick = function() {
+    var markerClick = function(aid) {
         var temp = getWindow(this.get('id'));
         temp.open(map);
         hideInfo();
@@ -40,7 +40,7 @@ var campusMap = (function(){
     var putAllPointsOnMap = function(data) {
         for (var i in data) {
             if (data.hasOwnProperty(i)){
-              console.log('adding', i);
+                console.log('adding', i);
                 var point = data[i],
                     latlng = new google.maps.LatLng(point.lat,point.lng);
                 bounds.extend(latlng);
@@ -63,28 +63,30 @@ var campusMap = (function(){
     // get all buildings points
     //var loadPoints = function(items){
     //    App.points = items;
-    //    fillFindList(App.points);
+    //fillFindList(App.points);
     //};
 
     var fillFindList = function(items){
-        //$('#listTmpl')
-        //	.tmpl(App.points)
-        //	.appendTo('ul#listing');
+        var listTemplate = '<li><a role="button" data-ajax="false" class="listing" data-target="${id}">${name}</a></li>';
+        $.template("listTmpl", listTemplate);
+
+        $.tmpl('listTmpl', items)
+            .appendTo('ul#listing');
     };
-    
+
     // create all infowindows
     var createInfoWins = function(data) {
         $.each(data,function(index,value){
             temp = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400});
             temp.setPosition(new google.maps.LatLng(value.lat, value.lng));
             temp.setContent("<div id=\"content\" style=\"text-align:center\">"+
-                            '<div style="height: 140px;"><img src="http://www.hamilton.edu'+value.imgpath+'" style="max-width:100%;max-height:160px;"></div>'+
-                            "<h1 id=\"firstHeading\" class=\"firstHeading\">"+value.name+"</h1>"+
-                            "<div id=\"bodyContent\" style=\"text-align:left\">"+
-                            "<p>"+value.description+"</p>"+
-                            "</div>"+
-                            "</div>"
-                            );
+                '<div style="height: 140px;"><img src="http://www.hamilton.edu'+value.imgpath+'" style="max-width:100%;max-height:160px;"></div>'+
+                "<h1 id=\"firstHeading\" class=\"firstHeading\">"+value.name+"</h1>"+
+                "<div id=\"bodyContent\" style=\"text-align:left\">"+
+                "<p>"+value.description+"</p>"+
+                "</div>"+
+                "</div>"
+            );
             windows.push(temp);
         });
     };
@@ -115,16 +117,44 @@ var campusMap = (function(){
     var updateLocation = function() {
         // GeoLocation option
         navigator.geolocation.getCurrentPosition(function(position) {
-                App.currentLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-                map.setCenter(App.currentLatLng);
-                addLocationMarker(App.currentLatLng,map);
-            },function(){ addLocationMarker(hamLatLng,map) });
+            App.currentLatLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+            map.setCenter(App.currentLatLng);
+            addLocationMarker(App.currentLatLng,map);
+        },function(){ addLocationMarker(hamLatLng,map) });
 
     };
 
-
     // event listener to find a buidling or location
-    //$( document ).on( "click", "#listing",function(event, ui) { showInfo(event.target.id) });
+    //$( document ).on( "click", ".listing",function(event, ui) { showInfo(event.target.id) });
+    $( document ).on( "click", ".listing",function(event, ui) {
+        //showInfo(event.target.data('target'));
+        //$("#list").dialog('close');
+        $("#find").bind('click', function(){
+                $("#map").removeClass('ui-page-active');
+                $("#list").addClass('ui-page-active');
+        });
+        $('#list').removeClass('ui-page-active');
+        $('#map').addClass('ui-page-active');
+        // TODO: THIS DOES NOT WORK
+        // The Dialog won't come up again
+
+        // $('#container').pagecontainer('change', 'map');
+        // this does not seem to work
+
+
+        hideInfo();
+        var temp = getWindow($(this).data('target'));
+
+
+
+        temp.open(map);
+
+        infoWin = temp;
+        //event.preventDefault();
+        //return false;
+
+
+    });
 
     // event listener to locate current position
     $( document ).on( "click", "#compass",function(event,ui) { updateLocation() });
@@ -148,17 +178,18 @@ var campusMap = (function(){
 
         // ajax call to get buildings and locations json object
         $.ajax({
-                  url: 'ajax/locations.json',
-                  dataType: 'json'
-              })
-        .done(function(data) {
-          //loadPoints(data);
-          console.log('loaded locations.json');
-          App.points = data;
-          createInfoWins(data);
-          console.log(data);
-          putAllPointsOnMap(data);
-        }).error(function(jqXHR, textStatus, errorThrown){ console.log("error crit", errorThrown, textStatus, jqXHR); });
+            url: 'ajax/locations.json',
+            dataType: 'json'
+        })
+            .done(function(data) {
+                //loadPoints(data);
+                fillFindList(data);
+                console.log('loaded locations.json');
+                App.points = data;
+                createInfoWins(data);
+                console.log(data);
+                putAllPointsOnMap(data);
+            }).error(function(jqXHR, textStatus, errorThrown){ console.log("error crit", errorThrown, textStatus, jqXHR); });
 
         $('#map_canvas')
             .css('height', $(document).height() - $('#map').find('[data-role=header]').height()  )
@@ -191,18 +222,18 @@ var campusMap = (function(){
                 position: google.maps.ControlPosition.TOP_LEFT
             }
         };
-        
+
         map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-        
+
         //Hide default points of interest by google(already have our own)
         var styles = [
-               {
-                 featureType: "poi",
-                 stylers: [
-                  { visibility: "off" }
-                 ]   
-                }
-            ];
+            {
+                featureType: "poi",
+                stylers: [
+                    { visibility: "off" }
+                ]
+            }
+        ];
         map.setOptions({styles: styles});
 
         google.maps.event.addListener(map, 'dragend', function(){

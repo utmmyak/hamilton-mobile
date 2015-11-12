@@ -1126,6 +1126,7 @@ var diningJSON = null;
 
       // Setting default page transition to slide
       $.mobile.defaultPageTransition = 'slide';
+    $.mobile.ajaxEnabled = true;
 
   });
   //KJD Necessary for SVG images (icons)
