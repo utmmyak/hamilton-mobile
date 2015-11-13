@@ -108,13 +108,13 @@ html head + body .ui-btn.ui-btn-a.ui-btn-active {background-color: #f6f6f6;
 .ui-page .pageheader {
     background-color: #002f86;
     border-top-width: 15px;
-    border-bottom-width: 10px;
+    /*border-bottom-width: 10px;*//*Removed for news page header*/
     border-right-width: 0px;
     border-left-width: 0px;
     border-style: solid;
     border-color: #002f86;
     color: #fff;
-    height: 50px;
+    /*height: 50px;*//*Removed for news page header*/
     padding-top: 0px;
     margin-bottom: 0px;
 }
