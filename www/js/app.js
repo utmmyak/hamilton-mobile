@@ -1,5 +1,40 @@
 var diningJSONCallback; // need to declare all jsonp callbacks as global variables
 var diningJSON = null;
+var gotSong = function(data) {
+  $(data).find("item").first(function() {
+    var el = $(this);
+
+    $('#song-container').text(el.find('title'));
+
+  });
+};
+var grabRssFeed = function(url, callback, cacheBust, limit) {
+  console.log("start");
+  var fxurl = url + (cacheBust ? ("&_=" + Math.round(new Date().getTime() / 1000)) : '');
+  console.log(fxurl);
+  var api = "http" +"://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" +
+      encodeURIComponent(fxurl);
+  api += "&num=" + ((limit == null) ? 25 : limit);
+  api += "&output=json_xml";
+
+  // Send request
+  $.getJSON(api, function(data){
+
+      // Check for error
+      if (data.responseStatus == 200) {
+
+        callback(data.responseData);
+
+      } else {
+
+        // Handle error if required
+        var msg = data.responseDetails;
+        console.log(msg);
+        //$(e).html('<div class="rssError"><p>'+ msg +'</p></div>');
+      }
+    }
+  );
+};
 (function () {
   'use strict';
   var errorConsole;
@@ -607,7 +642,7 @@ var diningJSON = null;
     var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span></li>';
     var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li>';
     var pnlist = $('#phonenumlist');
-    pnlist.html('')
+    pnlist.html('');
     $.template("contactTemplate", phonetemplate);
     $.tmpl("contactTemplate", phonecontacts).appendTo('#phonenumlist');
     pnlist.prepend(permphones);
@@ -653,19 +688,23 @@ var diningJSON = null;
   // had to add handlers for external links for in app browser nonsense
   function handleExternalURLs() {
     // Handle click events for all external URLs
-    /*console.log(device.platform);
+    console.log(device.platform);
     if (device.platform === null) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
         window.open(url, '_system');
+        return false;
       });
     }
     else if (device.platform.toUpperCase() === 'ANDROID') {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
+        /*var url = $(this).attr('href');
+        window.open(url, '_system');*/
         var url = $(this).attr('href');
-        window.open(url, '_system');
+        navigator.app.loadUrl(url, { openExternal: true });
+        return false;
       });
     }
     else if (device.platform.toUpperCase() === 'IOS') {
@@ -674,6 +713,7 @@ var diningJSON = null;
         e.preventDefault();
         var url = $(this).attr('href');
         window.open(url, '_system');
+        return false;
       });
     }
     else {
@@ -681,14 +721,15 @@ var diningJSON = null;
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
-        window.open(url, '_blank');
+        window.open(url, '_system');
+        return false;
       });
-    }*/
-    $(document).on('click', 'a[href^="http"]', function (e) {
+    }
+    /*$(document).on('click', 'a[href^="http"]', function (e) {
       e.preventDefault();
       var url = $(this).attr('href');
       window.open(url, '_system', 'location=yes');
-    });
+    });*/
   }
 
   function setAudiencePrefTable() {
@@ -1097,11 +1138,37 @@ var diningJSON = null;
   });
 
   $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
-    $('#alumniEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss', {
+    /*$('#alumniEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss', {
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, function(){ rewriteClassEvents('#alumniEvents'); });
+    }, function(){ rewriteClassEvents('#alumniEvents'); });*/
+    var alumEventList = $('<ul data-role="listview" class="widelist" id="alumEventsListview"></ul>');
+    grabRssFeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss',
+      function(data){
+        console.log(data);
+        data.feed.entries.forEach(function(el) {
+          console.log(el);
+          //var el = $(this);
+          var contab = $('<a class="ui-link"></a>').attr('href', el.link);
+          contab.append($('<div class="title">' + el.title + '</div>'));
+          contab.append($('<span class="date">' + el.categories[0] + '</span>'));
+          contab.append($('<div class="desc">' + el.contentSnippet + '</div>'));
+
+          alumEventList.append($('<li/>').append(contab));
+        });
+        $('#alumniEvents .rssFeed').html(alumEventList);
+        $('#alumniEvents .rssFeed').enhanceWithin();
+        $('#alumEventsListview').listview("refresh");
+      }
+    );
+
+
+    //$('#alumEventsListview').listview("refresh");
+
+  });
+  $(document).on('pageshow', '#alumniEvents', function(e, data){
+
   });
 
   $(document).on('pagebeforeshow', function (event, ui) {
@@ -1116,7 +1183,7 @@ var diningJSON = null;
       $.getScript("js/campus.map.js", function (data, textStatus, jqxhr) {});
     }, 100);
   });
-  $(document).on('pageshow', '#webcam', function (e, data) {
+  $(document).on('pagebeforeshow', '#webcam', function (e, data) {
     $("#webcam-img").load();
   });
   $(document).one("mobileinit", function () {
@@ -1129,6 +1196,24 @@ var diningJSON = null;
     $.mobile.ajaxEnabled = true;
 
   });
+  var songUpdateInterval;
+  var updateSong = function() {
+    grabRssFeed('http://spinitron.com/public/rss.php?station=whcl', function(data){
+      var el = $(this);
+
+      $('#song-container').text(data.feed.entries[0].title);
+
+    }, true, 1);
+  };
+  $(document).on('pagebeforeshow', '#radio', function (e, data) {
+    updateSong();
+    songUpdateInterval = setInterval(updateSong, 3800);
+
+  });
+  $(document).on('pagehide', '#radio', function(e, data) {
+    clearInterval(songUpdateInterval);
+  });
+
   //KJD Necessary for SVG images (icons)
   $(document).on('pagebeforeshow', '#home', function (e, data) {
       jQuery('img.svg').each(function(){
