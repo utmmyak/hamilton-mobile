@@ -1,3 +1,7 @@
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0,n-1)+'&hellip;' : this;
+      };
 var campusMap = (function(){
 
     //public variables
@@ -80,10 +84,10 @@ var campusMap = (function(){
             temp = new google.maps.InfoWindow({pixelOffset:0,maxWidth:400});
             temp.setPosition(new google.maps.LatLng(value.lat, value.lng));
             temp.setContent("<div id=\"content\" style=\"text-align:center\">"+
-                '<div style="height: 140px;"><img src="http://www.hamilton.edu'+value.imgpath+'" style="max-width:100%;max-height:160px;"></div>'+
+                '<div style="min-height: 100px; max-height: 140px;"><img src="http://www.hamilton.edu'+value.imgpath+'" style="max-width:100%;max-height:160px;"></div>'+
                 "<h1 id=\"firstHeading\" class=\"firstHeading\">"+value.name+"</h1>"+
                 "<div id=\"bodyContent\" style=\"text-align:left\">"+
-                "<p>"+value.description+"</p>"+
+                '<p class="mapDescription">'+value.description.trunc(285)+"</p>"+
                 "</div>"+
                 "</div>"
             );

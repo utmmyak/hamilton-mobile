@@ -688,8 +688,25 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   // had to add handlers for external links for in app browser nonsense
   function handleExternalURLs() {
     // Handle click events for all external URLs
-    console.log(device.platform);
-    if (device.platform === null) {
+    //console.log(device.platform);
+    if (device.platform.toUpperCase() === 'ANDROID') {
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            var url = $(this).attr('href');
+            navigator.app.loadUrl(url, { openExternal: true });
+            e.preventDefault();
+        });
+    }
+    else if (device.platform.toUpperCase() === 'IOS') {
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            var url = $(this).attr('href');
+            window.open(url, '_system');
+            e.preventDefault();
+        });
+    }
+    else {
+        // Leave standard behaviour
+    }
+    /*if (device.platform === null) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
@@ -700,8 +717,8 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     else if (device.platform.toUpperCase() === 'ANDROID') {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
-        /*var url = $(this).attr('href');
-        window.open(url, '_system');*/
+        //var url = $(this).attr('href');
+        //window.open(url, '_system');
         var url = $(this).attr('href');
         navigator.app.loadUrl(url, { openExternal: true });
         return false;
@@ -724,7 +741,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         window.open(url, '_system');
         return false;
       });
-    }
+    }*/
     /*$(document).on('click', 'a[href^="http"]', function (e) {
       e.preventDefault();
       var url = $(this).attr('href');

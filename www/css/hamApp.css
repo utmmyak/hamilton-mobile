@@ -556,3 +556,27 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 .weather-text {
     margin:0
 }
+#alumEventsListview > li > a > .date {
+    color: #555;
+    font-weight: 500;
+    font-style:italic;
+}
+#alumEventsListview > li > a > .desc {
+    white-space:normal;
+    font-weight: normal;
+}
+
+#radio #song-container {
+    font-size: 20pt;
+    font-family: sans-serif;
+    margin-top:20px
+}
+
+.firstHeading {
+  margin-top:2px;
+  margin-bottom:2px;
+}
+.mapDescription {
+  margin-top: 2px;
+  margin-bottom: 0
+}
