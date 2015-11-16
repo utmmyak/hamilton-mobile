@@ -17,6 +17,7 @@ svg path, svg circle, svg rect{
     background: #c3b49a !important;
     border-radius: 15px;
     color: white !important;
+    
 }
 
 
@@ -79,5 +80,5 @@ svg path, svg circle, svg rect{
 
 
 #cap{
-    color: rgb(0,  47,  134) !important;
+    color: rgb(0,  47,  134) ;
 }

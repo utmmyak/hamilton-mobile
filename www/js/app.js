@@ -1245,5 +1245,15 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
       });
   });
+
+    
+  $(function() {
+  $('.cal').hover(function() {
+    $('#cap').css('color', "rgb(214,  186,  139)");
+  }, function() {
+    $('#cap').css('color', 'rgb(0,  47,  134)');
+  });
+});
+    
   
 })();
