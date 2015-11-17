@@ -92,7 +92,7 @@
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
   <gap:plugin name="cordova-plugin-geolocation" source="npm" />
-  <gap:plugin name="cordova-plugin-device" />
+  <gap:plugin name="cordova-plugin-device" source="npm" />
 
   <!--<access origin="*" browserOnly="true" />-->
   <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
