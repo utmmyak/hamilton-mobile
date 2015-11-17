@@ -474,28 +474,28 @@ a.homeicon.ui-btn {
 }
 
 .svg-width {
-    width: 30px !important;
+    width: 38px !important;
 }
 
 .ath-width{
     padding-top: 3px;
-    width: 24px !important;   
+    width: 31px !important;   
 }
 
 .news-width{
-    width: 34px !important;
+    width: 41px !important;
 }
 
 .map-width{
-    width: 35px !important;
+    width: 44px !important;
 }
 
 .web-width{
-    width: 29px !important;   
+    width: 37px !important;   
 }
 
 .scroll-width{
-    width: 21px !important;
+    width: 27px !important;
 }
 
 #bkg {
@@ -551,7 +551,7 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 }
 /* Some weather things */
 #weather > img {
-    margin-bottom: -4px
+    margin-bottom: 2px
 }
 .weather-text {
     margin:0

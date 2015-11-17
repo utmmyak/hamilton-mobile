@@ -145,7 +145,10 @@
   <icon src="icon.png" />
   <gap:splash src="splash.png" />  
 
+  <!-- may need some combination of the two if you encounter phonegap build issues-->
   <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+  <!--<gap:plugin name="cordova-plugin-whitelist" version="1.1.0" source="npm" />-->
+    
   <plugin name="cordova-plugin-whitelist" spec="1" />
   <access origin="*"/>
   <allow-navigation href="http://*/*" />
