@@ -301,7 +301,7 @@ footer {height: 60px;}
   border: none;
 }
 
-.back-btn,.dining-back-btn {
+.back-btn,.dining-back-btn,.events-filter-btn {
   border: none;
   height: 35px;
   background: none !important;
@@ -544,7 +544,7 @@ a.homeicon.ui-btn {
 ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
     font-size:16px;
 }
-#diningmenus .dining-back-btn {
+#diningmenus .dining-back-btn,.events-filter-btn {
     color:white !important;
     box-shadow: none !important;
     display:none
@@ -554,8 +554,12 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
     margin-bottom: 2px
 }
 .weather-text {
-    margin:0
+    margin:0;
+    margin-top:-2px;
+    color: white;
+    font-weight: bold
 }
+
 #alumEventsListview > li > a > .date {
     color: #555;
     font-weight: 500;
@@ -579,4 +583,19 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 .mapDescription {
   margin-top: 2px;
   margin-bottom: 0
+}
+a > .title {
+    font-size:1.2em;
+    margin-bottom:-3px;
+}
+a > .date {
+    font-weight: normal;
+    font-style:italic;
+    font-size:0.9em;
+    color:#777;
+}
+a > .desc {
+    font-weight: normal;
+    white-space:normal;
+
 }

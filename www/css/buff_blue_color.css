@@ -19,7 +19,9 @@ svg path, svg circle, svg rect{
     color: white !important;
     
 }
-
+.homeicon.weather-anchor:hover, .homeicon.weather-anchor:active {
+    background-color: transparent !important;
+}
 
 
 .title_bar {

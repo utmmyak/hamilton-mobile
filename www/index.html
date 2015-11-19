@@ -64,7 +64,7 @@
                     <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#feedback-page"><img src="icons/comment.svg" class="imgResponsive svg-width svg" /><br>Feedback</a></li>
                     <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon feedb" href="#scroll"><img src="icons/Scroll.svg" class="imgResponsive scroll-width svg" /><br>The Scroll</a></li>
                     <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon maphome" href="#webcam"><img src="icons/webcam.svg" class="imgResponsive web-width svg" /><br>Webcam</a></li>
-                    <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon"><div id="weather"></div></a></li>
+                    <li class="icon-float ui-block-2x-height"><a class="ui-btn homeicon weather-anchor"><div id="weather"></div></a></li>
                 </ul>
 
                 <div id="cupola-bkg">
@@ -232,7 +232,7 @@
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>All Events</h1>
-                <a href="#eventsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
+                <a href="#eventsFilterPopup" data-rel="popup" data-transition="pop" class="events-filter-btn"><i class="fa fa-filter fa-2x"></i></a>
             </div>
             <div class="ui-content eventsholder" data-iscroll="" data-role="content">
                 <div id="feed" class="rssFeed" ></div>
@@ -241,7 +241,6 @@
             <div data-role ="popup" id = "eventsFilterPopup" data-theme="b">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider">Choose an event type</li>
-                    <li><a href="#athleticEvents" data-transition="slideup">Athletics</a></li>
                     <li><a href="#artEvents" data-transition="slideup">Arts</a></li>
                     <li><a href="#alumniEvents" data-transition="slideup">Alumni</a></li>
                 </ul>
@@ -254,18 +253,9 @@
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>Athletic Events</h1>
-                <a href="#athleticsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
             </div>
             <div class="ui-content eventsholder" data-iscroll="" data-role="content">
                 <div id="feed" class="rssFeed" ></div>
-            </div>
-            <div data-role ="popup" id = "athleticsFilterPopup" data-theme="b">
-                <ul data-role="listview" data-inset="true">
-                    <li data-role="list-divider">Choose an event type</li>
-                    <li><a href="#events" data-transition="slideup">All Events</a></li>
-                    <li><a href="#artEvents" data-transition="slideup">Arts</a></li>
-                    <li><a href="#alumniEvents" data-transition="slideup">Alumni</a></li>
-                </ul>
             </div>
         </div>
 
@@ -275,7 +265,7 @@
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>Arts Events</h1>
-                <a href="#artsFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
+                <a href="#artsFilterPopup" data-rel="popup" data-transition="pop" class="events-filter-btn"><i class="fa fa-filter fa-2x"></i></a>
             </div>
             <div class="ui-content eventsholder" data-iscroll="" data-role="content">
                 <div id="feed" class="rssFeed" ></div>
@@ -284,7 +274,6 @@
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider">Choose an event type</li>
                     <li><a href="#events" data-transition="slideup" >All Events</a></li>
-                    <li><a href="#athleticEvents" data-transition="slideup" >Athletics</a></li>
                     <li><a href="#alumniEvents" data-transition="slideup" >Alumni</a></li>
                 </ul>
             </div>
@@ -296,7 +285,7 @@
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>Alumni Events</h1>
-                <a href="#alumniFilterPopup" data-rel="popup" data-transition="pop" ><i class="fa fa-bars fa-2x"></i></a>
+                <a href="#alumniFilterPopup" data-rel="popup" data-transition="pop" class="events-filter-btn"><i class="fa fa-filter fa-2x"></i></a>
             </div>
             <div class="ui-content eventsholder" data-iscroll="" data-role="content">
                 <div id="feed" class="rssFeed" ></div>
@@ -305,7 +294,6 @@
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider">Choose an event type</li>
                     <li><a href="#events" data-transition="slideup" >All Events</a></li>
-                    <li><a href="#athleticEvents" data-transition="slideup" >Athletics</a></li>
                     <li><a href="#artEvents" data-transition="slideup" >Arts</a></li>
                 </ul>
             </div>

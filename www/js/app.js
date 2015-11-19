@@ -55,9 +55,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   }
 
   function rewriteClassEvents(name) {
-    $("h4 a").addClass("external");
-    $(name).find('.iscroll-content').attr("style", "");
-    $(name+' .eventsholder').iscrollview('refresh');
+    console.log(name);
+    //$(name+" h4 a").addClass("external");
+    //$(name).find('.iscroll-content').attr("style", "");
+    //$(name+' .eventsholder').iscrollview('refresh');
       
   }
 
@@ -1130,28 +1131,57 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     }, rewriteClassHamNews);
   });
 
+  var initEventsList = function(name, url){
+    var eventList = $('<ul data-role="listview" class="widelist" id="' + name + 'Listview"></ul>');
+    grabRssFeed(url,
+      function(data){
+        console.log(data);
+        data.feed.entries.forEach(function(el) {
+          var contab = $('<a class="ui-link"></a>').attr('href', el.link);
+          contab.append($('<div class="title">' + el.title + '</div>'));
+
+          contab.append($('<span class="date">' + moment(el.publishedDate).format("MMM D YYYY, h:mma") + '</span>'));
+          contab.append($('<div class="desc">' + el.contentSnippet + '</div>'));
+
+          eventList.append($('<li/>').append(contab));
+        });
+        $('#'+name+' .rssFeed').html(eventList);
+
+        $('#'+name+' .rssFeed').enhanceWithin();
+
+        $('#'+name+'Listview').listview("refresh");
+        $('#'+name+' .eventsholder').iscrollview('refresh');
+
+
+      }
+    );
+  };
+
   $(document).on('pagebeforeshow', '#events', function (e, data) {
-    $('#events').find('.iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
+    /*$('#events').find('.iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, function(){ rewriteClassEvents('#events'); });
+    }, function(){ rewriteClassEvents('#events'); });*/
+    initEventsList('events', 'https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss');
   });
     
   $(document).on('pagebeforeshow', '#athleticEvents', function (e, data) {
-    $('#athleticEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss', {
+    /*$('#athleticEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss', {
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, function(){ rewriteClassEvents("#athleticEvents"); });
+    }, function(){ rewriteClassEvents("#athleticEvents"); });*/
+    initEventsList('athleticEvents', 'http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss');
   });
 
   $(document).on('pagebeforeshow', '#artEvents', function (e, data) {
-    $('#artEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss', {
+    /*$('#artEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss', {
       limit: 25,
       linktarget: '_blank',
       header: false
-    }, function(){ rewriteClassEvents("#artEvents"); });
+    }, function(){ rewriteClassEvents("#artEvents"); });*/
+    initEventsList('artEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss');
   });
 
   $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
@@ -1160,31 +1190,13 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       linktarget: '_blank',
       header: false
     }, function(){ rewriteClassEvents('#alumniEvents'); });*/
-    var alumEventList = $('<ul data-role="listview" class="widelist" id="alumEventsListview"></ul>');
-    grabRssFeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss',
-      function(data){
-        console.log(data);
-        data.feed.entries.forEach(function(el) {
-          console.log(el);
-          //var el = $(this);
-          var contab = $('<a class="ui-link"></a>').attr('href', el.link);
-          contab.append($('<div class="title">' + el.title + '</div>'));
-          contab.append($('<span class="date">' + el.categories[0] + '</span>'));
-          contab.append($('<div class="desc">' + el.contentSnippet + '</div>'));
-
-          alumEventList.append($('<li/>').append(contab));
-        });
-        $('#alumniEvents .rssFeed').html(alumEventList);
-        $('#alumniEvents .rssFeed').enhanceWithin();
-        $('#alumEventsListview').listview("refresh");
-      }
-    );
 
 
     //$('#alumEventsListview').listview("refresh");
-
+    initEventsList('alumniEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss');
   });
   $(document).on('pageshow', '#alumniEvents', function(e, data){
+
 
   });
 
