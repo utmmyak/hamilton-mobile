@@ -282,7 +282,7 @@ footer {height: 60px;}
   white-space: pre;
   overflow-x: visible;
   /*font-size: 90%;*/
-    font-size: 15px;
+    font-size: 18px;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -303,7 +303,7 @@ footer {height: 60px;}
 
 .back-btn,.dining-back-btn,.events-filter-btn {
   border: none;
-  height: 35px;
+  height: 40x;
   background: none !important;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -483,11 +483,13 @@ a.homeicon.ui-btn {
 }
 
 .news-width{
-    width: 41px !important;
+    padding-top: 10px;
+    width: 33px !important;
 }
 
 .map-width{
-    width: 44px !important;
+    padding-top: 8px;
+    width: 37px !important;
 }
 
 .web-width{
@@ -495,7 +497,8 @@ a.homeicon.ui-btn {
 }
 
 .scroll-width{
-    width: 27px !important;
+    padding-top: 4px;
+    width: 25px !important;
 }
 
 #bkg {
@@ -555,7 +558,7 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 }
 .weather-text {
     margin:0;
-    margin-top:-2px;
+    margin-top:2px;
     color: white;
     font-weight: bold
 }
