@@ -1115,23 +1115,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     $('#' + pageid + '>.ui-content>.iscroll-scroller>.iscroll-content').html('').html(htmlcontent);
   });
 
-  //news rss load and rebind
-  $(document).on('pagebeforeshow', '#news', function (e, data) {
-    $('#news').find('.iscroll-content').rssfeed('http://students.hamilton.edu/rss/articles.cfm?item=A9AAF6B5-FB82-2ADF-26A75A82CDDD1221', {
-      limit: 25,
-      linktarget: '_blank',
-      header: false
-    }, rewriteClass);
-  });
-  $(document).on('pagebeforeshow', '#ham-news', function (e, data) {
-    $('#ham-news').find('.iscroll-content').rssfeed('https://www.hamilton.edu/news/rss/news.cfm?tag=news%20item', {
-      limit: 25,
-      linktarget: '_blank',
-      header: false
-    }, rewriteClassHamNews);
-  });
-
-  var initEventsList = function(name, url){
+  var initRSSList = function(name, url){
     var eventList = $('<ul data-role="listview" class="widelist" id="' + name + 'Listview"></ul>');
     grabRssFeed(url,
       function(data){
@@ -1145,17 +1129,35 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
           eventList.append($('<li/>').append(contab));
         });
-        $('#'+name+' .rssFeed').html(eventList);
-
-        $('#'+name+' .rssFeed').enhanceWithin();
+        var rssFeedObj = $('#'+name+' .rssFeed');
+        rssFeedObj.html(eventList);
+        rssFeedObj.enhanceWithin();
 
         $('#'+name+'Listview').listview("refresh");
         $('#'+name+' .eventsholder').iscrollview('refresh');
-
-
       }
     );
   };
+
+  //news rss load and rebind
+  $(document).on('pagebeforeshow', '#news', function (e, data) {
+    /*$('#news').find('.iscroll-content').rssfeed('http://students.hamilton.edu/rss/articles.cfm?item=A9AAF6B5-FB82-2ADF-26A75A82CDDD1221', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClass);*/
+    initRSSList('news', 'http://students.hamilton.edu/rss/articles.cfm?item=A9AAF6B5-FB82-2ADF-26A75A82CDDD1221');
+  });
+  $(document).on('pagebeforeshow', '#ham-news', function (e, data) {
+    /*$('#ham-news').find('.iscroll-content').rssfeed('https://www.hamilton.edu/news/rss/news.cfm?tag=news%20item', {
+      limit: 25,
+      linktarget: '_blank',
+      header: false
+    }, rewriteClassHamNews);*/
+    initRSSList('ham-news', 'https://www.hamilton.edu/news/rss/news.cfm?tag=news%20item');
+  });
+
+
 
   $(document).on('pagebeforeshow', '#events', function (e, data) {
     /*$('#events').find('.iscroll-content').rssfeed('https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss', {
@@ -1163,7 +1165,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       linktarget: '_blank',
       header: false
     }, function(){ rewriteClassEvents('#events'); });*/
-    initEventsList('events', 'https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss');
+    initRSSList('events', 'https://25livepub.collegenet.com/calendars/hamilton-college-open-to-the-public.rss');
   });
     
   $(document).on('pagebeforeshow', '#athleticEvents', function (e, data) {
@@ -1172,7 +1174,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       linktarget: '_blank',
       header: false
     }, function(){ rewriteClassEvents("#athleticEvents"); });*/
-    initEventsList('athleticEvents', 'http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss');
+    initRSSList('athleticEvents', 'http://25livepub.collegenet.com/calendars/Hamilton_College_Athletic_Competitions.rss');
   });
 
   $(document).on('pagebeforeshow', '#artEvents', function (e, data) {
@@ -1181,7 +1183,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       linktarget: '_blank',
       header: false
     }, function(){ rewriteClassEvents("#artEvents"); });*/
-    initEventsList('artEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss');
+    initRSSList('artEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss');
   });
 
   $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
@@ -1193,7 +1195,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
 
     //$('#alumEventsListview').listview("refresh");
-    initEventsList('alumniEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss');
+    initRSSList('alumniEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss');
   });
   $(document).on('pageshow', '#alumniEvents', function(e, data){
 

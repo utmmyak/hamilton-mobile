@@ -139,7 +139,6 @@ var campusMap = (function(){
         });
         $('#list').removeClass('ui-page-active');
         $('#map').addClass('ui-page-active');
-        // TODO: THIS DOES NOT WORK
         // The Dialog won't come up again
 
         // $('#container').pagecontainer('change', 'map');
