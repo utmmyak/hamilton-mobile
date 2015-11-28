@@ -590,6 +590,7 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
 a > .title {
     font-size:1.2em;
     margin-bottom:-3px;
+    white-space: normal;
 }
 a > .date {
     font-weight: normal;

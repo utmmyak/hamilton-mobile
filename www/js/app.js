@@ -1123,8 +1123,16 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         data.feed.entries.forEach(function(el) {
           var contab = $('<a class="ui-link"></a>').attr('href', el.link);
           contab.append($('<div class="title">' + el.title + '</div>'));
-
-          contab.append($('<span class="date">' + moment(el.publishedDate).format("MMM D YYYY, h:mma") + '</span>'));
+          
+          var momentDate = moment(el.publishedDate, 'ddd, DD MMM YYYY hh:mm:ss Z');
+          // This hardcodes the parse format of the date as it is encoded in the rss
+          // feed. For events (i.e. 25live) this is beyond our control and may change.
+          // Moment deprecated the date interpreting system (where it would just
+          // figure out the date). If this format spec stops working, you may use 
+          // new Date(el.publishedDate) but that is generally unreliable as it is
+          // highly browser-specific and not well documented.
+          
+          contab.append($('<span class="date">' + momentDate.format("MMM D YYYY, h:mma") + '</span>'));
           contab.append($('<div class="desc">' + el.contentSnippet + '</div>'));
 
           eventList.append($('<li/>').append(contab));
@@ -1135,6 +1143,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
         $('#'+name+'Listview').listview("refresh");
         $('#'+name+' .eventsholder').iscrollview('refresh');
+        
       }
     );
   };
@@ -1184,8 +1193,9 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       header: false
     }, function(){ rewriteClassEvents("#artEvents"); });*/
     initRSSList('artEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-performances.rss');
+      
   });
-
+   
   $(document).on('pagebeforeshow', '#alumniEvents', function (e, data) {
     /*$('#alumniEvents').find('.iscroll-content').rssfeed('http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss', {
       limit: 25,
@@ -1197,16 +1207,19 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     //$('#alumEventsListview').listview("refresh");
     initRSSList('alumniEvents', 'http://25livepub.collegenet.com/calendars/hamilton-college-alumni-and-parent-events.rss');
   });
-  $(document).on('pageshow', '#alumniEvents', function(e, data){
-
-
-  });
-
-  $(document).on('pagebeforeshow', function (event, ui) {
+  
+  $(document).on('pageshow', function() {
+      // This fixes the padding issue with dynamic content
+      // Basically the header would obscure the listview loaded beneath it;
+      // This uses jquery mobile's layout logic to solve that
+       $( "[data-position='fixed']" ).trigger( 'updatelayout' );
+   });
+  
+  /*$(document).on('pagebeforeshow', function (event, ui) {
     //var shownPage = $(".ui-page.ui-page-theme-a.ui-page-header-fixed.ui-page-footer-fixed.iscroll-page.ui-page-active");
     //console.log(ui.toPage[0]);
     //attachScroller($(ui.toPage[0]));
-  });
+  });*/
 
   // load campus map after page shows - don't know why I have to do this though.
   $(document).on('pageshow', '#map', function (e, data) {
@@ -1215,7 +1228,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     }, 100);
   });
   $(document).on('pagebeforeshow', '#webcam', function (e, data) {
-    $("#webcam-img").load();
+    $("#webcam-img-container").append($('<img src="http://150.209.65.30:80/mjpg/video.mjpg" height="480" width="640" class="" id="webcam-img" style="width:100%;height:auto" alt="Camera Image">'));
+  });
+  $(document).on('pagehide', '#webcam', function(e, data) {
+    $("#webcam-img-container").empty();
   });
   $(document).one("mobileinit", function () {
  
