@@ -282,7 +282,7 @@ footer {height: 60px;}
   white-space: pre;
   overflow-x: visible;
   /*font-size: 90%;*/
-    font-size: 18px;
+    font-size: 16px;
 }
 .ui-block-2x-height .ui-btn i {
   margin-top: .5em;
@@ -303,7 +303,7 @@ footer {height: 60px;}
 
 .back-btn,.dining-back-btn,.events-filter-btn {
   border: none;
-  height: 40x;
+  height: 30x;
   background: none !important;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -323,6 +323,10 @@ svg path, svg circle, svg rect{
     color: white;
     padding-top: 5px;
     padding-left: 5px;
+}
+
+.din {
+    width: 30px;   
 }
 
 .diningmenuholder li {
@@ -548,7 +552,7 @@ ul.diningmenuholder > li.ui-li-static.ui-body-inherit.ui-last-child {
     font-size:16px;
 }
 #diningmenus .dining-back-btn,.events-filter-btn {
-    color:white !important;
+    color: white !important;
     box-shadow: none !important;
     display:none
 }
