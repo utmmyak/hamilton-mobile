@@ -529,7 +529,7 @@ a.homeicon.ui-btn {
     top: 0;
     background-attachment: fixed;
     background-position: bottom;
-    -webkit-mask-position:0 2.8cm
+    -webkit-mask-position: bottom;
 }
 .news-navbarcont > .xnavbar > li > a {
   height: initial;
