@@ -85,13 +85,13 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
             if (((now.getDay() == 0 || now.getDay() == 6) &&
                 (now.getHours > 15))) {
               cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
             } else if (now.getDay() != 0 && now.getDay() != 6 && (now.getHours() > 9)) {
               cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("09:00 - 24:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("9:00 - 12:00");
             } else {
               cafeElement.find(".open-indicator").addClass("closed");
-              cafeElement.find(".dining-hall-block .hours-text").text("15:00 - 24:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
             }
             continue;
           } else {
@@ -110,6 +110,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
         $.each(cafe.dayparts[0], function (id, meal) { // for each meal
           // parse the dayparts of this meal into javascript dates
+
+          // convert times
+          meal.starttime = moment(meal.starttime,'HH:mm').format('h:mm');
+          meal.endtime = moment(meal.endtime,'HH:mm').format('h:mm');
 
           var start = meal.starttime.split(':');
           var end = meal.endtime.split(':');
@@ -326,6 +330,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     $('#diningmenus > .pageheader > .dining-back-btn').show();
     console.log(cafe);
     $.each(cafe.dayparts[0], function (id, meal) { // for each meal
+      // convert times
+      meal.starttime = moment(meal.starttime,'HH:mm').format('h:mm');
+      meal.endtime = moment(meal.endtime,'HH:mm').format('h:mm');
+        
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
                                    meal.starttime + '-' + meal.endtime + '</p></a></li>');
 
