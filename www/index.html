@@ -95,21 +95,20 @@
         </div>
 
         <div data-role="page" id="news">
-
             <div data-id="header" data-position="fixed" data-role="header" data-tap-toggle="false" class="pageheader">
                 <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse" style="padding-bottom:0">
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>Hamilton News</h1>
             </div>
-            <div data-id="header" data-role="header" data-theme="b">
-                <div class="news-navbarcont" data-role="navbar">
+            <div data-id="header" data-role="header" data-tap-toggle="false" data-theme="b">
+                <div class="news-navbarcont ui-btn-active ui-state-persist" data-role="navbar" >
                     <ul class="xnavbar ui-grid-a">
                         <li class="ui-block-a">
-                            <a class="ui-btn-active ui-state-persist" href="#news">Spectator</a>
+                            <a class="ui-btn-active ui-state-persist" href="#news" data-transition="none">Spectator</a>
                         </li>
                         <li class="ui-block-b">
-                            <a class="ui-btn" href="#ham-news">Hamilton News</a>
+                            <a class="ui-btn" href="#ham-news" data-transition="none">Hamilton News</a>
                         </li>
                     </ul>
                 </div>
@@ -122,18 +121,20 @@
 
 
         <div data-role="page" id="ham-news">
-            <div data-id="header" data-role="header" class="pageheader" data-theme="b">
+            <div data-id="header" data-role="header" data-position="fixed" class="pageheader" data-theme="b">
                 <a class="back-btn ui-link ui-btn" href="#home" data-transition="slide" data-direction="reverse" style="padding-bottom:0">
                     <i class="fa fa-home fa-2x house" style="padding:0"></i>
                 </a>
                 <h1>Hamilton News</h1>
-                <div class="news-navbarcont" data-role="navbar">
+            </div>
+            <div data-id="header" data-role="header" data-tap-toggle="false" data-theme="b">
+                <div class="news-navbarcont ui-btn-active ui-state-persist" data-role="navbar">
                     <ul class="xnavbar ui-grid-a">
                         <li class="ui-block-a">
-                            <a class="ui-btn" href="#news">Spectator</a>
+                            <a class="ui-btn" href="#news" data-transition="none">Spectator</a>
                         </li>
                         <li class="ui-block-b">
-                            <a class="ui-btn-active ui-state-persist" href="#ham-news">Hamilton News</a>
+                            <a class="ui-btn-active ui-state-persist" href="#ham-news" data-transition="none">Hamilton News</a>
                         </li>
                     </ul>
                 </div>
