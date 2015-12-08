@@ -106,25 +106,22 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         }
 
         var mealSet = false;
-        var endTime = "";
+        var endtime12hr = "";
 
         $.each(cafe.dayparts[0], function (id, meal) { // for each meal
           // parse the dayparts of this meal into javascript dates
 
           // convert times
           var start = moment(meal.starttime,'HH:mm');
-          meal.starttime = start.format('h:mm');
+          var starttime12hr = start.format('h:mm');
           var end = moment(meal.endtime,'HH:mm');
-          meal.endtime = end.format('h:mm');
+          endtime12hr = end.format('h:mm');
 
 
           var xnow = moment();
 
           if (id == 0) {
-            cafeElement.find("a .dining-hall-block .hours-text").text(meal.starttime);
-            endTime = meal.endtime;
-          } else {
-            endTime = meal.endtime;
+            cafeElement.find("a .dining-hall-block .hours-text").text(starttime12hr);
           }
 
           // is this meal going on now?
@@ -138,7 +135,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         });
         if (cafe.dayparts[0].length != 0) {
           console.log(key, " not closed");
-          cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endTime));
+          cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endtime12hr));
           cafeElement.find("a").removeClass("ui-disabled");
         } else {
           console.log(key, " is closed");
@@ -333,26 +330,21 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     console.log(cafe);
     $.each(cafe.dayparts[0], function (id, meal) { // for each meal
       // convert times
-      meal.starttime = moment(meal.starttime,'HH:mm').format('h:mm');
-      meal.endtime = moment(meal.endtime,'HH:mm').format('h:mm');
+      var start = moment(meal.starttime,'HH:mm');
+      var starttime12hr = start.format('h:mm');
+      var end = moment(meal.endtime,'HH:mm');
+      var endtime12hr = end.format('h:mm');
         
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
-                                   meal.starttime + '-' + meal.endtime + '</p></a></li>');
+                                   starttime12hr + '-' + endtime12hr + '</p></a></li>');
 
       if (!defaultMealSet) { // if current meal has already been set, there is no need need to parse
         // parse the dayparts of this meal into javascript dates
-        var now = new Date();
-        var start = meal.starttime.split(':');
-        var end = meal.endtime.split(':');
-        var startDate = new Date();
-        var endDate = new Date();
-        startDate.setHours(Number(start[0]));
-        startDate.setMinutes(Number(start[1]));
-        endDate.setHours(Number(end[0]));
-        endDate.setMinutes(Number(end[1]));
+        var xnow = moment();
+
 
         // is this meal going on now?
-        if (startDate < now && endDate > now) {
+        if (start.isBefore(xnow) && end.isAfter(xnow)) {
           defaultMealSet = true;
           $('.meals li a[data-meal-id="' + id + '"]').addClass('ui-btn-active');
           initializeMeal(id); // if so initialize it
