@@ -112,17 +112,14 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
           // parse the dayparts of this meal into javascript dates
 
           // convert times
-          meal.starttime = moment(meal.starttime,'HH:mm').format('h:mm');
-          meal.endtime = moment(meal.endtime,'HH:mm').format('h:mm');
+          var start = moment(meal.starttime,'HH:mm');
+          meal.starttime = start.format('h:mm');
+          var end = moment(meal.endtime,'HH:mm');
+          meal.endtime = end.format('h:mm');
 
-          var start = meal.starttime.split(':');
-          var end = meal.endtime.split(':');
-          var startDate = new Date();
-          var endDate = new Date();
-          startDate.setHours(Number(start[0]));
-          startDate.setMinutes(Number(start[1]));
-          endDate.setHours(Number(end[0]));
-          endDate.setMinutes(Number(end[1]));
+
+          var xnow = moment();
+
           if (id == 0) {
             cafeElement.find("a .dining-hall-block .hours-text").text(meal.starttime);
             endTime = meal.endtime;
@@ -131,8 +128,11 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
           }
 
           // is this meal going on now?
-          if (startDate < now && endDate > now) {
+
+          if (start.isBefore(xnow) && end.isAfter(xnow)) {
+
             mealSet = true;
+            console.log("meal has been set");
             return false;
           }
         });
@@ -147,8 +147,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         }
 
         if (mealSet) {
+
           cafeElement.find("a .open-indicator").addClass("open");
         } else {
+
           cafeElement.find("a .open-indicator").addClass("closed");
         }
       }
@@ -1284,3 +1286,4 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     
   
 })();
+;
