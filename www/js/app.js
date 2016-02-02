@@ -85,13 +85,13 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
             if (((now.getDay() == 0 || now.getDay() == 6) &&
                 (now.getHours > 15))) {
               cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("3:00pm - 4:30pm | 4:30pm - 12:00am");
             } else if (now.getDay() != 0 && now.getDay() != 6 && (now.getHours() > 9)) {
               cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("9:00 - 12:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("9:00am - 11:00am | 11:00am - 4:30pm | 4:30pm - 12:00am");
             } else {
               cafeElement.find(".open-indicator").addClass("closed");
-              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
+              cafeElement.find(".dining-hall-block .hours-text").text("3:00am - 4:30pm | 4:30pm - 12:00am");
             }
             continue;
           } else {
@@ -112,10 +112,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
           // parse the dayparts of this meal into javascript dates
 
           // convert times
-          var start = moment(meal.starttime,'HH:mm');
-          var starttime12hr = start.format('h:mm');
-          var end = moment(meal.endtime,'HH:mm');
-          endtime12hr = end.format('h:mm');
+          var start = moment(meal.starttime,'HH:mma');
+          var starttime12hr = start.format('h:mma');
+          var end = moment(meal.endtime,'HH:mma');
+          endtime12hr = end.format('h:mma');
 
 
           var xnow = moment();
@@ -330,10 +330,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     console.log(cafe);
     $.each(cafe.dayparts[0], function (id, meal) { // for each meal
       // convert times
-      var start = moment(meal.starttime,'HH:mm');
-      var starttime12hr = start.format('h:mm');
-      var end = moment(meal.endtime,'HH:mm');
-      var endtime12hr = end.format('h:mm');
+      var start = moment(meal.starttime,'HH:mm a');
+      var starttime12hr = start.format('h:mm a');
+      var end = moment(meal.endtime,'HH:mm a');
+      var endtime12hr = end.format('h:mm a');
         
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
                                    starttime12hr + '-' + endtime12hr + '</p></a></li>');

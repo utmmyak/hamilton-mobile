@@ -3,8 +3,8 @@
 
 $(document).ready(function() {
   $.simpleWeather({
-    location: 'Clinton, NY',
-    woeid: '',
+    //location: 'Clinton, NY',
+    woeid: '2510530',     //Oneida, NY woeid
     unit: 'f',
     success: function(weather) {
 //      html = '<p>'+weather.temp+'&deg;'+weather.units.temp+'</p>';
