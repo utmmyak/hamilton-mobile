@@ -96,29 +96,30 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
                 else {
                     cafeElement.find(".open-indicator").addClass("closed");
                 }
-                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 3:00pm - 4:30pm | 4:30pm - 12:00am");
+                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 3:00pm - 12:00am");
                 
             } 
-              // Friday 
-              else if (day == 5) {
-                  if (now.getHours() < 4 || now.getHours() > 9) {
-                      cafeElement.find(".open-indicator").addClass("open");
-                  }
-                  else {
-                    cafeElement.find(".open-indicator").addClass("closed");   
-                  }
-                  cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 9:00am - 11:00am | 11:00am - 4:30pm | 4:30pm - 12:00am");
-              }
               
-              // Monday-Thursday
-              else {
+            // Friday 
+            else if (day == 5) {
+                if (now.getHours() < 4 || now.getHours() > 9) {
+                    cafeElement.find(".open-    indicator").addClass("open");
+                } 
+                else {
+                    cafeElement.find(".open-indicator").addClass("closed");   
+                    }
+                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 9:00am - 12:00am");
+            }
+              
+            // Monday-Thursday
+            else {
                 if (now.getHours() > 9){
                     cafeElement.find(".open-indicator").addClass("open");
                 }
                 else {
                     cafeElement.find(".open-indicator").addClass("closed");
                 }
-              cafeElement.find(".dining-hall-block .hours-text").text("9:00am - 11:00am | 11:00am - 4:30pm | 4:30pm - 12:00am");
+                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 9:00am - 12:00am");
             }
             continue;
           } else {
@@ -135,20 +136,20 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         // Commons
         else if (key == 109) {
             if (day == 0 || day == 6) {
-                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 10:00am | 11:00am  -2:00pm | 5:00pm - 8:00pm");
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 8:00pm");
             }
             else {
-                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 10:00am | 11:00am - 2:15pm | 5:00pm - 8:00pm");
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 8:00pm");
             }
         }
           
         // McEwen
         else if (key == 110) {
             if (day == 5) {
-                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 10:00am | 11:00am - 2:30pm");
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 2:30pm");
             }
             else if (day < 5 && day > 0) {
-                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 10:00am | 11:00am - 2:30pm | 4:30pm - 8:00pm");
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 8:00pm");
             }
         }
 
