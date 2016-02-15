@@ -22,13 +22,13 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "edu.hamilton.ihamilton-ionic"
-        versionCode="12"
-        version   = "1.2.1">
+        versionCode="20"
+        version   = "1.3.0">
 
   <name>Hamilton Mobile</name>
 
   <description>
-      Hamilton College's mobile app
+      Hamilton College's Mobile App
   </description>
 
   <author href="http://hamilton.edu" email="webhelp@hamilton.edu">
@@ -43,7 +43,7 @@
   <preference name="AutoHideSplashScreen" value="true" />
   <preference name="ShowSplashScreenSpinner" value="true" />
   <preference name="FadeSplashScreen" value="true" />
-  <preference name="FadeSplashScreenDuration" value=".25" />
+  <preference name="FadeSplashScreenDuration" value="2500" />
   <preference name="MediaPlaybackRequiresUserAction" value="false" />
   <preference name="AllowInlineMediaPlayback" value="false" />
   <preference name="BackupWebStorage" value="cloud" />
@@ -92,7 +92,6 @@
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
   <gap:plugin name="cordova-plugin-geolocation" source="npm" />
-  <gap:plugin name="cordova-plugin-device" source="npm" />
 
   <!--<access origin="*" browserOnly="true" />-->
   <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
@@ -144,10 +143,12 @@
 
   <!-- Default Icon and Splash -->
   <icon src="icon.png" />
-  <gap:splash src="resources/splashportraitview.jpg" />  
+  <gap:splash src="splash.png" />  
 
-  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-  <plugin name="cordova-plugin-whitelist" spec="1" />
+  <!-- may need some combination of the two if you encounter phonegap build issues-->
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />  
+  <!--<plugin name="cordova-plugin-whitelist" spec="1" />-->
+    
   <access origin="*"/>
   <allow-navigation href="http://*/*" />
   <allow-navigation href="https://*/*" />
