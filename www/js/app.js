@@ -91,11 +91,8 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         var cafe = data.days[0].cafes[key];
         var cafeElement = $("li[data-bamco-id=\"" + key + "\"]");
         
-        //var day = now.getDate();
         var day = now.getDay();
-          console.log(day);
         // DINER
-        day = 6;
         if (key == 512) {
           if (!(cafe.dayparts) || !(cafe.dayparts[0]) || cafe.dayparts[0].length == 0) {
               // should add diner b hours
