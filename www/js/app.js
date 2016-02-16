@@ -154,7 +154,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
           
         // McEwen
         else if (key == 110) {
-            console.log("MCEWENNNNNNNN")
+            //console.log("MCEWENNNNNNNN")
             console.log(day);
             if (day == 5) {
                 cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 2:30pm");
@@ -174,6 +174,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
             
             if (day > 0 && day < 6) {
                 cafeElement.find("a .dining-hall-block .hours-text").text("11:30am - 1:00pm");
+                if 
             }
             else {
                 console.log(key, " is closed");
@@ -191,42 +192,42 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         //------------------------------------------------------------------
           
           // goes through each meal for a giving dining hall today
-        /*
+        
         $.each(cafe.dayparts[0], function (id, meal) { 
             // for each meal
           // parse the dayparts of this meal into javascript dates
-            console.log("Meal: ");
-            console.log(meal);
 
           // convert times
+        
           var start = moment(meal.starttime,'HH:mma');
-          var starttime12hr = start.format('h:mma');
+          //var starttime12hr = start.format('h:mma');
           var end = moment(meal.endtime,'HH:mma');
-          endtime12hr = end.format('h:mma');
+          //endtime12hr = end.format('h:mma');
 
 
           var xnow = moment();
 
-          if (id == 0) {
+          //if (id == 0) {
             //cafeElement.find("a .dining-hall-block .hours-text").text(starttime12hr);
-          }
+          //}
 
           // is this meal going on now?
-
+          
           if (start.isBefore(xnow) && end.isAfter(xnow)) {
 
             mealSet = true;
             console.log("meal has been set");
             return false;
           }
-        }); */
+        }); 
           
-          /*
+        
         if (cafe.dayparts[0].length != 0) {
           console.log(key, " not closed");
           //cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endtime12hr));
           cafeElement.find("a").removeClass("ui-disabled");
-        } else {
+        } 
+          /*else {
             console.log(day);
             if (key == 598 && day != 6 && day != 0) {
                 console.log("Pub meal object broken on weekday")
@@ -242,7 +243,8 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         if (mealSet) {
 
           cafeElement.find("a .open-indicator").addClass("open");
-        } else {
+        } 
+          else {
 
           cafeElement.find("a .open-indicator").addClass("closed");
         }
