@@ -174,7 +174,6 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
             
             if (day > 0 && day < 6) {
                 cafeElement.find("a .dining-hall-block .hours-text").text("11:30am - 1:00pm");
-                if 
             }
             else {
                 console.log(key, " is closed");
