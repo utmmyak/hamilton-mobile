@@ -785,25 +785,29 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   $(function () {
     FastClick.attach(document.body);
   });
+    
+    
   // had to add handlers for external links for in app browser nonsense
   function handleExternalURLs() {
     // Handle click events for all external URLs
     //console.log(device.platform);
-    /*if (device.platform.toUpperCase() === 'ANDROID') {
+    
+    if (device.platform.toUpperCase() === 'ANDROID') {
         $(document).on('click', 'a[href^="http"]', function (e) {
             var url = $(this).attr('href');
             navigator.app.loadUrl(url, { openExternal: true });
             e.preventDefault();
         });
-    }
-    else if (device.platform.toUpperCase() === 'IOS') {
-        $(document).on('click', 'a[href^="http"]', function (e) {
-            var url = $(this).attr('href');
-            window.open(url, '_system');
-            e.preventDefault();
-          });
-    }*/
-
+    } 
+      
+    else {
+          
+    }  
+      
+      //console.log("Device platform: ")
+      //console.log(device.platform)
+      
+    /*  
     if (device.platform === null) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
@@ -816,12 +820,13 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       
     // want to be in-app
     else if (device.platform.toUpperCase() === 'ANDROID') {
+        console.log("android detected");
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         //var url = $(this).attr('href');
         //window.open(url, '_system');
         var url = $(this).attr('href');
-        navigator.app.loadUrl(url, { openExternal: true });
+        navigator.app.loadUrl(url, { openExternal: false });
         return false;
       });
     }
@@ -840,14 +845,13 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         var url = $(this).attr('href');
         window.open(url, '_system');
         return false;
-      });
+      }); */
     }
     /*$(document).on('click', 'a[href^="http"]', function (e) {
       e.preventDefault();
       var url = $(this).attr('href');
       window.open(url, '_system', 'location=yes');
     });*/
-  }
 
   function setAudiencePrefTable() {
     var sql =
@@ -858,6 +862,9 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       tx.executeSql(sql);
     });
   }
+
+
+
   // TODO - this is ugly, make sure you change this to be none static
   function PopulateAudiencePrefTable() {
     db.transaction(function (tx) {
