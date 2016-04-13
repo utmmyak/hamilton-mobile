@@ -790,9 +790,22 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   // had to add handlers for external links for in app browser nonsense
   function handleExternalURLs() {
     // Handle click events for all external URLs
-    //console.log(device.platform);
     
+    console.log("Platform: ")
+    console.log(device.platform);
+    
+    if (device.platform === null) {
+        console.log("ugh")
+      $(document).on('click', 'a[href^="http"]', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url, '_system');
+        return false;
+      });
+    }
+      
     if (device.platform.toUpperCase() === 'ANDROID') {
+        console.log("android")
         $(document).on('click', 'a[href^="http"]', function (e) {
             var url = $(this).attr('href');
             navigator.app.loadUrl(url, { openExternal: true });
@@ -800,14 +813,25 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         });
     } 
       
+    else if (device.platform.toUpperCase() === 'IOS') {
+      $(document).on('click', 'a[href^="http"]', function (e) {
+        e.preventDefault();
+        var url = $(this).attr('href');
+        window.open(url, '_system');
+        return false;
+      });
+    }
+      
     else {
-          
+       
     }  
+      
       
       //console.log("Device platform: ")
       //console.log(device.platform)
       
-    /*  
+ /*
+      
     if (device.platform === null) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
@@ -817,10 +841,15 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       });
     }
       
-      
-    // want to be in-app
     else if (device.platform.toUpperCase() === 'ANDROID') {
-        console.log("android detected");
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            var url = $(this).attr('href');
+            navigator.app.loadUrl(url, { openExternal: false });
+            e.preventDefault();
+            return false;
+        });
+        
+        /*console.log("android detected");
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         //var url = $(this).attr('href');
@@ -830,6 +859,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         return false;
       });
     }
+      
     else if (device.platform.toUpperCase() === 'IOS') {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
@@ -838,6 +868,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         return false;
       });
     }
+      
     else {
        console.log("bleh");
       $(document).on('click', 'a[href^="http"]', function (e) {
@@ -845,8 +876,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         var url = $(this).attr('href');
         window.open(url, '_system');
         return false;
-      }); */
+      }); 
     }
+      */
+  }
     /*$(document).on('click', 'a[href^="http"]', function (e) {
       e.preventDefault();
       var url = $(this).attr('href');
