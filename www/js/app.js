@@ -381,7 +381,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     var lookupFoodItem = function (itemID, extra) {
       var item = data.items[itemID];
       var display = item.label;
-      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "Made without Gluten-Containing Ingredients": "gf", "farm to fork": "f2f", "seafood watch": "sw"};
+      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "made without gluten-containing ingredients": "gf", "farm to fork": "f2f", "seafood watch": "sw"};
       if (item.description) {
         display += '<span class="item-description">' + item.description + '</span>';
       }
@@ -602,6 +602,21 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       tx.executeSql(sql, [], getAudPref_success);
     });
   }
+function getscrollHTML() {
+    $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/appview.cfm'
+                ,data:{}
+                ,success:function(data, textStatus,e){
+                    $('#scrollstories').empty().append(data).show();
+                   // console.log("stories in");
+                }
+                }).done(function( e ) {
+                     $('#scrollcontent').iscrollview("refresh");
+                  //  console.log("scroll view refresh");
+                });
+  }
+
+
 
   function getAudPref_success(tx, results) {
 
@@ -740,7 +755,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       phonecontacts.push(items.rows.item(i));
     }
     var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span></li>';
-    var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li>';
+    var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li><li><a href="tel:1-315-859-4340">Counseling Center<br><span class="smgrey">315-859-4340</span></a></li>';
     var pnlist = $('#phonenumlist');
     pnlist.html('');
     $.template("contactTemplate", phonetemplate);
@@ -785,53 +800,25 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   $(function () {
     FastClick.attach(document.body);
   });
-    
-    
   // had to add handlers for external links for in app browser nonsense
   function handleExternalURLs() {
     // Handle click events for all external URLs
-    
-    console.log("Platform: ")
-    console.log(device.platform);
-    
-    if (device.platform === null) {
-        console.log("ugh")
-      $(document).on('click', 'a[href^="http"]', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        window.open(url, '_system');
-        return false;
-      });
-    }
-      
-    if (device.platform.toUpperCase() === 'ANDROID') {
-        console.log("android")
+    //console.log(device.platform);
+    /*if (device.platform.toUpperCase() === 'ANDROID') {
         $(document).on('click', 'a[href^="http"]', function (e) {
             var url = $(this).attr('href');
             navigator.app.loadUrl(url, { openExternal: true });
             e.preventDefault();
         });
-    } 
-      
-    else if (device.platform.toUpperCase() === 'IOS') {
-      $(document).on('click', 'a[href^="http"]', function (e) {
-        e.preventDefault();
-        var url = $(this).attr('href');
-        window.open(url, '_system');
-        return false;
-      });
     }
-      
-    else {
-       
-    }  
-      
-      
-      //console.log("Device platform: ")
-      //console.log(device.platform)
-      
- /*
-      
+    else if (device.platform.toUpperCase() === 'IOS') {
+        $(document).on('click', 'a[href^="http"]', function (e) {
+            var url = $(this).attr('href');
+            window.open(url, '_system');
+            e.preventDefault();
+          });
+    }*/
+
     if (device.platform === null) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
@@ -841,50 +828,41 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       });
     }
       
+      
+    // want to be in-app
     else if (device.platform.toUpperCase() === 'ANDROID') {
-        $(document).on('click', 'a[href^="http"]', function (e) {
-            var url = $(this).attr('href');
-            navigator.app.loadUrl(url, { openExternal: false });
-            e.preventDefault();
-            return false;
-        });
-        
-        /*console.log("android detected");
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         //var url = $(this).attr('href');
         //window.open(url, '_system');
         var url = $(this).attr('href');
-        navigator.app.loadUrl(url, { openExternal: false });
+        navigator.app.loadUrl(url, { openExternal: true });
         return false;
       });
     }
-      
     else if (device.platform.toUpperCase() === 'IOS') {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
-        window.open(url, '_system');
+        //window.open(url, '_system');
+        window.open(url, '_blank');
         return false;
       });
     }
-      
     else {
-       console.log("bleh");
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
         window.open(url, '_system');
         return false;
-      }); 
+      });
     }
-      */
-  }
     /*$(document).on('click', 'a[href^="http"]', function (e) {
       e.preventDefault();
       var url = $(this).attr('href');
       window.open(url, '_system', 'location=yes');
     });*/
+  }
 
   function setAudiencePrefTable() {
     var sql =
@@ -895,9 +873,6 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       tx.executeSql(sql);
     });
   }
-
-
-
   // TODO - this is ugly, make sure you change this to be none static
   function PopulateAudiencePrefTable() {
     db.transaction(function (tx) {
@@ -966,6 +941,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
   }
 
+    
   /* Pull full JSON Feed */
   function loadFullJson() {
     $.getJSON("https://www.hamilton.edu/appPages/ajax/getpages.cfm", function (data) {
@@ -1156,6 +1132,11 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   $(document).on('pagebeforeshow', '#phonenums', function (e, data) {
     loadPhoneJson();
   });
+    $(document).on('pagebeforeshow', '#scroll', function (e, data) {
+     getscrollHTML();
+  });
+
+   
   $(document).on('pagebeforeshow', '#diningmenus', function (e, data) {
     //loadDiningJSON();
     loadAllDiningJSON(0);
@@ -1247,7 +1228,36 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       }).done(bugReportDone);
     });
   });
-
+ $(document).on("click",".scrollLikeBlank", function(e){
+            var clickedItem = $(this);
+            var identifier = $('#identifier').val();
+            var cid = $('#cid').val();
+            var storyid= $(this).data("storyid");
+            $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/assets/ajax/appscrollLike.cfm'
+                ,data:{identifier: identifier,cid:cid,storyid:storyid}
+                ,success:function(data, textStatus,e){
+                   clickedItem.removeClass( "scrollLikeBlank" ).addClass('scrollLikeFull');
+                      $('#likecount'+storyid).empty().append(data).show();
+                    }
+                });
+       
+            });
+        $(document).on("click",".scrollLikeFull", function(e){
+            var clickedItem = $(this);
+            var identifier = $('#identifier').val();
+            var cid = $('#cid').val();
+            var storyid= $(this).data("storyid");
+     
+            $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/assets/ajax/appscrollLike.cfm'
+                ,data:{identifier: identifier,cid:cid,storyid:storyid,remove:1}
+                ,success:function(data, textStatus,e){
+                      clickedItem.removeClass( "scrollLikeFull" ).addClass('scrollLikeBlank');
+                              $('#likecount'+storyid).empty().append(data).show();
+                                      }
+                });
+           });
   $(document).on('pagebeforeshow', '.dyn', function (e, data) {
     var pageid = ($.mobile.activePage.attr('id'));
     var htmlcontent = $('#' + pageid + '>.ui-content>.iscroll-scroller>.iscroll-content div').text();

@@ -18,12 +18,14 @@
 # specific language governing permissions and limitations
 # under the License.
 #
+edu.hamilton.hamiltonapp
+
 -->
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "edu.hamilton.ihamilton-ionic"
-         versionCode="25"
-        version   = "1.4.0">
+         versionCode="37"
+        version   = "1.5.6">
 
   <name>Hamilton Mobile</name>
 
@@ -91,6 +93,7 @@
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
   <gap:plugin name="cordova-plugin-splashscreen" source="npm" />
   <gap:plugin name="cordova-plugin-geolocation" source="npm" />
+   <gap:plugin name="cordova-plugin-device" source="npm" />
 
   <!--<access origin="*" browserOnly="true" />-->
   <icon src="resources/android/icon/drawable-ldpi-icon.png" gap:platform="android" gap:qualifier="ldpi"/>
