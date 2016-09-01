@@ -76,25 +76,67 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
      *
      */
     for (var key in data.days[0].cafes) {
+        //TESTING- issue with Date object here
+        /*console.log("CAFE: ");
+        console.log(key);
+        
+        console.log("DATA.DAYS[0].length: ");
+        console.log(data.days[0].cafes.$110);
+        console.log(data.days[0].date);
+        */
+        
       if (data.days[0].cafes.hasOwnProperty(key)) {
+          
         var now = new Date();
         var cafe = data.days[0].cafes[key];
         var cafeElement = $("li[data-bamco-id=\"" + key + "\"]");
+        
+        var day = now.getDay();
+        // DINER
         if (key == 512) {
           if (!(cafe.dayparts) || !(cafe.dayparts[0]) || cafe.dayparts[0].length == 0) {
-            if (((now.getDay() == 0 || now.getDay() == 6) &&
-                (now.getHours > 15))) {
-              cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
-            } else if (now.getDay() != 0 && now.getDay() != 6 && (now.getHours() > 9)) {
-              cafeElement.find(".open-indicator").addClass("open");
-              cafeElement.find(".dining-hall-block .hours-text").text("9:00 - 12:00");
-            } else {
-              cafeElement.find(".open-indicator").addClass("closed");
-              cafeElement.find(".dining-hall-block .hours-text").text("3:00 - 12:00");
+              // should add diner b hours
+              
+            // Saturday or Sunday
+            if (day == 6 || day == 0) {
+                // Diner B or after 3pm
+                if (now.getHours() < 4 || now.getHours() > 15) {
+                    cafeElement.find(".open-indicator").addClass("open");
+                }
+                else {
+                    cafeElement.find(".open-indicator").addClass("closed");
+                }
+                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 3:00pm - 12:00am");
+                console.log("HERE! SATURDAY OR SUNDAY")
+            } 
+              
+            // Friday 
+            else if (day == 5) {
+                if (now.getHours() < 4 || now.getHours() > 9) {
+                    cafeElement.find(".open-indicator").addClass("open");
+                } 
+                else {
+                    cafeElement.find(".open-indicator").addClass("closed");   
+                    }
+                cafeElement.find(".dining-hall-block .hours-text").text("12:00am - 4:00am | 9:00am - 12:00am");
+                console.log("HERE! FRIDAY")
             }
-            continue;
-          } else {
+              
+            // Monday-Thursday
+            else {
+                if (now.getHours() > 9){
+                    cafeElement.find(".open-indicator").addClass("open");
+                }
+                else {
+                    cafeElement.find(".open-indicator").addClass("closed");
+                }
+                cafeElement.find(".dining-hall-block .hours-text").text("9:00am - 12:00am");
+                console.log("HERE! ANY DAY")
+            }
+            //continue;
+          } 
+            
+            else {
             cafeElement.removeClass("ui-li-static").children().wrapAll("<a></a>");
             $('.dining-halls .diningmenuholder').listview("refresh");
             cafeElement.children("a").click(function () {
@@ -104,49 +146,104 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
             });
           }
         }
-
+        
+        // Commons
+        else if (key == 109) {
+            cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 8:00pm");
+        }
+          
+        // McEwen
+        else if (key == 110) {
+            //console.log("MCEWENNNNNNNN")
+            console.log(day);
+            if (day == 5) {
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 2:30pm");
+            }
+            else if (day <= 5 && day > 0) {
+                console.log("weekday!");
+                cafeElement.find("a .dining-hall-block .hours-text").text("7:30am - 8:00pm");
+            }
+            else {
+                console.log(key, " is closed");
+                cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
+                cafeElement.find("a").addClass("ui-disabled");
+            }
+        }
+          
+        else if (key == 598) {
+            
+            if (day > 0 && day < 6) {
+                cafeElement.find("a .dining-hall-block .hours-text").text("11:30am - 1:00pm");
+            }
+            else {
+                console.log(key, " is closed");
+                cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
+                cafeElement.find("a").addClass("ui-disabled");
+            }
+        }
+          
         var mealSet = false;
         var endtime12hr = "";
 
-        $.each(cafe.dayparts[0], function (id, meal) { // for each meal
+        // TESTING ---------------------------------------------------------  
+        //console.log("HERE NOW, TIME TO GO THROUGH MEALS")
+        //console.log(cafe.dayparts[0]);
+        //------------------------------------------------------------------
+          
+          // goes through each meal for a giving dining hall today
+        
+        $.each(cafe.dayparts[0], function (id, meal) { 
+            // for each meal
           // parse the dayparts of this meal into javascript dates
 
           // convert times
-          var start = moment(meal.starttime,'HH:mm');
-          var starttime12hr = start.format('h:mm');
-          var end = moment(meal.endtime,'HH:mm');
-          endtime12hr = end.format('h:mm');
+        
+          var start = moment(meal.starttime,'HH:mma');
+          //var starttime12hr = start.format('h:mma');
+          var end = moment(meal.endtime,'HH:mma');
+          //endtime12hr = end.format('h:mma');
 
 
           var xnow = moment();
 
-          if (id == 0) {
-            cafeElement.find("a .dining-hall-block .hours-text").text(starttime12hr);
-          }
+          //if (id == 0) {
+            //cafeElement.find("a .dining-hall-block .hours-text").text(starttime12hr);
+          //}
 
           // is this meal going on now?
-
+          
           if (start.isBefore(xnow) && end.isAfter(xnow)) {
 
             mealSet = true;
             console.log("meal has been set");
             return false;
           }
-        });
+        }); 
+          
+        
         if (cafe.dayparts[0].length != 0) {
           console.log(key, " not closed");
-          cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endtime12hr));
+          //cafeElement.find("a .dining-hall-block .hours-text").append(document.createTextNode(" - " + endtime12hr));
           cafeElement.find("a").removeClass("ui-disabled");
-        } else {
-          console.log(key, " is closed");
-          cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
-          cafeElement.find("a").addClass("ui-disabled");
+        } 
+          /*else {
+            console.log(day);
+            if (key == 598 && day != 6 && day != 0) {
+                console.log("Pub meal object broken on weekday")
+            }
+            else {
+                console.log(key, " is closed");
+                cafeElement.find("a .dining-hall-block .hours-text").text("Closed Today");
+                cafeElement.find("a").addClass("ui-disabled");
+            }
         }
+        */
 
         if (mealSet) {
 
           cafeElement.find("a .open-indicator").addClass("open");
-        } else {
+        } 
+          else {
 
           cafeElement.find("a .open-indicator").addClass("closed");
         }
@@ -284,7 +381,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     var lookupFoodItem = function (itemID, extra) {
       var item = data.items[itemID];
       var display = item.label;
-      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "Made without Gluten-Containing Ingredients": "gf", "farm to fork": "f2f", "seafood watch": "sw"};
+      var cor_lookup = {"humane": "hm", "vegan": "vg", "vegetarian" : "v", "made without gluten-containing ingredients": "gf", "farm to fork": "f2f", "seafood watch": "sw"};
       if (item.description) {
         display += '<span class="item-description">' + item.description + '</span>';
       }
@@ -330,10 +427,10 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
     console.log(cafe);
     $.each(cafe.dayparts[0], function (id, meal) { // for each meal
       // convert times
-      var start = moment(meal.starttime,'HH:mm');
-      var starttime12hr = start.format('h:mm');
-      var end = moment(meal.endtime,'HH:mm');
-      var endtime12hr = end.format('h:mm');
+      var start = moment(meal.starttime,'HH:mm a');
+      var starttime12hr = start.format('h:mm a');
+      var end = moment(meal.endtime,'HH:mm a');
+      var endtime12hr = end.format('h:mm a');
         
       $("ul.meals.xnavbar").append('<li><a data-meal-id="' + id + '">' + meal.label + '<p class="meal-times">' +
                                    starttime12hr + '-' + endtime12hr + '</p></a></li>');
@@ -505,6 +602,21 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       tx.executeSql(sql, [], getAudPref_success);
     });
   }
+function getscrollHTML() {
+    $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/appview.cfm'
+                ,data:{}
+                ,success:function(data, textStatus,e){
+                    $('#scrollstories').empty().append(data).show();
+                   // console.log("stories in");
+                }
+                }).done(function( e ) {
+                     $('#scrollcontent').iscrollview("refresh");
+                  //  console.log("scroll view refresh");
+                });
+  }
+
+
 
   function getAudPref_success(tx, results) {
 
@@ -643,7 +755,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       phonecontacts.push(items.rows.item(i));
     }
     var phonetemplate = ' <li><a href="tel:${phone}" data-rel="dialog">${name}<br><span class="smgrey">${phone}</span></li>';
-    var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li>';
+    var permphones = '<li><a href="tel:1-315-859-4000"><span class="red">CAMPUS SAFETY (EMERGENCY)</span><br><span class="smgrey">315-859-4000</span></a</li><li><a href="tel:1-315-859-4141">Campus Safety (Non-Emergency)<br><span class="smgrey">315-859-4141</span></a></li><li><a href="tel:1-315-282-5426">Campus Safety (Tip Now) <br><span class="smgrey">315-282-5426</span></a></li><li><a href="tel:1-315-859-4340">Counseling Center<br><span class="smgrey">315-859-4340</span></a></li>';
     var pnlist = $('#phonenumlist');
     pnlist.html('');
     $.template("contactTemplate", phonetemplate);
@@ -715,6 +827,9 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
         return false;
       });
     }
+      
+      
+    // want to be in-app
     else if (device.platform.toUpperCase() === 'ANDROID') {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
@@ -729,12 +844,12 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
-        window.open(url, '_system');
+        //window.open(url, '_system');
+        window.open(url, '_blank');
         return false;
       });
     }
     else {
-       console.log("bleh");
       $(document).on('click', 'a[href^="http"]', function (e) {
         e.preventDefault();
         var url = $(this).attr('href');
@@ -826,6 +941,7 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
 
   }
 
+    
   /* Pull full JSON Feed */
   function loadFullJson() {
     $.getJSON("https://www.hamilton.edu/appPages/ajax/getpages.cfm", function (data) {
@@ -1016,6 +1132,11 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
   $(document).on('pagebeforeshow', '#phonenums', function (e, data) {
     loadPhoneJson();
   });
+    $(document).on('pagebeforeshow', '#scroll', function (e, data) {
+     getscrollHTML();
+  });
+
+   
   $(document).on('pagebeforeshow', '#diningmenus', function (e, data) {
     //loadDiningJSON();
     loadAllDiningJSON(0);
@@ -1107,7 +1228,36 @@ var grabRssFeed = function(url, callback, cacheBust, limit) {
       }).done(bugReportDone);
     });
   });
-
+ $(document).on("click",".scrollLikeBlank", function(e){
+            var clickedItem = $(this);
+            var identifier = $('#identifier').val();
+            var cid = $('#cid').val();
+            var storyid= $(this).data("storyid");
+            $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/assets/ajax/appscrollLike.cfm'
+                ,data:{identifier: identifier,cid:cid,storyid:storyid}
+                ,success:function(data, textStatus,e){
+                   clickedItem.removeClass( "scrollLikeBlank" ).addClass('scrollLikeFull');
+                      $('#likecount'+storyid).empty().append(data).show();
+                    }
+                });
+       
+            });
+        $(document).on("click",".scrollLikeFull", function(e){
+            var clickedItem = $(this);
+            var identifier = $('#identifier').val();
+            var cid = $('#cid').val();
+            var storyid= $(this).data("storyid");
+     
+            $.ajax({
+                type:'post',url:'https://www.hamilton.edu/thescroll/assets/ajax/appscrollLike.cfm'
+                ,data:{identifier: identifier,cid:cid,storyid:storyid,remove:1}
+                ,success:function(data, textStatus,e){
+                      clickedItem.removeClass( "scrollLikeFull" ).addClass('scrollLikeBlank');
+                              $('#likecount'+storyid).empty().append(data).show();
+                                      }
+                });
+           });
   $(document).on('pagebeforeshow', '.dyn', function (e, data) {
     var pageid = ($.mobile.activePage.attr('id'));
     var htmlcontent = $('#' + pageid + '>.ui-content>.iscroll-scroller>.iscroll-content div').text();
